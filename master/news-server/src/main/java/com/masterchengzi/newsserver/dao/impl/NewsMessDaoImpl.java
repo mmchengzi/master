@@ -1,8 +1,8 @@
-package com.masterchengzi.authserver.dao.impl;
+package com.masterchengzi.newsserver.dao.impl;
 
-import com.masterchengzi.authserver.dao.NewsMessDao;
-import com.masterchengzi.authserver.entity.NewsMess;
-import com.masterchengzi.authserver.mapper.NewsMessMapper;
+import com.masterchengzi.newsserver.dao.NewsMessDao;
+import com.masterchengzi.newsserver.entity.NewsMess;
+import com.masterchengzi.newsserver.mapper.NewsMessMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 

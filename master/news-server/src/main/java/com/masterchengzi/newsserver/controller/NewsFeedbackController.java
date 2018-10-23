@@ -1,8 +1,8 @@
-package com.masterchengzi.authserver.controller;
+package com.masterchengzi.newsserver.controller;
 
 import com.masterchengzi.mastercommon.common.JsonResult;
-import com.masterchengzi.authserver.entity.NewsFeedback;
-import com.masterchengzi.authserver.service.NewsFeedbackService;
+import com.masterchengzi.newsserver.entity.NewsFeedback;
+import com.masterchengzi.newsserver.service.NewsFeedbackService;
 import com.wordnik.swagger.annotations.Api;
 import com.wordnik.swagger.annotations.ApiOperation;
 import com.wordnik.swagger.annotations.ApiParam;

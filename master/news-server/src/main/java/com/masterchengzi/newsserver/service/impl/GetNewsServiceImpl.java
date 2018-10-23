@@ -1,13 +1,13 @@
-package com.masterchengzi.authserver.service.impl;
+package com.masterchengzi.newsserver.service.impl;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.masterchengzi.newsserver.dao.GetNewsDao;
+import com.masterchengzi.newsserver.entity.GetNewsWithBLOBs;
+import com.masterchengzi.newsserver.service.GetNewsService;
 import com.masterchengzi.mastercommon.common.JsonResult;
 import com.masterchengzi.mastercommon.common.ResultCode;
 import com.masterchengzi.mastercommon.common.SnowflakeIdWorker;
-import com.masterchengzi.authserver.dao.GetNewsDao;
-import com.masterchengzi.authserver.entity.GetNewsWithBLOBs;
-import com.masterchengzi.authserver.service.GetNewsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -61,14 +61,14 @@ public class GetNewsServiceImpl implements GetNewsService {
 			SnowflakeIdWorker idWorker = new SnowflakeIdWorker(0, 0);
 			if (record != null && record.size() > 0) {
 				for (GetNewsWithBLOBs dto : record) {
-					List<GetNewsWithBLOBs> rlt=getNewsDao.getGetNews(null,dto.getTitle(),null,null,null,null,null);
-					if(rlt!=null &&rlt.size()>0) continue;
+					List<GetNewsWithBLOBs> rlt = getNewsDao.getGetNews(null, dto.getTitle(), null, null, null, null, null);
+					if (rlt != null && rlt.size() > 0) continue;
 					dto.setNewsId(String.valueOf(idWorker.nextId()));
 					int r = getNewsDao.insert(dto);
 					if (r >= 0) ret += r;
 				}
 			}
-			 JsonResult rlt=new JsonResult(ResultCode.SUCCESS, "成功", ret);
+			JsonResult rlt = new JsonResult(ResultCode.SUCCESS, "成功", ret);
 			return rlt;
 		} catch (Exception e) {
 			e.printStackTrace();

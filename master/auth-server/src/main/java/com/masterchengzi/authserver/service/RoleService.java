@@ -1,11 +1,16 @@
 package com.masterchengzi.authserver.service;
 
-import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import com.masterchengzi.authserver.model.ClientDetails;
+import com.masterchengzi.authserver.model.Role;
+import com.masterchengzi.mastercommon.common.JsonResult;
 
-@FeignClient(name = "mss-upms",fallback = RoleServiceImpl.class)
 public interface RoleService {
-	@GetMapping("role/getRoleByUserId/{userId}")
-	Result<List<RoleVo>> getRoleByUserId(@PathVariable("userId") Integer userId);
+	JsonResult getList(String id, String name);
+
+	JsonResult delete(String id, String name);
+
+	JsonResult insert(Role record);
+
+	JsonResult update(Role record);
+
 }

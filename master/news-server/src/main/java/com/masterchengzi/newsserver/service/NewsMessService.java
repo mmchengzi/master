@@ -1,7 +1,7 @@
-package com.masterchengzi.authserver.service;
+package com.masterchengzi.newsserver.service;
 
 import com.masterchengzi.mastercommon.common.JsonResult;
-import com.masterchengzi.authserver.entity.NewsMess;
+import com.masterchengzi.newsserver.entity.NewsMess;
 
 public interface NewsMessService {
 	JsonResult getNewsMess(String newsId, String tag);

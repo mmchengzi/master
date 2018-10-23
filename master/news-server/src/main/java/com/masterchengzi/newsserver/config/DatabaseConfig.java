@@ -1,4 +1,4 @@
-package com.masterchengzi.authserver.config;
+package com.masterchengzi.newsserver.config;
 
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
@@ -14,7 +14,7 @@ import javax.servlet.Filter;
 import javax.sql.DataSource;
 
 @Configuration
-@MapperScan(basePackages="com.masterchengzi.authserver.mapper"/*, sqlSessionFactoryRef="mySessionFactory"*/)
+@MapperScan(basePackages="com.masterchengzi.newsserver.mapper"/*, sqlSessionFactoryRef="mySessionFactory"*/)
 public class DatabaseConfig {
     @Bean
     public SqlSessionFactory sqlSessionFactory(DataSource dataSource) throws Exception {

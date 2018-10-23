@@ -14,7 +14,7 @@
     id, name, value, tips, create_time, update_time, status
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
+    select
     <include refid="Base_Column_List" />
     from role
     where id = #{id,jdbcType=INTEGER}
@@ -24,11 +24,11 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.masterchengzi.authserver.model.Role" >
-    insert into role (id, name, value, 
-      tips, create_time, update_time, 
+    insert into role (id, name, value,
+      tips, create_time, update_time,
       status)
-    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{value,jdbcType=VARCHAR}, 
-      #{tips,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{value,jdbcType=VARCHAR},
+      #{tips,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP},
       #{status,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.masterchengzi.authserver.model.Role" >

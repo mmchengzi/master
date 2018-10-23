@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.masterchengzi.authserver.mapper.UserMessMapper" >
-  <resultMap id="BaseResultMap" type="com.masterchengzi.authserver.entity.UserMess" >
+<mapper namespace="com.masterchengzi.newsserver.mapper.UserMessMapper" >
+  <resultMap id="BaseResultMap" type="com.masterchengzi.newsserver.entity.UserMess" >
     <result column="user_id" property="userId" jdbcType="VARCHAR" />
     <result column="sex" property="sex" jdbcType="INTEGER" />
     <result column="age" property="age" jdbcType="INTEGER" />
@@ -51,7 +51,7 @@
       </if>
     </where>
   </delete>
-  <insert id="insert" parameterType="com.masterchengzi.authserver.entity.UserMess" >
+  <insert id="insert" parameterType="com.masterchengzi.newsserver.entity.UserMess" >
     insert into user_mess (user_id, sex, age,
       email, address, image,
       is_private)
@@ -59,7 +59,7 @@
       #{email,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{image,jdbcType=VARCHAR},
       #{isPrivate,jdbcType=INTEGER})
   </insert>
-  <update id="update" parameterType="com.masterchengzi.authserver.entity.UserMess" >
+  <update id="update" parameterType="com.masterchengzi.newsserver.entity.UserMess" >
     update user_mess
     <set >
       <if test="sex != null" >

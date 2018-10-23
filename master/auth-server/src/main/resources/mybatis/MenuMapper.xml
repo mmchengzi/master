@@ -17,11 +17,11 @@
     <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, code, p_code, p_id, name, url, is_menu, level, sort, status, icon, create_time, 
+    id, code, p_code, p_id, name, url, is_menu, level, sort, status, icon, create_time,
     update_time
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
-    select 
+    select
     <include refid="Base_Column_List" />
     from menu
     where id = #{id,jdbcType=VARCHAR}
@@ -31,14 +31,14 @@
     where id = #{id,jdbcType=VARCHAR}
   </delete>
   <insert id="insert" parameterType="com.masterchengzi.authserver.model.Menu" >
-    insert into menu (id, code, p_code, 
-      p_id, name, url, is_menu, 
-      level, sort, status, 
+    insert into menu (id, code, p_code,
+      p_id, name, url, is_menu,
+      level, sort, status,
       icon, create_time, update_time
       )
-    values (#{id,jdbcType=VARCHAR}, #{code,jdbcType=VARCHAR}, #{pCode,jdbcType=VARCHAR}, 
-      #{pId,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}, #{isMenu,jdbcType=INTEGER}, 
-      #{level,jdbcType=INTEGER}, #{sort,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, 
+    values (#{id,jdbcType=VARCHAR}, #{code,jdbcType=VARCHAR}, #{pCode,jdbcType=VARCHAR},
+      #{pId,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}, #{isMenu,jdbcType=INTEGER},
+      #{level,jdbcType=INTEGER}, #{sort,jdbcType=INTEGER}, #{status,jdbcType=INTEGER},
       #{icon,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
       )
   </insert>

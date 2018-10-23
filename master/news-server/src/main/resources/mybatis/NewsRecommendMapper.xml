@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.masterchengzi.authserver.mapper.NewsRecommendMapper" >
-  <resultMap id="BaseResultMap" type="com.masterchengzi.authserver.entity.NewsRecommend" >
+<mapper namespace="com.masterchengzi.newsserver.mapper.NewsRecommendMapper" >
+  <resultMap id="BaseResultMap" type="com.masterchengzi.newsserver.entity.NewsRecommend" >
     <result column="user_id" property="userId" jdbcType="VARCHAR" />
   </resultMap>
-  <resultMap id="ResultMapWithBLOBs" type="com.masterchengzi.authserver.entity.NewsRecommend" extends="BaseResultMap" >
+  <resultMap id="ResultMapWithBLOBs" type="com.masterchengzi.newsserver.entity.NewsRecommend" extends="BaseResultMap" >
     <result column="news_score" property="newsScore" jdbcType="LONGVARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
@@ -24,11 +24,11 @@
     delete from news_recommend
     where user_id = #{userId}
   </delete>
-  <insert id="insert" parameterType="com.masterchengzi.authserver.entity.NewsRecommend" >
+  <insert id="insert" parameterType="com.masterchengzi.newsserver.entity.NewsRecommend" >
     insert into news_recommend (user_id, news_score)
     values (#{userId,jdbcType=VARCHAR}, #{newsScore,jdbcType=LONGVARCHAR})
   </insert>
-  <update id="update" parameterType="com.masterchengzi.authserver.entity.NewsRecommend" >
+  <update id="update" parameterType="com.masterchengzi.newsserver.entity.NewsRecommend" >
     update news_recommend
     <set >
       <if test="newsScore != null" >

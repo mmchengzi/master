@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.masterchengzi.authserver.mapper.UserTagScoreMapper" >
-  <resultMap id="BaseResultMap" type="com.masterchengzi.authserver.entity.UserTagScore" >
+<mapper namespace="com.masterchengzi.newsserver.mapper.UserTagScoreMapper" >
+  <resultMap id="BaseResultMap" type="com.masterchengzi.newsserver.entity.UserTagScore" >
     <result column="user_id" property="userId" jdbcType="VARCHAR" />
     <result column="news_society" property="newsSociety" jdbcType="DOUBLE" />
     <result column="news_entertainment" property="newsEntertainment" jdbcType="DOUBLE" />
@@ -48,7 +48,7 @@
       </if>
     </where>
   </delete>
-  <insert id="insert" parameterType="com.masterchengzi.authserver.entity.UserTagScore" >
+  <insert id="insert" parameterType="com.masterchengzi.newsserver.entity.UserTagScore" >
     insert into user_tag_score (user_id, news_society, news_entertainment,
       news_tech, news_car, news_sports,
       news_finance, news_military, news_world,
@@ -64,7 +64,7 @@
       #{newsEssay,jdbcType=DOUBLE}, #{newsGame,jdbcType=DOUBLE}, #{newsHistory,jdbcType=DOUBLE},
       #{newsFood,jdbcType=DOUBLE})
   </insert>
-  <update id="update" parameterType="com.masterchengzi.authserver.entity.UserTagScore" >
+  <update id="update" parameterType="com.masterchengzi.newsserver.entity.UserTagScore" >
     update user_operate
     <set >
       <if test="newsSociety != null" >

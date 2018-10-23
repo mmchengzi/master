@@ -1,8 +1,8 @@
-package com.masterchengzi.authserver.controller;
+package com.masterchengzi.newsserver.controller;
 
 import com.masterchengzi.mastercommon.common.JsonResult;
-import com.masterchengzi.authserver.entity.UserTagScore;
-import com.masterchengzi.authserver.service.UserTagScoreService;
+import com.masterchengzi.newsserver.entity.UserTagScore;
+import com.masterchengzi.newsserver.service.UserTagScoreService;
 import com.wordnik.swagger.annotations.Api;
 import com.wordnik.swagger.annotations.ApiOperation;
 import com.wordnik.swagger.annotations.ApiParam;

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.masterchengzi.authserver.mapper.NewsCommentMapper" >
-  <resultMap id="BaseResultMap" type="com.masterchengzi.authserver.entity.NewsComment" >
+<mapper namespace="com.masterchengzi.newsserver.mapper.NewsCommentMapper" >
+  <resultMap id="BaseResultMap" type="com.masterchengzi.newsserver.entity.NewsComment" >
     <result column="news_id" property="newsId" jdbcType="VARCHAR" />
     <result column="comment" property="comment" jdbcType="VARCHAR" />
   </resultMap>
@@ -22,11 +22,11 @@
     delete from news_comment
     where news_id = #{newsId,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="com.masterchengzi.authserver.entity.NewsComment" >
+  <insert id="insert" parameterType="com.masterchengzi.newsserver.entity.NewsComment" >
     insert into news_comment (news_id, comment)
     values (#{newsId,jdbcType=VARCHAR}, #{comment,jdbcType=VARCHAR})
   </insert>
-  <update id="update" parameterType="com.masterchengzi.authserver.entity.NewsComment" >
+  <update id="update" parameterType="com.masterchengzi.newsserver.entity.NewsComment" >
     update news_comment
     <set >
       <if test="newsId != null" >

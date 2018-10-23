@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.masterchengzi.authserver.mapper.NewsMessMapper" >
-  <resultMap id="BaseResultMap" type="com.masterchengzi.authserver.entity.NewsMess" >
+<mapper namespace="com.masterchengzi.newsserver.mapper.NewsMessMapper" >
+  <resultMap id="BaseResultMap" type="com.masterchengzi.newsserver.entity.NewsMess" >
     <result column="news_id" property="newsId" jdbcType="VARCHAR" />
     <result column="tag" property="tag" jdbcType="VARCHAR" />
     <result column="read_times" property="readTimes" jdbcType="INTEGER" />
@@ -28,14 +28,14 @@
     delete from news_mess
     where news_id = #{newsId}
   </delete>
-  <insert id="insert" parameterType="com.masterchengzi.authserver.entity.NewsMess" >
+  <insert id="insert" parameterType="com.masterchengzi.newsserver.entity.NewsMess" >
     insert into news_mess (news_id, tag, read_times,
     love_times, comment_times)
     values (#{newsId,jdbcType=VARCHAR}, #{tag,jdbcType=VARCHAR}, #{readTimes,jdbcType=INTEGER},
     #{loveTimes,jdbcType=INTEGER}, #{commentTimes,jdbcType=INTEGER})
   </insert>
 
-  <update id="update" parameterType="com.masterchengzi.authserver.entity.NewsMess" >
+  <update id="update" parameterType="com.masterchengzi.newsserver.entity.NewsMess" >
     update news_mess
     <set >
       <if test="newsId != null" >

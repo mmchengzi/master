@@ -1,6 +1,6 @@
-package com.masterchengzi.authserver.mapper;
+package com.masterchengzi.newsserver.mapper;
 
-import com.masterchengzi.authserver.entity.NewsRecommend;
+import com.masterchengzi.newsserver.entity.NewsRecommend;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

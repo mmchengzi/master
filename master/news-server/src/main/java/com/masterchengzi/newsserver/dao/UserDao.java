@@ -1,6 +1,6 @@
-package com.masterchengzi.authserver.dao;
+package com.masterchengzi.newsserver.dao;
 
-import com.masterchengzi.authserver.entity.User;
+import com.masterchengzi.newsserver.entity.User;
 
 import java.util.Date;
 import java.util.List;

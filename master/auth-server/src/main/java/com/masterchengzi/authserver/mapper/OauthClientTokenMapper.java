@@ -1,19 +1,19 @@
 package com.masterchengzi.authserver.mapper;
 
+import com.masterchengzi.authserver.model.OauthApprovals;
 import com.masterchengzi.authserver.model.OauthClientToken;
+import org.springframework.stereotype.Repository;
 
+import java.util.List;
+import java.util.Map;
+@Repository
 public interface OauthClientTokenMapper {
-    int deleteByPrimaryKey(String authenticationId);
+    List<OauthClientToken> getList(Map<String, Object> map);
+
+    int delete(Map<String, Object> map);
 
     int insert(OauthClientToken record);
 
-    int insertSelective(OauthClientToken record);
+    int update(OauthClientToken record);
 
-    OauthClientToken selectByPrimaryKey(String authenticationId);
-
-    int updateByPrimaryKeySelective(OauthClientToken record);
-
-    int updateByPrimaryKeyWithBLOBs(OauthClientToken record);
-
-    int updateByPrimaryKey(OauthClientToken record);
 }

@@ -15,12 +15,12 @@
     <result column="autoapprove" property="autoapprove" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    client_id, resource_ids, client_secret, scope, authorized_grant_types, web_server_redirect_uri, 
-    authorities, access_token_validity, refresh_token_validity, additional_information, 
+    client_id, resource_ids, client_secret, scope, authorized_grant_types, web_server_redirect_uri,
+    authorities, access_token_validity, refresh_token_validity, additional_information,
     autoapprove
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
-    select 
+    select
     <include refid="Base_Column_List" />
     from oauth_client_details
     where client_id = #{clientId,jdbcType=VARCHAR}
@@ -30,13 +30,13 @@
     where client_id = #{clientId,jdbcType=VARCHAR}
   </delete>
   <insert id="insert" parameterType="com.masterchengzi.authserver.model.OauthClientDetails" >
-    insert into oauth_client_details (client_id, resource_ids, client_secret, 
-      scope, authorized_grant_types, web_server_redirect_uri, 
-      authorities, access_token_validity, refresh_token_validity, 
+    insert into oauth_client_details (client_id, resource_ids, client_secret,
+      scope, authorized_grant_types, web_server_redirect_uri,
+      authorities, access_token_validity, refresh_token_validity,
       additional_information, autoapprove)
-    values (#{clientId,jdbcType=VARCHAR}, #{resourceIds,jdbcType=VARCHAR}, #{clientSecret,jdbcType=VARCHAR}, 
-      #{scope,jdbcType=VARCHAR}, #{authorizedGrantTypes,jdbcType=VARCHAR}, #{webServerRedirectUri,jdbcType=VARCHAR}, 
-      #{authorities,jdbcType=VARCHAR}, #{accessTokenValidity,jdbcType=INTEGER}, #{refreshTokenValidity,jdbcType=INTEGER}, 
+    values (#{clientId,jdbcType=VARCHAR}, #{resourceIds,jdbcType=VARCHAR}, #{clientSecret,jdbcType=VARCHAR},
+      #{scope,jdbcType=VARCHAR}, #{authorizedGrantTypes,jdbcType=VARCHAR}, #{webServerRedirectUri,jdbcType=VARCHAR},
+      #{authorities,jdbcType=VARCHAR}, #{accessTokenValidity,jdbcType=INTEGER}, #{refreshTokenValidity,jdbcType=INTEGER},
       #{additionalInformation,jdbcType=VARCHAR}, #{autoapprove,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.masterchengzi.authserver.model.OauthClientDetails" >

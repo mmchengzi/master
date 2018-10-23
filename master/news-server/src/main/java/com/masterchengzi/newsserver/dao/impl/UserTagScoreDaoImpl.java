@@ -1,9 +1,9 @@
-package com.masterchengzi.authserver.dao.impl;
+package com.masterchengzi.newsserver.dao.impl;
 
-import com.masterchengzi.authserver.dao.UserTagScoreDao;
-import com.masterchengzi.authserver.entity.UserTagScore;
-import com.masterchengzi.authserver.mapper.UserTagDeepMapper;
-import com.masterchengzi.authserver.mapper.UserTagScoreMapper;
+import com.masterchengzi.newsserver.dao.UserTagScoreDao;
+import com.masterchengzi.newsserver.entity.UserTagScore;
+import com.masterchengzi.newsserver.mapper.UserTagDeepMapper;
+import com.masterchengzi.newsserver.mapper.UserTagScoreMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 

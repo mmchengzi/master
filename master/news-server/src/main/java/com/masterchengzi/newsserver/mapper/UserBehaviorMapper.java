@@ -1,6 +1,6 @@
-package com.masterchengzi.authserver.mapper;
+package com.masterchengzi.newsserver.mapper;
 
-import com.masterchengzi.authserver.entity.UserBehavior;
+import com.masterchengzi.newsserver.entity.UserBehavior;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

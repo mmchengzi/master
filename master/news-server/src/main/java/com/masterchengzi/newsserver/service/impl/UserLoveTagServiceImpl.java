@@ -1,9 +1,9 @@
-package com.masterchengzi.authserver.service.impl;
+package com.masterchengzi.newsserver.service.impl;
 import com.masterchengzi.mastercommon.common.JsonResult;
 import com.masterchengzi.mastercommon.common.ResultCode;
-import com.masterchengzi.authserver.dao.UserLoveTagDao;
-import com.masterchengzi.authserver.entity.UserLoveTag;
-import com.masterchengzi.authserver.service.UserLoveTagService;
+import com.masterchengzi.newsserver.dao.UserLoveTagDao;
+import com.masterchengzi.newsserver.entity.UserLoveTag;
+import com.masterchengzi.newsserver.service.UserLoveTagService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

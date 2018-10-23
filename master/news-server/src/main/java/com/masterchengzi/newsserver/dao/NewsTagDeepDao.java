@@ -1,6 +1,6 @@
-package com.masterchengzi.authserver.dao;
+package com.masterchengzi.newsserver.dao;
 
-import com.masterchengzi.authserver.entity.NewsTagDeep;
+import com.masterchengzi.newsserver.entity.NewsTagDeep;
 
 import java.util.List;
 

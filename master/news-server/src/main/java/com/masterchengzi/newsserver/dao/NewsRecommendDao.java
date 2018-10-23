@@ -1,6 +1,6 @@
-package com.masterchengzi.authserver.dao;
+package com.masterchengzi.newsserver.dao;
 
-import com.masterchengzi.authserver.entity.NewsRecommend;
+import com.masterchengzi.newsserver.entity.NewsRecommend;
 
 import java.util.List;
 import java.util.Map;

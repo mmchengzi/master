@@ -17,7 +17,7 @@
     token
   </sql>
   <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
-    select 
+    select
     <include refid="Base_Column_List" />
     ,
     <include refid="Blob_Column_List" />
@@ -29,9 +29,9 @@
     where authentication_id = #{authenticationId,jdbcType=VARCHAR}
   </delete>
   <insert id="insert" parameterType="com.masterchengzi.authserver.model.OauthClientToken" >
-    insert into oauth_client_token (authentication_id, token_id, user_name, 
+    insert into oauth_client_token (authentication_id, token_id, user_name,
       client_id, token)
-    values (#{authenticationId,jdbcType=VARCHAR}, #{tokenId,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, 
+    values (#{authenticationId,jdbcType=VARCHAR}, #{tokenId,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR},
       #{clientId,jdbcType=VARCHAR}, #{token,jdbcType=LONGVARBINARY})
   </insert>
   <insert id="insertSelective" parameterType="com.masterchengzi.authserver.model.OauthClientToken" >

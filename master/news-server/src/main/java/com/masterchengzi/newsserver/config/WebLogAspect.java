@@ -1,4 +1,4 @@
-package com.masterchengzi.authserver.config;
+package com.masterchengzi.newsserver.config;
 
 import lombok.extern.java.Log;
 import org.aspectj.lang.JoinPoint;
@@ -25,7 +25,7 @@ import java.util.Arrays;
 public class WebLogAspect {
 	ThreadLocal<Long> startTime = new ThreadLocal<>();
 
-	@Pointcut("execution(public * com.masterchengzi.authserver.controller.*.*(..))")
+	@Pointcut("execution(public * com.masterchengzi.newsserver.controller.*.*(..))")
 	public void webLog() {
 	}
 

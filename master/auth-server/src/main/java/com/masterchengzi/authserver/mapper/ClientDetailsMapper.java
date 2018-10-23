@@ -1,17 +1,19 @@
 package com.masterchengzi.authserver.mapper;
 
 import com.masterchengzi.authserver.model.ClientDetails;
+import org.springframework.stereotype.Repository;
 
+import java.util.List;
+import java.util.Map;
+
+@Repository
 public interface ClientDetailsMapper {
-    int deleteByPrimaryKey(String appid);
+	List<ClientDetails> getList(Map<String, Object> map);
 
-    int insert(ClientDetails record);
+	int delete(Map<String, Object> map);
 
-    int insertSelective(ClientDetails record);
+	int insert(ClientDetails record);
 
-    ClientDetails selectByPrimaryKey(String appid);
+	int update(ClientDetails record);
 
-    int updateByPrimaryKeySelective(ClientDetails record);
-
-    int updateByPrimaryKey(ClientDetails record);
 }

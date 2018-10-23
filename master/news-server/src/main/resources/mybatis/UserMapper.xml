@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.masterchengzi.authserver.mapper.UserMapper" >
-  <resultMap id="BaseResultMap" type="com.masterchengzi.authserver.entity.User" >
+<mapper namespace="com.masterchengzi.newsserver.mapper.UserMapper" >
+  <resultMap id="BaseResultMap" type="com.masterchengzi.newsserver.entity.User" >
     <id column="user_id" property="userId" jdbcType="VARCHAR" />
     <result column="phone" property="phone" jdbcType="VARCHAR" />
     <result column="name" property="name" jdbcType="VARCHAR" />
@@ -47,13 +47,13 @@
       </if>
     </where>
   </delete>
-  <insert id="insert" parameterType="com.masterchengzi.authserver.entity.User" >
+  <insert id="insert" parameterType="com.masterchengzi.newsserver.entity.User" >
     insert into user (user_id, phone, name,
       passwd, time)
     values (#{userId,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR},
       #{passwd,jdbcType=VARCHAR}, #{time,jdbcType=TIMESTAMP})
   </insert>
-  <update id="update" parameterType="com.masterchengzi.authserver.entity.User" >
+  <update id="update" parameterType="com.masterchengzi.newsserver.entity.User" >
     update user
     <set >
       <if test="phone != null" >

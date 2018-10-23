@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.masterchengzi.authserver.mapper.UserLoveTagMapper" >
-  <resultMap id="BaseResultMap" type="com.masterchengzi.authserver.entity.UserLoveTag" >
+<mapper namespace="com.masterchengzi.newsserver.mapper.UserLoveTagMapper" >
+  <resultMap id="BaseResultMap" type="com.masterchengzi.newsserver.entity.UserLoveTag" >
     <result column="user_id" property="userId" jdbcType="VARCHAR" />
     <result column="tags" property="tags" jdbcType="VARCHAR" />
   </resultMap>
@@ -22,11 +22,11 @@
     delete from user_love_tag
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.masterchengzi.authserver.entity.UserLoveTag" >
+  <insert id="insert" parameterType="com.masterchengzi.newsserver.entity.UserLoveTag" >
     insert into user_love_tag (user_id, tags)
     values (#{userId,jdbcType=VARCHAR}, #{tags,jdbcType=VARCHAR})
   </insert>
-  <update id="update" parameterType="com.masterchengzi.authserver.entity.UserLoveTag" >
+  <update id="update" parameterType="com.masterchengzi.newsserver.entity.UserLoveTag" >
     update user_love_tag
     <set >
       <if test="tags != null" >

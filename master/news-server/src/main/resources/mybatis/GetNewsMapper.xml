@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.masterchengzi.authserver.mapper.GetNewsMapper" >
-  <resultMap id="BaseResultMap" type="com.masterchengzi.authserver.entity.GetNews" >
+<mapper namespace="com.masterchengzi.newsserver.mapper.GetNewsMapper" >
+  <resultMap id="BaseResultMap" type="com.masterchengzi.newsserver.entity.GetNews" >
     <id column="news_id" property="newsId" jdbcType="VARCHAR" />
     <result column="news_link" property="newsLink" jdbcType="VARCHAR" />
     <result column="source" property="source" jdbcType="VARCHAR" />
@@ -14,7 +14,7 @@
     <result column="keyword" property="keyword" jdbcType="VARCHAR" />
     <result column="is_old" property="isOld" jdbcType="INTEGER" />
   </resultMap>
-  <resultMap id="ResultMapWithBLOBs" type="com.masterchengzi.authserver.entity.GetNewsWithBLOBs" extends="BaseResultMap" >
+  <resultMap id="ResultMapWithBLOBs" type="com.masterchengzi.newsserver.entity.GetNewsWithBLOBs" extends="BaseResultMap" >
     <result column="text_content" property="textContent" jdbcType="LONGVARCHAR" />
     <result column="html_content" property="htmlContent" jdbcType="LONGVARCHAR" />
   </resultMap>
@@ -58,7 +58,7 @@
     delete from get_news
     where news_id = #{newsId,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="com.masterchengzi.authserver.entity.GetNewsWithBLOBs" >
+  <insert id="insert" parameterType="com.masterchengzi.newsserver.entity.GetNewsWithBLOBs" >
     insert into get_news (news_id, news_link, source,
       time, title, headline,
       tag, image, video,
@@ -70,7 +70,7 @@
       #{keyword,jdbcType=VARCHAR}, #{isOld,jdbcType=INTEGER}, #{textContent,jdbcType=LONGVARCHAR},
       #{htmlContent,jdbcType=LONGVARCHAR})
   </insert>
-  <update id="update" parameterType="com.masterchengzi.authserver.entity.GetNewsWithBLOBs" >
+  <update id="update" parameterType="com.masterchengzi.newsserver.entity.GetNewsWithBLOBs" >
     update get_news
     <set >
       <if test="newsLink != null" >

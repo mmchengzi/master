@@ -1,6 +1,6 @@
-package com.masterchengzi.authserver.dao;
+package com.masterchengzi.newsserver.dao;
 
-import com.masterchengzi.authserver.entity.UserTagScore;
+import com.masterchengzi.newsserver.entity.UserTagScore;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

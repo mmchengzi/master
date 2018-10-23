@@ -1,9 +1,9 @@
-package com.masterchengzi.authserver.service.impl;
+package com.masterchengzi.newsserver.service.impl;
 import com.masterchengzi.mastercommon.common.JsonResult;
 import com.masterchengzi.mastercommon.common.ResultCode;
-import com.masterchengzi.authserver.dao.UserMessDao;
-import com.masterchengzi.authserver.entity.UserMess;
-import com.masterchengzi.authserver.service.UserMessService;
+import com.masterchengzi.newsserver.dao.UserMessDao;
+import com.masterchengzi.newsserver.entity.UserMess;
+import com.masterchengzi.newsserver.service.UserMessService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

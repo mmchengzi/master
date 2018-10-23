@@ -1,7 +1,7 @@
-package com.masterchengzi.authserver.controller;
+package com.masterchengzi.newsserver.controller;
 
 import com.masterchengzi.mastercommon.common.JsonResult;
-import com.masterchengzi.authserver.service.NewsHotService;
+import com.masterchengzi.newsserver.service.NewsHotService;
 import com.wordnik.swagger.annotations.Api;
 import com.wordnik.swagger.annotations.ApiOperation;
 import lombok.extern.java.Log;

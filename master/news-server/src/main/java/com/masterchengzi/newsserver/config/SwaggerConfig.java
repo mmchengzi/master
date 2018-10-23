@@ -1,4 +1,4 @@
-package com.masterchengzi.authserver.config;
+package com.masterchengzi.newsserver.config;
 
 import com.mangofactory.swagger.configuration.SpringSwaggerConfig;
 import com.mangofactory.swagger.models.dto.ApiInfo;

@@ -1,6 +1,6 @@
-package com.masterchengzi.authserver.dao;
+package com.masterchengzi.newsserver.dao;
 
-import com.masterchengzi.authserver.entity.NewsMess;
+import com.masterchengzi.newsserver.entity.NewsMess;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

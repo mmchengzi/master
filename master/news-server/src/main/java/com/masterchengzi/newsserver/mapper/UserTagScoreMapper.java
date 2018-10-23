@@ -1,6 +1,6 @@
-package com.masterchengzi.authserver.mapper;
+package com.masterchengzi.newsserver.mapper;
 
-import com.masterchengzi.authserver.entity.UserTagScore;
+import com.masterchengzi.newsserver.entity.UserTagScore;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

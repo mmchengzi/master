@@ -15,11 +15,11 @@
     <result column="autoApproveScopes" property="autoapprovescopes" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    appId, resourceIds, appSecret, scope, grantTypes, redirectUrl, authorities, access_token_validity, 
+    appId, resourceIds, appSecret, scope, grantTypes, redirectUrl, authorities, access_token_validity,
     refresh_token_validity, additionalInformation, autoApproveScopes
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
-    select 
+    select
     <include refid="Base_Column_List" />
     from clientdetails
     where appId = #{appid,jdbcType=VARCHAR}
@@ -29,14 +29,14 @@
     where appId = #{appid,jdbcType=VARCHAR}
   </delete>
   <insert id="insert" parameterType="com.masterchengzi.authserver.model.ClientDetails" >
-    insert into clientdetails (appId, resourceIds, appSecret, 
-      scope, grantTypes, redirectUrl, 
-      authorities, access_token_validity, refresh_token_validity, 
+    insert into clientdetails (appId, resourceIds, appSecret,
+      scope, grantTypes, redirectUrl,
+      authorities, access_token_validity, refresh_token_validity,
       additionalInformation, autoApproveScopes
       )
-    values (#{appid,jdbcType=VARCHAR}, #{resourceids,jdbcType=VARCHAR}, #{appsecret,jdbcType=VARCHAR}, 
-      #{scope,jdbcType=VARCHAR}, #{granttypes,jdbcType=VARCHAR}, #{redirecturl,jdbcType=VARCHAR}, 
-      #{authorities,jdbcType=VARCHAR}, #{accessTokenValidity,jdbcType=INTEGER}, #{refreshTokenValidity,jdbcType=INTEGER}, 
+    values (#{appid,jdbcType=VARCHAR}, #{resourceids,jdbcType=VARCHAR}, #{appsecret,jdbcType=VARCHAR},
+      #{scope,jdbcType=VARCHAR}, #{granttypes,jdbcType=VARCHAR}, #{redirecturl,jdbcType=VARCHAR},
+      #{authorities,jdbcType=VARCHAR}, #{accessTokenValidity,jdbcType=INTEGER}, #{refreshTokenValidity,jdbcType=INTEGER},
       #{additionalinformation,jdbcType=VARCHAR}, #{autoapprovescopes,jdbcType=VARCHAR}
       )
   </insert>

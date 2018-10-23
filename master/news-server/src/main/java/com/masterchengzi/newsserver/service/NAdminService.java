@@ -1,7 +1,7 @@
-package com.masterchengzi.authserver.service;
+package com.masterchengzi.newsserver.service;
 
 import com.masterchengzi.mastercommon.common.JsonResult;
-import com.masterchengzi.authserver.entity.NAdmin;
+import com.masterchengzi.newsserver.entity.NAdmin;
 
 public interface NAdminService {
 

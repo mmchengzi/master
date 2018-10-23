@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.masterchengzi.authserver.mapper.NewsTagDeepMapper" >
-  <resultMap id="BaseResultMap" type="com.masterchengzi.authserver.entity.NewsTagDeep" >
+<mapper namespace="com.masterchengzi.newsserver.mapper.NewsTagDeepMapper" >
+  <resultMap id="BaseResultMap" type="com.masterchengzi.newsserver.entity.NewsTagDeep" >
     <result column="news_id" property="newsId" jdbcType="VARCHAR" />
     <result column="news_society" property="newsSociety" jdbcType="DOUBLE" />
     <result column="news_entertainment" property="newsEntertainment" jdbcType="DOUBLE" />
@@ -45,7 +45,7 @@
     delete from news_tag_deep
     where  news_id = #{newsId}
   </delete>
-  <insert id="insert" parameterType="com.masterchengzi.authserver.entity.NewsTagDeep" >
+  <insert id="insert" parameterType="com.masterchengzi.newsserver.entity.NewsTagDeep" >
     insert into news_tag_deep (news_id, news_society, news_entertainment,
       news_tech, news_car, news_sports,
       news_finance, news_military, news_world,
@@ -61,7 +61,7 @@
       #{newsEssay,jdbcType=DOUBLE}, #{newsGame,jdbcType=DOUBLE}, #{newsHistory,jdbcType=DOUBLE},
       #{newsFood,jdbcType=DOUBLE})
   </insert>
-  <update id="update" parameterType="com.masterchengzi.authserver.entity.NewsTagDeep">
+  <update id="update" parameterType="com.masterchengzi.newsserver.entity.NewsTagDeep">
     update news_tag_deep
     <set >
       <if test="newsSociety != null" >

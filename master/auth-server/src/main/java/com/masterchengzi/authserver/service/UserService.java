@@ -1,11 +1,15 @@
 package com.masterchengzi.authserver.service;
 
-import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import com.masterchengzi.authserver.model.ClientDetails;
+import com.masterchengzi.authserver.model.User;
+import com.masterchengzi.mastercommon.common.JsonResult;
 
-@FeignClient(name = "mss-upms",fallback = UserServiceImpl.class)
 public interface UserService {
-	@GetMapping("user/findByUsername/{username}")
-	Result<UserVo> findByUsername(@PathVariable("username") String username);
+	JsonResult getList(String id, String user_id);
+
+	JsonResult delete(String id, String user_id);
+
+	JsonResult insert(User record);
+
+	JsonResult update(User record);
 }

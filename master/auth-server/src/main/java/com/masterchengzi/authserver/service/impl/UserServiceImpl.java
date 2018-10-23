@@ -1,16 +1,65 @@
 package com.masterchengzi.authserver.service.impl;
 
+import com.masterchengzi.authserver.mapper.ClientDetailsMapper;
+import com.masterchengzi.authserver.mapper.UserMapper;
+import com.masterchengzi.authserver.model.ClientDetails;
+import com.masterchengzi.authserver.model.User;
 import com.masterchengzi.authserver.service.UserService;
-import lombok.extern.log4j.Log4j2;
-import lombok.extern.slf4j.Slf4j;
+import com.masterchengzi.mastercommon.common.JsonResult;
+import com.masterchengzi.mastercommon.common.ResultCode;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @Service
-@Log4j2
 public class UserServiceImpl implements UserService {
+	@Autowired
+	private UserMapper mapper;
 	@Override
-	public Result<UserVo> findByUsername(String username) {
-		log.info("调用{}失败","findByUsername");
-		return Result.failure(100,"调用findByUsername接口失败");
+	public JsonResult getList(String id, String user_id) {
+		try {
+			Map map = new HashMap();
+			map.put("id", id);
+			map.put("user_id", user_id);
+			return new JsonResult(ResultCode.SUCCESS, "成功", mapper.getList(map));
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new JsonResult(ResultCode.FAIL, e.getMessage());
+		}
+	}
+
+	@Override
+	public JsonResult delete(String id, String user_id) {
+		try {
+			Map map = new HashMap();
+			map.put("id", id);
+			map.put("user_id", user_id);
+			return new JsonResult(ResultCode.SUCCESS, "成功", mapper.delete(map));
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new JsonResult(ResultCode.FAIL, e.getMessage());
+		}
+	}
+
+	@Override
+	public JsonResult insert(User record) {
+		try {
+			return new JsonResult(ResultCode.SUCCESS, "成功", mapper.insert(record));
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new JsonResult(ResultCode.FAIL, e.getMessage());
+		}
+	}
+
+	@Override
+	public JsonResult update(User record) {
+		try {
+			return new JsonResult(ResultCode.SUCCESS, "成功", mapper.update(record));
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new JsonResult(ResultCode.FAIL, e.getMessage());
+		}
 	}
 }

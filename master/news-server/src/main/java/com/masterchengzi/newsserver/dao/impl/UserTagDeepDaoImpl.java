@@ -1,8 +1,8 @@
-package com.masterchengzi.authserver.dao.impl;
+package com.masterchengzi.newsserver.dao.impl;
 
-import com.masterchengzi.authserver.dao.UserTagDeepDao;
-import com.masterchengzi.authserver.entity.UserTagDeep;
-import com.masterchengzi.authserver.mapper.UserTagDeepMapper;
+import com.masterchengzi.newsserver.dao.UserTagDeepDao;
+import com.masterchengzi.newsserver.entity.UserTagDeep;
+import com.masterchengzi.newsserver.mapper.UserTagDeepMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 

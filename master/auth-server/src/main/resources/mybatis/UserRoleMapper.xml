@@ -12,7 +12,7 @@
     id, user_id, role_id, create_time, create_by
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
+    select
     <include refid="Base_Column_List" />
     from user_role
     where id = #{id,jdbcType=INTEGER}
@@ -22,9 +22,9 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.masterchengzi.authserver.model.UserRole" >
-    insert into user_role (id, user_id, role_id, 
+    insert into user_role (id, user_id, role_id,
       create_time, create_by)
-    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{roleId,jdbcType=INTEGER}, 
+    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{roleId,jdbcType=INTEGER},
       #{createTime,jdbcType=TIMESTAMP}, #{createBy,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.masterchengzi.authserver.model.UserRole" >

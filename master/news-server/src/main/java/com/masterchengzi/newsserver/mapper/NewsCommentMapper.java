@@ -1,8 +1,8 @@
-package com.masterchengzi.authserver.mapper;
+package com.masterchengzi.newsserver.mapper;
 
-import com.masterchengzi.authserver.entity.NAdmin;
-import com.masterchengzi.authserver.entity.NewsComment;
-import com.masterchengzi.authserver.entity.NewsFeedback;
+import com.masterchengzi.newsserver.entity.NAdmin;
+import com.masterchengzi.newsserver.entity.NewsComment;
+import com.masterchengzi.newsserver.entity.NewsFeedback;
 
 import java.util.List;
 import java.util.Map;

@@ -1,6 +1,6 @@
-package com.masterchengzi.authserver.mapper;
+package com.masterchengzi.newsserver;
 
-import com.masterchengzi.authserver.entity.GetNewsWithBLOBs;
+import com.masterchengzi.newsserver.entity.GetNewsWithBLOBs;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

@@ -1,8 +1,8 @@
-package com.masterchengzi.authserver.dao.impl;
+package com.masterchengzi.newsserver.dao.impl;
 
-import com.masterchengzi.authserver.dao.NewsCommentDao;
-import com.masterchengzi.authserver.entity.NewsComment;
-import com.masterchengzi.authserver.mapper.NewsCommentMapper;
+import com.masterchengzi.newsserver.dao.NewsCommentDao;
+import com.masterchengzi.newsserver.entity.NewsComment;
+import com.masterchengzi.newsserver.mapper.NewsCommentMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 

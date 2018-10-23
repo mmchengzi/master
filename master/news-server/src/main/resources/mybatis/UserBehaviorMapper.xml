@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.masterchengzi.authserver.mapper.UserBehaviorMapper" >
-  <resultMap id="BaseResultMap" type="com.masterchengzi.authserver.entity.UserBehavior" >
+<mapper namespace="com.masterchengzi.newsserver.mapper.UserBehaviorMapper" >
+  <resultMap id="BaseResultMap" type="com.masterchengzi.newsserver.entity.UserBehavior" >
     <result column="user_id" property="userId" jdbcType="VARCHAR" />
     <result column="news_id" property="newsId" jdbcType="VARCHAR" />
     <result column="news_tag" property="newsTag" jdbcType="VARCHAR" />
@@ -47,7 +47,7 @@
       </if>
     </where>
   </delete>
-  <insert id="insert" parameterType="com.masterchengzi.authserver.entity.UserBehavior" >
+  <insert id="insert" parameterType="com.masterchengzi.newsserver.entity.UserBehavior" >
     insert into user_behavior (user_id, news_id, news_tag,
       behavior_type, weight, is_comment,
       address, news_way, age,
@@ -57,7 +57,7 @@
       #{address,jdbcType=VARCHAR}, #{newsWay,jdbcType=INTEGER}, #{age,jdbcType=VARCHAR},
       #{score,jdbcType=INTEGER}, #{times,jdbcType=INTEGER})
   </insert>
-  <update id="update" parameterType="com.masterchengzi.authserver.entity.UserBehavior" >
+  <update id="update" parameterType="com.masterchengzi.newsserver.entity.UserBehavior" >
     update user_behavior
     <set >
       <if test="newsTag != null" >

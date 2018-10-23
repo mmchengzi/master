@@ -1,12 +1,12 @@
-package com.masterchengzi.authserver.service.impl;
+package com.masterchengzi.newsserver.service.impl;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.masterchengzi.mastercommon.common.JsonResult;
 import com.masterchengzi.mastercommon.common.ResultCode;
-import com.masterchengzi.authserver.dao.UserDao;
-import com.masterchengzi.authserver.entity.User;
-import com.masterchengzi.authserver.service.UserService;
+import com.masterchengzi.newsserver.dao.UserDao;
+import com.masterchengzi.newsserver.entity.User;
+import com.masterchengzi.newsserver.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

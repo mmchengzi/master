@@ -1,17 +1,18 @@
 package com.masterchengzi.authserver.mapper;
 
+import com.masterchengzi.authserver.model.User;
 import com.masterchengzi.authserver.model.UserRole;
+import org.springframework.stereotype.Repository;
 
+import java.util.List;
+import java.util.Map;
+@Repository
 public interface UserRoleMapper {
-    int deleteByPrimaryKey(Integer id);
+    List<UserRole> getList(Map<String, Object> map);
+
+    int delete(Map<String, Object> map);
 
     int insert(UserRole record);
 
-    int insertSelective(UserRole record);
-
-    UserRole selectByPrimaryKey(Integer id);
-
-    int updateByPrimaryKeySelective(UserRole record);
-
-    int updateByPrimaryKey(UserRole record);
+    int update(UserRole record);
 }

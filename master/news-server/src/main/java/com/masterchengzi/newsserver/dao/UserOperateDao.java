@@ -1,6 +1,6 @@
-package com.masterchengzi.authserver.dao;
+package com.masterchengzi.newsserver.dao;
 
-import com.masterchengzi.authserver.entity.UserOperate;
+import com.masterchengzi.newsserver.entity.UserOperate;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

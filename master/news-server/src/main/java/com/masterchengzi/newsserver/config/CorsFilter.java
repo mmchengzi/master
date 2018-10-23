@@ -1,4 +1,4 @@
-package com.masterchengzi.authserver.config;
+package com.masterchengzi.newsserver.config;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.*;
