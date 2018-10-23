@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.masterchengzi.authserver.mapper.UserTagDeepMapper" >
+  <resultMap id="BaseResultMap" type="com.masterchengzi.authserver.entity.UserTagDeep" >
+    <result column="user_id" property="userId" jdbcType="VARCHAR" />
+    <result column="news_society" property="newsSociety" jdbcType="DOUBLE" />
+    <result column="news_entertainment" property="newsEntertainment" jdbcType="DOUBLE" />
+    <result column="news_tech" property="newsTech" jdbcType="DOUBLE" />
+    <result column="news_car" property="newsCar" jdbcType="DOUBLE" />
+    <result column="news_sports" property="newsSports" jdbcType="DOUBLE" />
+    <result column="news_finance" property="newsFinance" jdbcType="DOUBLE" />
+    <result column="news_military" property="newsMilitary" jdbcType="DOUBLE" />
+    <result column="news_world" property="newsWorld" jdbcType="DOUBLE" />
+    <result column="news_fashion" property="newsFashion" jdbcType="DOUBLE" />
+    <result column="news_travel" property="newsTravel" jdbcType="DOUBLE" />
+    <result column="news_discovery" property="newsDiscovery" jdbcType="DOUBLE" />
+    <result column="news_baby" property="newsBaby" jdbcType="DOUBLE" />
+    <result column="news_regimen" property="newsRegimen" jdbcType="DOUBLE" />
+    <result column="news_story" property="newsStory" jdbcType="DOUBLE" />
+    <result column="news_essay" property="newsEssay" jdbcType="DOUBLE" />
+    <result column="news_game" property="newsGame" jdbcType="DOUBLE" />
+    <result column="news_history" property="newsHistory" jdbcType="DOUBLE" />
+    <result column="news_food" property="newsFood" jdbcType="DOUBLE" />
+  </resultMap>
+
+  <sql id="Base_Column_List" >
+      user_id, news_society, news_entertainment,
+      news_tech, news_car, news_sports,
+      news_finance, news_military, news_world,
+      news_fashion, news_travel, news_discovery,
+      news_baby, news_regimen, news_story,
+      news_essay, news_game, news_history,
+      news_food
+  </sql>
+  <select id="getUserTagDeep" resultMap="BaseResultMap" parameterType="Map" >
+    select
+    <include refid="Base_Column_List" />
+    from user_tag_deep
+    <where>
+      <if test="userId != null">
+         user_id = #{userId,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+  <delete id="delete" parameterType="Map" >
+    delete from user_tag_deep
+    <where>
+      <if test="userId != null">
+        AND user_id = #{userId,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </delete>
+  <insert id="insert" parameterType="com.masterchengzi.authserver.entity.UserTagDeep" >
+    insert into user_tag_deep (user_id, news_society, news_entertainment,
+      news_tech, news_car, news_sports,
+      news_finance, news_military, news_world,
+      news_fashion, news_travel, news_discovery,
+      news_baby, news_regimen, news_story,
+      news_essay, news_game, news_history,
+      news_food)
+    values (#{userId,jdbcType=VARCHAR}, #{newsSociety,jdbcType=DOUBLE}, #{newsEntertainment,jdbcType=DOUBLE},
+      #{newsTech,jdbcType=DOUBLE}, #{newsCar,jdbcType=DOUBLE}, #{newsSports,jdbcType=DOUBLE},
+      #{newsFinance,jdbcType=DOUBLE}, #{newsMilitary,jdbcType=DOUBLE}, #{newsWorld,jdbcType=DOUBLE},
+      #{newsFashion,jdbcType=DOUBLE}, #{newsTravel,jdbcType=DOUBLE}, #{newsDiscovery,jdbcType=DOUBLE},
+      #{newsBaby,jdbcType=DOUBLE}, #{newsRegimen,jdbcType=DOUBLE}, #{newsStory,jdbcType=DOUBLE},
+      #{newsEssay,jdbcType=DOUBLE}, #{newsGame,jdbcType=DOUBLE}, #{newsHistory,jdbcType=DOUBLE},
+      #{newsFood,jdbcType=DOUBLE})
+  </insert>
+  <update id="update" parameterType="com.masterchengzi.authserver.entity.UserTagDeep" >
+    update user_tag_deep
+    <set >
+      <if test="newsSociety != null" >
+        news_society = #{newsSociety,jdbcType=DOUBLE},
+      </if>
+      <if test="newsEntertainment != null" >
+        news_entertainment= #{newsEntertainment,jdbcType=DOUBLE},
+      </if>
+      <if test="newsTech != null" >
+        news_tech = #{newsTech,jdbcType=DOUBLE},
+      </if>
+      <if test="newsCar != null" >
+        news_car = #{newsCar,jdbcType=DOUBLE},
+      </if>
+      <if test="newsSports != null" >
+        news_sports = #{newsSports,jdbcType=DOUBLE},
+      </if>
+      <if test="newsFinance != null" >
+        news_finance = #{newsFinance,jdbcType=DOUBLE},
+      </if>
+      <if test="newsMilitary != null" >
+        news_military = #{newsMilitary,jdbcType=DOUBLE},
+      </if>
+      <if test="newsWorld != null" >
+        news_world = #{newsWorld,jdbcType=DOUBLE},
+      </if>
+      <if test="newsFashion != null" >
+        news_fashion = #{newsFashion,jdbcType=DOUBLE},
+      </if>
+      <if test="newsTravel != null" >
+        news_travel = #{newsTravel,jdbcType=DOUBLE},
+      </if>
+      <if test="newsDiscovery != null" >
+        news_discovery = #{newsDiscovery,jdbcType=DOUBLE},
+      </if>
+      <if test="newsBaby != null" >
+        news_baby = #{newsBaby,jdbcType=DOUBLE},
+      </if>
+      <if test="newsRegimen != null" >
+        news_regimen = #{newsRegimen,jdbcType=DOUBLE},
+      </if>
+      <if test="newsStory != null" >
+        news_story = #{newsStory,jdbcType=DOUBLE},
+      </if>
+      <if test="newsEssay != null" >
+        news_essay = #{newsEssay,jdbcType=DOUBLE},
+      </if>
+      <if test="newsGame != null" >
+        news_game = #{newsGame,jdbcType=DOUBLE},
+      </if>
+      <if test="newsHistory != null" >
+        news_history = #{newsHistory,jdbcType=DOUBLE},
+      </if>
+      <if test="newsFood != null" >
+        news_food = #{newsFood,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where user_id = #{userId,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.masterchengzi.authserver.mapper.NewsHotMapper" >
+  <resultMap id="BaseResultMap" type="com.masterchengzi.authserver.entity.NewsHot" >
+    <result column="news_id" property="newsId" jdbcType="VARCHAR" />
+    <result column="time" property="time" jdbcType="TIMESTAMP" />
+    <result column="image" property="image" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="source" property="source" jdbcType="VARCHAR" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="tag" property="tag" jdbcType="VARCHAR" />
+    <result column="love_times" property="loveTimes" jdbcType="INTEGER" />
+    <result column="read_times" property="readTimes" jdbcType="INTEGER" />
+    <result column="comment_times" property="commentTimes" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    news_id, time, image,
+      abstract, source, title,
+      tag, love_times, read_times,
+      comment_times
+  </sql>
+  <select id="getNewsHot" resultMap="BaseResultMap" parameterType="Map" >
+    select
+    <include refid="Base_Column_List" />
+    from news_hot
+    <where>
+      <if test="newsId != null">
+        AND news_id = #{newsId}
+      </if>
+      <if test="beginDate != null and beginDate != ''">
+        AND time <![CDATA[>=]]> #{beginDate}
+      </if>
+      <if test="endDate != null and endDate != ''">
+        AND time <![CDATA[<=]]>#{endDate}
+      </if>
+      <if test="title != null">
+        AND title = #{title}
+      </if>
+      <if test="tag != null">
+        AND tag = #{tag}
+      </if>
+    </where>
+  </select>
+</mapper>

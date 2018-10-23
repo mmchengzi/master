@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.masterchengzi.authserver.mapper.UserMessMapper" >
+  <resultMap id="BaseResultMap" type="com.masterchengzi.authserver.entity.UserMess" >
+    <result column="user_id" property="userId" jdbcType="VARCHAR" />
+    <result column="sex" property="sex" jdbcType="INTEGER" />
+    <result column="age" property="age" jdbcType="INTEGER" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="image" property="image" jdbcType="VARCHAR" />
+    <result column="is_private" property="isPrivate" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    user_id, sex, age,
+      email, address, image,
+      is_private
+  </sql>
+  <select id="getUser" resultMap="BaseResultMap" parameterType="Map" >
+    select
+    <include refid="Base_Column_List" />
+    from user
+    <where>
+      <if test="userId != null">
+        AND user_id = #{userId,jdbcType=VARCHAR}
+      </if>
+      <if test="name != null">
+        AND name = #{name,jdbcType=VARCHAR}
+      </if>
+      <if test="phone != null">
+        AND phone = #{phone,jdbcType=VARCHAR}
+      </if>
+      <if test="beginDate != null and beginDate != ''">
+        AND time <![CDATA[>=]]> #{beginDate}
+      </if>
+      <if test="endDate != null and endDate != ''">
+        AND time <![CDATA[<=]]>#{endDate}
+      </if>
+    </where>
+  </select>
+  <delete id="delete" parameterType="Map" >
+    delete from user
+    <where>
+      <if test="userId != null">
+        AND user_id = #{userId,jdbcType=VARCHAR}
+      </if>
+      <if test="name != null">
+        AND name = #{name,jdbcType=VARCHAR}
+      </if>
+      <if test="phone != null">
+        AND phone = #{phone,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </delete>
+  <insert id="insert" parameterType="com.masterchengzi.authserver.entity.UserMess" >
+    insert into user_mess (user_id, sex, age,
+      email, address, image,
+      is_private)
+    values (#{userId,jdbcType=VARCHAR}, #{sex,jdbcType=INTEGER}, #{age,jdbcType=INTEGER},
+      #{email,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{image,jdbcType=VARCHAR},
+      #{isPrivate,jdbcType=INTEGER})
+  </insert>
+  <update id="update" parameterType="com.masterchengzi.authserver.entity.UserMess" >
+    update user_mess
+    <set >
+      <if test="sex != null" >
+        sex = #{sex,jdbcType=INTEGER},
+      </if>
+      <if test="age != null" >
+        age = #{age,jdbcType=INTEGER},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="image != null" >
+        image =  #{image,jdbcType=VARCHAR},
+      </if>
+      <if test="isPrivate != null" >
+        is_private =  #{isPrivate,jdbcType=INTEGER},
+      </if>
+    </set>
+    where user_id = #{userId,jdbcType=VARCHAR}
+  </update>
+</mapper>

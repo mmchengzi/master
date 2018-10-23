@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.masterchengzi.authserver.mapper.UserLoveTagMapper" >
+  <resultMap id="BaseResultMap" type="com.masterchengzi.authserver.entity.UserLoveTag" >
+    <result column="user_id" property="userId" jdbcType="VARCHAR" />
+    <result column="tags" property="tags" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+   user_id, tags
+  </sql>
+  <select id="getUserLoveTag" resultMap="BaseResultMap" parameterType="Map" >
+    select
+    <include refid="Base_Column_List" />
+    from user_love_tag
+    <where>
+      <if test="userId != null">
+        AND user_id = #{userId}
+      </if>
+    </where>
+  </select>
+  <delete id="delete" parameterType="Map" >
+    delete from user_love_tag
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.masterchengzi.authserver.entity.UserLoveTag" >
+    insert into user_love_tag (user_id, tags)
+    values (#{userId,jdbcType=VARCHAR}, #{tags,jdbcType=VARCHAR})
+  </insert>
+  <update id="update" parameterType="com.masterchengzi.authserver.entity.UserLoveTag" >
+    update user_love_tag
+    <set >
+      <if test="tags != null" >
+        tags = #{tags,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where  user_id = #{userId}
+  </update>
+</mapper>

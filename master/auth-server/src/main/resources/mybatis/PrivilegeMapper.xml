@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.masterchengzi.authserver.mapper.PrivilegeMapper" >
+  <resultMap id="BaseResultMap" type="com.masterchengzi.authserver.model.Privilege" >
+    <id column="role_id" property="roleId" jdbcType="INTEGER" />
+    <id column="menu_id" property="menuId" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    role_id, menu_id, create_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.masterchengzi.authserver.model.PrivilegeKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from privilege
+    where role_id = #{roleId,jdbcType=INTEGER}
+      and menu_id = #{menuId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.masterchengzi.authserver.model.PrivilegeKey" >
+    delete from privilege
+    where role_id = #{roleId,jdbcType=INTEGER}
+      and menu_id = #{menuId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.masterchengzi.authserver.model.Privilege" >
+    insert into privilege (role_id, menu_id, create_time
+      )
+    values (#{roleId,jdbcType=INTEGER}, #{menuId,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.masterchengzi.authserver.model.Privilege" >
+    insert into privilege
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="roleId != null" >
+        role_id,
+      </if>
+      <if test="menuId != null" >
+        menu_id,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="roleId != null" >
+        #{roleId,jdbcType=INTEGER},
+      </if>
+      <if test="menuId != null" >
+        #{menuId,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.masterchengzi.authserver.model.Privilege" >
+    update privilege
+    <set >
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where role_id = #{roleId,jdbcType=INTEGER}
+      and menu_id = #{menuId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.masterchengzi.authserver.model.Privilege" >
+    update privilege
+    set create_time = #{createTime,jdbcType=TIMESTAMP}
+    where role_id = #{roleId,jdbcType=INTEGER}
+      and menu_id = #{menuId,jdbcType=VARCHAR}
+  </update>
+</mapper>
