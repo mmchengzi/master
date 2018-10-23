@@ -1,8 +1,8 @@
 package com.masterchengzi.newsserver.dao.impl;
 
+import com.masterchengzi.newsserver.GetNewsMapper;
 import com.masterchengzi.newsserver.dao.GetNewsDao;
 import com.masterchengzi.newsserver.entity.GetNewsWithBLOBs;
-import com.masterchengzi.newsserver.mapper.GetNewsMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -17,7 +17,7 @@ public class GetNewsDaoImpl implements GetNewsDao {
 	GetNewsMapper getNewsMapper;
 
 	@Override
-	public List<GetNewsWithBLOBs> getGetNews(String newsId, String title, String keyword, String tag, Integer isOld, Date beginDate,Date endDate) {
+	public List<GetNewsWithBLOBs> getGetNews(String newsId, String title, String keyword, String tag, Integer isOld, Date beginDate, Date endDate) {
 		Map map = new HashMap();
 		map.put("newsId", newsId);
 		map.put("title", title);

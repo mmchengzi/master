@@ -1,4 +1,4 @@
-package com.masterchengzi.authserver.entity;
+package com.masterchengzi.newsserver.entity;
 
 import lombok.Data;
 
