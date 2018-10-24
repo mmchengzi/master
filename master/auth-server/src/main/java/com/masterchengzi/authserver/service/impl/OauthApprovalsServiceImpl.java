@@ -21,8 +21,8 @@ public class OauthApprovalsServiceImpl implements OauthApprovalsService {
 	public JsonResult getList(String userId, String clientId) {
 		try {
 			Map map = new HashMap();
-			map.put("userId", userId);
-			map.put("clientId", clientId);
+			map.put("userid", userId);
+			map.put("clientid", clientId);
 			return new JsonResult(ResultCode.SUCCESS, "成功", mapper.getList(map));
 		} catch (Exception e) {
 			e.printStackTrace();

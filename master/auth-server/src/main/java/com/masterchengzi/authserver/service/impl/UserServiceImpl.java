@@ -18,11 +18,11 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	private UserMapper mapper;
 	@Override
-	public JsonResult getList(String id, String user_id) {
+	public JsonResult getList(String id, String username) {
 		try {
 			Map map = new HashMap();
 			map.put("id", id);
-			map.put("user_id", user_id);
+			map.put("username", username);
 			return new JsonResult(ResultCode.SUCCESS, "成功", mapper.getList(map));
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -31,11 +31,11 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public JsonResult delete(String id, String user_id) {
+	public JsonResult delete(String id, String username) {
 		try {
 			Map map = new HashMap();
 			map.put("id", id);
-			map.put("user_id", user_id);
+			map.put("username", username);
 			return new JsonResult(ResultCode.SUCCESS, "成功", mapper.delete(map));
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -21,8 +21,8 @@ public class OauthClientDetailsServiceImpl implements OauthClientDetailsService 
 	public JsonResult getList(String client_id, String resource_ids) {
 		try {
 			Map map = new HashMap();
-			map.put("client_id", client_id);
-			map.put("resource_ids", resource_ids);
+			map.put("clientId", client_id);
+			map.put("resourceIds", resource_ids);
 			return new JsonResult(ResultCode.SUCCESS, "成功", mapper.getList(map));
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -34,8 +34,8 @@ public class OauthClientDetailsServiceImpl implements OauthClientDetailsService 
 	public JsonResult delete(String client_id, String resource_ids) {
 		try {
 			Map map = new HashMap();
-			map.put("client_id", client_id);
-			map.put("resource_ids", resource_ids);
+			map.put("clientId", client_id);
+			map.put("resourceIds", resource_ids);
 			return new JsonResult(ResultCode.SUCCESS, "成功", mapper.delete(map));
 		} catch (Exception e) {
 			e.printStackTrace();

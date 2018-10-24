@@ -21,8 +21,8 @@ public class OauthClientTokenServiceImpl implements OauthClientTokenService {
 	public JsonResult getList(String token_id, String authentication_id) {
 		try {
 			Map map = new HashMap();
-			map.put("token_id", token_id);
-			map.put("authentication_id", authentication_id);
+			map.put("tokenId", token_id);
+			map.put("authenticationId", authentication_id);
 			return new JsonResult(ResultCode.SUCCESS, "成功", mapper.getList(map));
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -34,8 +34,8 @@ public class OauthClientTokenServiceImpl implements OauthClientTokenService {
 	public JsonResult delete(String token_id, String authentication_id) {
 		try {
 			Map map = new HashMap();
-			map.put("token_id", token_id);
-			map.put("authentication_id", authentication_id);
+			map.put("tokenId", token_id);
+			map.put("authenticationId", authentication_id);
 			return new JsonResult(ResultCode.SUCCESS, "成功", mapper.delete(map));
 		} catch (Exception e) {
 			e.printStackTrace();

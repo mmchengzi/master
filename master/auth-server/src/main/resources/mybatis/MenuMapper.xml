@@ -20,13 +20,29 @@
     id, code, p_code, p_id, name, url, is_menu, level, sort, status, icon, create_time,
     update_time
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+  <select id="getList" resultMap="BaseResultMap" parameterType="Map" >
     select
     <include refid="Base_Column_List" />
     from menu
-    where id = #{id,jdbcType=VARCHAR}
+    <where>
+      <if test="id != null">
+        AND id = #{id}
+      </if>
+      <if test="code != null">
+        AND code = #{code}
+      </if>
+      <if test="pCode!= null">
+        AND p_code = #{pCode}
+      </if>
+      <if test="pId != null">
+        AND p_id = #{pId}
+      </if>
+      <if test="name!= null">
+        AND name = #{name}
+      </if>
+    </where>
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+  <delete id="delete" parameterType="Map" >
     delete from menu
     where id = #{id,jdbcType=VARCHAR}
   </delete>
@@ -42,92 +58,8 @@
       #{icon,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.masterchengzi.authserver.model.Menu" >
-    insert into menu
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        id,
-      </if>
-      <if test="code != null" >
-        code,
-      </if>
-      <if test="pCode != null" >
-        p_code,
-      </if>
-      <if test="pId != null" >
-        p_id,
-      </if>
-      <if test="name != null" >
-        name,
-      </if>
-      <if test="url != null" >
-        url,
-      </if>
-      <if test="isMenu != null" >
-        is_menu,
-      </if>
-      <if test="level != null" >
-        level,
-      </if>
-      <if test="sort != null" >
-        sort,
-      </if>
-      <if test="status != null" >
-        status,
-      </if>
-      <if test="icon != null" >
-        icon,
-      </if>
-      <if test="createTime != null" >
-        create_time,
-      </if>
-      <if test="updateTime != null" >
-        update_time,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        #{id,jdbcType=VARCHAR},
-      </if>
-      <if test="code != null" >
-        #{code,jdbcType=VARCHAR},
-      </if>
-      <if test="pCode != null" >
-        #{pCode,jdbcType=VARCHAR},
-      </if>
-      <if test="pId != null" >
-        #{pId,jdbcType=VARCHAR},
-      </if>
-      <if test="name != null" >
-        #{name,jdbcType=VARCHAR},
-      </if>
-      <if test="url != null" >
-        #{url,jdbcType=VARCHAR},
-      </if>
-      <if test="isMenu != null" >
-        #{isMenu,jdbcType=INTEGER},
-      </if>
-      <if test="level != null" >
-        #{level,jdbcType=INTEGER},
-      </if>
-      <if test="sort != null" >
-        #{sort,jdbcType=INTEGER},
-      </if>
-      <if test="status != null" >
-        #{status,jdbcType=INTEGER},
-      </if>
-      <if test="icon != null" >
-        #{icon,jdbcType=VARCHAR},
-      </if>
-      <if test="createTime != null" >
-        #{createTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="updateTime != null" >
-        #{updateTime,jdbcType=TIMESTAMP},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.masterchengzi.authserver.model.Menu" >
+
+  <update id="update" parameterType="com.masterchengzi.authserver.model.Menu" >
     update menu
     <set >
       <if test="code != null" >
@@ -167,22 +99,6 @@
         update_time = #{updateTime,jdbcType=TIMESTAMP},
       </if>
     </set>
-    where id = #{id,jdbcType=VARCHAR}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.masterchengzi.authserver.model.Menu" >
-    update menu
-    set code = #{code,jdbcType=VARCHAR},
-      p_code = #{pCode,jdbcType=VARCHAR},
-      p_id = #{pId,jdbcType=VARCHAR},
-      name = #{name,jdbcType=VARCHAR},
-      url = #{url,jdbcType=VARCHAR},
-      is_menu = #{isMenu,jdbcType=INTEGER},
-      level = #{level,jdbcType=INTEGER},
-      sort = #{sort,jdbcType=INTEGER},
-      status = #{status,jdbcType=INTEGER},
-      icon = #{icon,jdbcType=VARCHAR},
-      create_time = #{createTime,jdbcType=TIMESTAMP},
-      update_time = #{updateTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=VARCHAR}
   </update>
 </mapper>

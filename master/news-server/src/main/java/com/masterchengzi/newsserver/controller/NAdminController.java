@@ -18,7 +18,6 @@ import javax.servlet.http.HttpServletRequest;
  */
 
 @RestController
-@Log
 @RequestMapping("NAdmin")
 @Api(value = "NAdminController", description = "后台管理员表")
 public class NAdminController {

@@ -21,7 +21,7 @@ public class OauthRefreshTokenServiceImpl implements OauthRefreshTokenService {
 	public JsonResult getList(String token_id) {
 		try {
 			Map map = new HashMap();
-			map.put("token_id", token_id);
+			map.put("tokenId", token_id);
 			return new JsonResult(ResultCode.SUCCESS, "成功", mapper.getList(map));
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -33,7 +33,7 @@ public class OauthRefreshTokenServiceImpl implements OauthRefreshTokenService {
 	public JsonResult delete(String token_id) {
 		try {
 			Map map = new HashMap();
-			map.put("token_id", token_id);
+			map.put("tokenId", token_id);
 			return new JsonResult(ResultCode.SUCCESS, "成功", mapper.delete(map));
 		} catch (Exception e) {
 			e.printStackTrace();

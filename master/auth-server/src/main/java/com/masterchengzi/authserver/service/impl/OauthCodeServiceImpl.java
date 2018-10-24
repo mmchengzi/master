@@ -51,13 +51,4 @@ public class OauthCodeServiceImpl implements OauthCodeService {
 		}
 	}
 
-	@Override
-	public JsonResult update(OauthCode record) {
-		try {
-			return new JsonResult(ResultCode.SUCCESS, "成功", mapper.update(record));
-		} catch (Exception e) {
-			e.printStackTrace();
-			return new JsonResult(ResultCode.FAIL, e.getMessage());
-		}
-	}
 }

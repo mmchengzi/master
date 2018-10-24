@@ -18,12 +18,11 @@ public class UserRoleServiceImpl implements UserRoleService {
 	@Autowired
 	private UserRoleMapper mapper;
 	@Override
-	public JsonResult getList(String id, String username, String name) {
+	public JsonResult getList(String id,String user_id) {
 		try {
 			Map map = new HashMap();
 			map.put("id", id);
-			map.put("username", username);
-			map.put("name", name);
+			map.put("userId", user_id);
 			return new JsonResult(ResultCode.SUCCESS, "成功", mapper.getList(map));
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -32,10 +31,11 @@ public class UserRoleServiceImpl implements UserRoleService {
 	}
 
 	@Override
-	public JsonResult delete(String id) {
+	public JsonResult delete(String id,String user_id) {
 		try {
 			Map map = new HashMap();
 			map.put("id", id);
+			map.put("userId", user_id);
 			return new JsonResult(ResultCode.SUCCESS, "成功", mapper.delete(map));
 		} catch (Exception e) {
 			e.printStackTrace();

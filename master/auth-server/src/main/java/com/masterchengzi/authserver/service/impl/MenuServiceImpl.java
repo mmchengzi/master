@@ -24,8 +24,8 @@ public class MenuServiceImpl implements MenuService {
 			Map map = new HashMap();
 			map.put("id", id);
 			map.put("code", code);
-			map.put("p_code", p_code);
-			map.put("p_id", p_id);
+			map.put("pCode", p_code);
+			map.put("pId", p_id);
 			map.put("name", name);
 			return new JsonResult(ResultCode.SUCCESS, "成功", mapper.getList(map));
 		} catch (Exception e) {

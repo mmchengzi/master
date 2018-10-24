@@ -9,6 +9,29 @@
     <result column="expiresAt" property="expiresat" jdbcType="TIMESTAMP" />
     <result column="lastModifiedAt" property="lastmodifiedat" jdbcType="TIMESTAMP" />
   </resultMap>
+
+  <sql id="Base_Column_List" >
+    userId, clientId, scope,
+      status, expiresAt, lastModifiedAt
+  </sql>
+  <select id="getList" resultMap="BaseResultMap" parameterType="Map" >
+    select
+    <include refid="Base_Column_List" />
+    from oauth_approvals
+    <where>
+      <if test="userid != null">
+        AND userId = #{userid}
+      </if>
+      <if test="clientid!= null">
+        AND clientId = #{clientid}
+      </if>
+    </where>
+  </select>
+  <delete id="delete" parameterType="Map" >
+    delete from oauth_approvals
+    where userId = #{userid,jdbcType=VARCHAR}
+  </delete>
+
   <insert id="insert" parameterType="com.masterchengzi.authserver.model.OauthApprovals" >
     insert into oauth_approvals (userId, clientId, scope,
       status, expiresAt, lastModifiedAt
@@ -17,47 +40,26 @@
       #{status,jdbcType=VARCHAR}, #{expiresat,jdbcType=TIMESTAMP}, #{lastmodifiedat,jdbcType=TIMESTAMP}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.masterchengzi.authserver.model.OauthApprovals" >
-    insert into oauth_approvals
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="userid != null" >
-        userId,
-      </if>
+
+  <update id="update" parameterType="com.masterchengzi.authserver.model.OauthApprovals" >
+    update oauth_approvals
+    <set >
       <if test="clientid != null" >
-        clientId,
+        clientId= #{clientid,jdbcType=VARCHAR},
       </if>
       <if test="scope != null" >
-        scope,
+        scope= #{scope,jdbcType=VARCHAR},
       </if>
       <if test="status != null" >
-        status,
+        status= #{status,jdbcType=VARCHAR},
       </if>
       <if test="expiresat != null" >
-        expiresAt,
+        expiresAt= #{expiresat,jdbcType=TIMESTAMP},
       </if>
       <if test="lastmodifiedat != null" >
-        lastModifiedAt,
+        lastModifiedAt= #{lastmodifiedat,jdbcType=TIMESTAMP},
       </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="userid != null" >
-        #{userid,jdbcType=VARCHAR},
-      </if>
-      <if test="clientid != null" >
-        #{clientid,jdbcType=VARCHAR},
-      </if>
-      <if test="scope != null" >
-        #{scope,jdbcType=VARCHAR},
-      </if>
-      <if test="status != null" >
-        #{status,jdbcType=VARCHAR},
-      </if>
-      <if test="expiresat != null" >
-        #{expiresat,jdbcType=TIMESTAMP},
-      </if>
-      <if test="lastmodifiedat != null" >
-        #{lastmodifiedat,jdbcType=TIMESTAMP},
-      </if>
-    </trim>
-  </insert>
+    </set>
+    where userid = #{userid,jdbcType=VARCHAR}
+  </update>
 </mapper>

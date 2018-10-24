@@ -3,34 +3,29 @@
 <mapper namespace="com.masterchengzi.authserver.mapper.OauthCodeMapper" >
   <resultMap id="BaseResultMap" type="com.masterchengzi.authserver.model.OauthCode" >
     <result column="code" property="code" jdbcType="VARCHAR" />
-  </resultMap>
-  <resultMap id="ResultMapWithBLOBs" type="com.masterchengzi.authserver.model.OauthCode" extends="BaseResultMap" >
     <result column="authentication" property="authentication" jdbcType="LONGVARBINARY" />
   </resultMap>
-  <sql id="Blob_Column_List" >
-    authentication
+  <sql id="Base_Column_List" >
+    code, authentication
   </sql>
+  <select id="getList" resultMap="BaseResultMap" parameterType="Map" >
+    select
+    <include refid="Base_Column_List" />
+    from oauth_code
+    <where>
+      <if test="code != null">
+        AND code = #{code}
+      </if>
+    </where>
+  </select>
+
+  <delete id="delete" parameterType="Map" >
+    delete from oauth_code
+    where code = #{code,jdbcType=VARCHAR}
+  </delete>
+
   <insert id="insert" parameterType="com.masterchengzi.authserver.model.OauthCode" >
     insert into oauth_code (code, authentication)
     values (#{code,jdbcType=VARCHAR}, #{authentication,jdbcType=LONGVARBINARY})
-  </insert>
-  <insert id="insertSelective" parameterType="com.masterchengzi.authserver.model.OauthCode" >
-    insert into oauth_code
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="code != null" >
-        code,
-      </if>
-      <if test="authentication != null" >
-        authentication,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="code != null" >
-        #{code,jdbcType=VARCHAR},
-      </if>
-      <if test="authentication != null" >
-        #{authentication,jdbcType=LONGVARBINARY},
-      </if>
-    </trim>
   </insert>
 </mapper>

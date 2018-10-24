@@ -19,15 +19,29 @@
     authorities, access_token_validity, refresh_token_validity, additional_information,
     autoapprove
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+  <select id="getList" resultMap="BaseResultMap" parameterType="Map" >
     select
     <include refid="Base_Column_List" />
     from oauth_client_details
-    where client_id = #{clientId,jdbcType=VARCHAR}
+    <where>
+      <if test="clientId != null">
+        AND client_id = #{clientId}
+      </if>
+      <if test="resourceIds!= null">
+        AND resource_ids = #{resourceIds}
+      </if>
+    </where>
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+  <delete id="delete" parameterType="Map" >
     delete from oauth_client_details
-    where client_id = #{clientId,jdbcType=VARCHAR}
+    <where>
+      <if test="clientId != null">
+        AND client_id = #{clientId}
+      </if>
+      <if test="resourceIds!= null">
+        AND resource_ids = #{resourceIds}
+      </if>
+    </where>
   </delete>
   <insert id="insert" parameterType="com.masterchengzi.authserver.model.OauthClientDetails" >
     insert into oauth_client_details (client_id, resource_ids, client_secret,
@@ -39,80 +53,7 @@
       #{authorities,jdbcType=VARCHAR}, #{accessTokenValidity,jdbcType=INTEGER}, #{refreshTokenValidity,jdbcType=INTEGER},
       #{additionalInformation,jdbcType=VARCHAR}, #{autoapprove,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.masterchengzi.authserver.model.OauthClientDetails" >
-    insert into oauth_client_details
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="clientId != null" >
-        client_id,
-      </if>
-      <if test="resourceIds != null" >
-        resource_ids,
-      </if>
-      <if test="clientSecret != null" >
-        client_secret,
-      </if>
-      <if test="scope != null" >
-        scope,
-      </if>
-      <if test="authorizedGrantTypes != null" >
-        authorized_grant_types,
-      </if>
-      <if test="webServerRedirectUri != null" >
-        web_server_redirect_uri,
-      </if>
-      <if test="authorities != null" >
-        authorities,
-      </if>
-      <if test="accessTokenValidity != null" >
-        access_token_validity,
-      </if>
-      <if test="refreshTokenValidity != null" >
-        refresh_token_validity,
-      </if>
-      <if test="additionalInformation != null" >
-        additional_information,
-      </if>
-      <if test="autoapprove != null" >
-        autoapprove,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="clientId != null" >
-        #{clientId,jdbcType=VARCHAR},
-      </if>
-      <if test="resourceIds != null" >
-        #{resourceIds,jdbcType=VARCHAR},
-      </if>
-      <if test="clientSecret != null" >
-        #{clientSecret,jdbcType=VARCHAR},
-      </if>
-      <if test="scope != null" >
-        #{scope,jdbcType=VARCHAR},
-      </if>
-      <if test="authorizedGrantTypes != null" >
-        #{authorizedGrantTypes,jdbcType=VARCHAR},
-      </if>
-      <if test="webServerRedirectUri != null" >
-        #{webServerRedirectUri,jdbcType=VARCHAR},
-      </if>
-      <if test="authorities != null" >
-        #{authorities,jdbcType=VARCHAR},
-      </if>
-      <if test="accessTokenValidity != null" >
-        #{accessTokenValidity,jdbcType=INTEGER},
-      </if>
-      <if test="refreshTokenValidity != null" >
-        #{refreshTokenValidity,jdbcType=INTEGER},
-      </if>
-      <if test="additionalInformation != null" >
-        #{additionalInformation,jdbcType=VARCHAR},
-      </if>
-      <if test="autoapprove != null" >
-        #{autoapprove,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.masterchengzi.authserver.model.OauthClientDetails" >
+  <update id="update" parameterType="com.masterchengzi.authserver.model.OauthClientDetails" >
     update oauth_client_details
     <set >
       <if test="resourceIds != null" >
@@ -146,20 +87,6 @@
         autoapprove = #{autoapprove,jdbcType=VARCHAR},
       </if>
     </set>
-    where client_id = #{clientId,jdbcType=VARCHAR}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.masterchengzi.authserver.model.OauthClientDetails" >
-    update oauth_client_details
-    set resource_ids = #{resourceIds,jdbcType=VARCHAR},
-      client_secret = #{clientSecret,jdbcType=VARCHAR},
-      scope = #{scope,jdbcType=VARCHAR},
-      authorized_grant_types = #{authorizedGrantTypes,jdbcType=VARCHAR},
-      web_server_redirect_uri = #{webServerRedirectUri,jdbcType=VARCHAR},
-      authorities = #{authorities,jdbcType=VARCHAR},
-      access_token_validity = #{accessTokenValidity,jdbcType=INTEGER},
-      refresh_token_validity = #{refreshTokenValidity,jdbcType=INTEGER},
-      additional_information = #{additionalInformation,jdbcType=VARCHAR},
-      autoapprove = #{autoapprove,jdbcType=VARCHAR}
     where client_id = #{clientId,jdbcType=VARCHAR}
   </update>
 </mapper>

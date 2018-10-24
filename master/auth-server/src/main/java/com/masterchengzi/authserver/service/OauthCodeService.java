@@ -10,6 +10,4 @@ public interface OauthCodeService {
 	JsonResult delete(String code);
 
 	JsonResult insert(OauthCode record);
-
-	JsonResult update(OauthCode record);
 }

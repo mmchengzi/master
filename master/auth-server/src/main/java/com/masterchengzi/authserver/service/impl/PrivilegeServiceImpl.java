@@ -21,8 +21,8 @@ public class PrivilegeServiceImpl implements PrivilegeService {
 	public JsonResult getList(String role_id, String menu_id) {
 		try {
 			Map map = new HashMap();
-			map.put("role_id", role_id);
-			map.put("menu_id", menu_id);
+			map.put("roleId", role_id);
+			map.put("menuId", menu_id);
 			return new JsonResult(ResultCode.SUCCESS, "成功", mapper.getList(map));
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -34,8 +34,8 @@ public class PrivilegeServiceImpl implements PrivilegeService {
 	public JsonResult delete(String role_id, String menu_id) {
 		try {
 			Map map = new HashMap();
-			map.put("role_id", role_id);
-			map.put("menu_id", menu_id);
+			map.put("roleId", role_id);
+			map.put("menuId", menu_id);
 			return new JsonResult(ResultCode.SUCCESS, "成功", mapper.delete(map));
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -5,9 +5,9 @@ import com.masterchengzi.authserver.model.User;
 import com.masterchengzi.mastercommon.common.JsonResult;
 
 public interface UserService {
-	JsonResult getList(String id, String user_id);
+	JsonResult getList(String id, String username);
 
-	JsonResult delete(String id, String user_id);
+	JsonResult delete(String id, String username);
 
 	JsonResult insert(User record);
 

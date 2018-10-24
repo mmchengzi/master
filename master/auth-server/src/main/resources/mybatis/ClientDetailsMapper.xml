@@ -18,16 +18,24 @@
     appId, resourceIds, appSecret, scope, grantTypes, redirectUrl, authorities, access_token_validity,
     refresh_token_validity, additionalInformation, autoApproveScopes
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+  <select id="getList" resultMap="BaseResultMap" parameterType="Map" >
     select
     <include refid="Base_Column_List" />
     from clientdetails
-    where appId = #{appid,jdbcType=VARCHAR}
+    <where>
+      <if test="appid != null">
+        AND appId = #{appid}
+      </if>
+      <if test="resourceIds!= null">
+        AND resourceids = #{resourceIds}
+      </if>
+    </where>
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+  <delete id="delete" parameterType="Map" >
     delete from clientdetails
     where appId = #{appid,jdbcType=VARCHAR}
   </delete>
+
   <insert id="insert" parameterType="com.masterchengzi.authserver.model.ClientDetails" >
     insert into clientdetails (appId, resourceIds, appSecret,
       scope, grantTypes, redirectUrl,
@@ -40,80 +48,8 @@
       #{additionalinformation,jdbcType=VARCHAR}, #{autoapprovescopes,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.masterchengzi.authserver.model.ClientDetails" >
-    insert into clientdetails
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="appid != null" >
-        appId,
-      </if>
-      <if test="resourceids != null" >
-        resourceIds,
-      </if>
-      <if test="appsecret != null" >
-        appSecret,
-      </if>
-      <if test="scope != null" >
-        scope,
-      </if>
-      <if test="granttypes != null" >
-        grantTypes,
-      </if>
-      <if test="redirecturl != null" >
-        redirectUrl,
-      </if>
-      <if test="authorities != null" >
-        authorities,
-      </if>
-      <if test="accessTokenValidity != null" >
-        access_token_validity,
-      </if>
-      <if test="refreshTokenValidity != null" >
-        refresh_token_validity,
-      </if>
-      <if test="additionalinformation != null" >
-        additionalInformation,
-      </if>
-      <if test="autoapprovescopes != null" >
-        autoApproveScopes,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="appid != null" >
-        #{appid,jdbcType=VARCHAR},
-      </if>
-      <if test="resourceids != null" >
-        #{resourceids,jdbcType=VARCHAR},
-      </if>
-      <if test="appsecret != null" >
-        #{appsecret,jdbcType=VARCHAR},
-      </if>
-      <if test="scope != null" >
-        #{scope,jdbcType=VARCHAR},
-      </if>
-      <if test="granttypes != null" >
-        #{granttypes,jdbcType=VARCHAR},
-      </if>
-      <if test="redirecturl != null" >
-        #{redirecturl,jdbcType=VARCHAR},
-      </if>
-      <if test="authorities != null" >
-        #{authorities,jdbcType=VARCHAR},
-      </if>
-      <if test="accessTokenValidity != null" >
-        #{accessTokenValidity,jdbcType=INTEGER},
-      </if>
-      <if test="refreshTokenValidity != null" >
-        #{refreshTokenValidity,jdbcType=INTEGER},
-      </if>
-      <if test="additionalinformation != null" >
-        #{additionalinformation,jdbcType=VARCHAR},
-      </if>
-      <if test="autoapprovescopes != null" >
-        #{autoapprovescopes,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.masterchengzi.authserver.model.ClientDetails" >
+
+  <update id="update" parameterType="com.masterchengzi.authserver.model.ClientDetails" >
     update clientdetails
     <set >
       <if test="resourceids != null" >
@@ -147,20 +83,6 @@
         autoApproveScopes = #{autoapprovescopes,jdbcType=VARCHAR},
       </if>
     </set>
-    where appId = #{appid,jdbcType=VARCHAR}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.masterchengzi.authserver.model.ClientDetails" >
-    update clientdetails
-    set resourceIds = #{resourceids,jdbcType=VARCHAR},
-      appSecret = #{appsecret,jdbcType=VARCHAR},
-      scope = #{scope,jdbcType=VARCHAR},
-      grantTypes = #{granttypes,jdbcType=VARCHAR},
-      redirectUrl = #{redirecturl,jdbcType=VARCHAR},
-      authorities = #{authorities,jdbcType=VARCHAR},
-      access_token_validity = #{accessTokenValidity,jdbcType=INTEGER},
-      refresh_token_validity = #{refreshTokenValidity,jdbcType=INTEGER},
-      additionalInformation = #{additionalinformation,jdbcType=VARCHAR},
-      autoApproveScopes = #{autoapprovescopes,jdbcType=VARCHAR}
     where appId = #{appid,jdbcType=VARCHAR}
   </update>
 </mapper>

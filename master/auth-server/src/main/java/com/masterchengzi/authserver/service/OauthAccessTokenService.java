@@ -7,7 +7,7 @@ import com.masterchengzi.mastercommon.common.JsonResult;
 public interface OauthAccessTokenService {
 	JsonResult getList(String token_id, String authentication_id, String user_name);
 
-	JsonResult delete(String token_id);
+	JsonResult delete(String token_id, String authentication_id);
 
 	JsonResult insert(OauthAccessTokenWithBLOBs OauthAccessTokenWithBLOBs);
 
