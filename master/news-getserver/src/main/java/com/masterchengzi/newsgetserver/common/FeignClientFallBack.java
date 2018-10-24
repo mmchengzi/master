@@ -3,7 +3,7 @@ package com.masterchengzi.newsgetserver.common;
 import com.masterchengzi.mastercommon.common.JsonResult;
 import com.masterchengzi.mastercommon.common.ResultCode;
 import com.masterchengzi.newsgetserver.server.GetNewsFeign;
-import com.masterchengzi.authserver.entity.GetNewsWithBLOBs;
+import com.masterchengzi.newsserver.entity.GetNewsWithBLOBs;
 import feign.hystrix.FallbackFactory;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestBody;

@@ -1,6 +1,5 @@
 package com.masterchengzi.authserver.mapper;
 
-import com.masterchengzi.authserver.model.User;
 import com.masterchengzi.authserver.model.UserRole;
 import org.springframework.stereotype.Repository;
 

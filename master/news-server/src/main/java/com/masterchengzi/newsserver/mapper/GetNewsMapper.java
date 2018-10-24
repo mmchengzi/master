@@ -1,4 +1,4 @@
-package com.masterchengzi.newsserver;
+package com.masterchengzi.newsserver.mapper;
 
 import com.masterchengzi.newsserver.entity.GetNewsWithBLOBs;
 import org.springframework.stereotype.Repository;

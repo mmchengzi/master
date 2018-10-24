@@ -8,6 +8,7 @@ import com.masterchengzi.authserver.service.UserRoleService;
 import com.masterchengzi.mastercommon.common.JsonResult;
 import com.masterchengzi.mastercommon.common.ResultCode;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
@@ -46,6 +47,7 @@ public class UserRoleServiceImpl implements UserRoleService {
 	@Override
 	public JsonResult insert(UserRole record) {
 		try {
+
 			return new JsonResult(ResultCode.SUCCESS, "成功", mapper.insert(record));
 		} catch (Exception e) {
 			e.printStackTrace();

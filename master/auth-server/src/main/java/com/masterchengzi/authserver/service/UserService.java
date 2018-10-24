@@ -1,7 +1,6 @@
 package com.masterchengzi.authserver.service;
 
-import com.masterchengzi.authserver.model.ClientDetails;
-import com.masterchengzi.authserver.model.User;
+import com.masterchengzi.authserver.model.MyUser;
 import com.masterchengzi.mastercommon.common.JsonResult;
 
 public interface UserService {
@@ -9,7 +8,7 @@ public interface UserService {
 
 	JsonResult delete(String id, String username);
 
-	JsonResult insert(User record);
+	JsonResult insert(MyUser record);
 
-	JsonResult update(User record);
+	JsonResult update(MyUser record);
 }

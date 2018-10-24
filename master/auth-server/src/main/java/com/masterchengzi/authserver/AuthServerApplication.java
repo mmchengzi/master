@@ -11,9 +11,7 @@ import org.springframework.cloud.netflix.hystrix.EnableHystrix;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @EnableEurekaClient
-@EnableOAuth2Sso
 @EnableFeignClients
-@EnableHystrix
 @SpringBootApplication
 public class AuthServerApplication extends SpringBootServletInitializer {
 

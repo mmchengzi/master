@@ -3,7 +3,7 @@ package com.masterchengzi.newsgetserver.common;
 import com.masterchengzi.mastercommon.common.JsonResult;
 import com.masterchengzi.newsgetserver.server.GetNews;
 import com.masterchengzi.newsgetserver.server.GetNewsFeign;
-import com.masterchengzi.authserver.entity.GetNewsWithBLOBs;
+import com.masterchengzi.newsserver.entity.GetNewsWithBLOBs;
 import lombok.extern.log4j.Log4j2;
 import org.json.JSONArray;
 import org.json.JSONObject;

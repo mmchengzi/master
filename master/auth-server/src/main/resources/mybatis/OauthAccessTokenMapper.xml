@@ -16,7 +16,7 @@
   <sql id="Blob_Column_List" >
     token, authentication
   </sql>
-  <select id="getList" resultMap="ResultMapWithBLOBs" parameterType="Map" >
+  <select id="getList" resultMap="BaseResultMap" parameterType="Map" >
     select
     <include refid="Base_Column_List" />
     ,
@@ -35,7 +35,7 @@
       </if>
     </where>
   </select>
-  <delete id="delete" parameterType="Map  " >
+  <delete id="delete" parameterType="Map" >
     delete from oauth_access_token
     <where>
       <if test="authenticationId != null">

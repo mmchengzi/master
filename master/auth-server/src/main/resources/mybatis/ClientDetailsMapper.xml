@@ -18,7 +18,7 @@
     appId, resourceIds, appSecret, scope, grantTypes, redirectUrl, authorities, access_token_validity,
     refresh_token_validity, additionalInformation, autoApproveScopes
   </sql>
-  <select id="getList" resultMap="BaseResultMap" parameterType="Map" >
+  <select id="getList" resultMap="BaseResultMap" parameterType="Map">
     select
     <include refid="Base_Column_List" />
     from clientdetails
@@ -31,7 +31,7 @@
       </if>
     </where>
   </select>
-  <delete id="delete" parameterType="Map" >
+  <delete id="delete" parameterType="Map">
     delete from clientdetails
     where appId = #{appid,jdbcType=VARCHAR}
   </delete>
