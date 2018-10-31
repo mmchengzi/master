@@ -6,7 +6,7 @@
     <result column="token" property="token" jdbcType="LONGVARBINARY" />
     <result column="authentication" property="authentication" jdbcType="LONGVARBINARY" />
   </resultMap>
-  <sql id="Blob_Column_List" >
+  <sql id="Base_Column_List" >
     token_id,token, authentication
   </sql>
   <select id="getList" resultMap="BaseResultMap" parameterType="Map" >
