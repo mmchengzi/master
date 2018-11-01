@@ -16,6 +16,7 @@
         <module>master-common</module>
         <module>news-zuul</module>
         <module>auth-server</module>
+        <module>master-api</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
