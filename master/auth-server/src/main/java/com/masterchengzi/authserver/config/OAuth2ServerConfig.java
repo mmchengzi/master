@@ -18,7 +18,7 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Aut
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.ResourceServerSecurityConfigurer;
 
-/*@Configuration*/
+@Configuration
 public class OAuth2ServerConfig {
 
 	private static final String DEMO_RESOURCE_ID = "User";
@@ -56,7 +56,6 @@ public class OAuth2ServerConfig {
 		@Override
 		public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
 
-			// password 方案三：支持多种编码，通过密码的前缀区分编码方式
 			String finalSecret = "{bcrypt}" + new BCryptPasswordEncoder().encode("123456");
 			//配置两个客户端,一个用于password认证一个用于client认证
 			clients.inMemory().withClient("client_1")
