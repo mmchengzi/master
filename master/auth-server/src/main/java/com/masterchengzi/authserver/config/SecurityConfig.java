@@ -22,7 +22,6 @@ import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 
 @Configuration
 @EnableWebSecurity
-//@EnableOAuth2Sso
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
 	private UserDetailsServiceImpl userDetailsService;
@@ -36,31 +35,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Bean
 	public AuthenticationManager authenticationManagerBean() throws Exception {
 		return super.authenticationManagerBean();
-	}
-
-	/**
-	 * 创建一个默认的资源服务token
-	 *
-	 * @return
-	 */
-	@Bean
-	@Primary
-	public ResourceServerTokenServices defaultTokenServices() {
-		final DefaultTokenServices defaultTokenServices = new DefaultTokenServices();
-		defaultTokenServices.setTokenEnhancer(jwtAccessTokenConverter());
-		defaultTokenServices.setTokenStore(tokenStore());
-		return defaultTokenServices;
-	}
-	@Bean
-	public TokenStore tokenStore() {
-		return new JwtTokenStore(jwtAccessTokenConverter());
-	}
-	@Bean
-	public JwtAccessTokenConverter jwtAccessTokenConverter(){
-		JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
-		//对称类型key
-		converter.setSigningKey("123456");
-		return converter;
 	}
 
 	//配置全局设置
