@@ -64,13 +64,16 @@ public class OAuth2ServerConfig {
 					.scopes("select")
 					.authorities("oauth2")
 					.secret(finalSecret)
+					.autoApprove(true)
 					.and().withClient("client_2")
 					.resourceIds(DEMO_RESOURCE_ID)
 					.authorizedGrantTypes("password", "refresh_token")
 					.scopes("select")
 					.authorities("oauth2")
-					.secret(finalSecret);
+					.secret(finalSecret)
+					.autoApprove(true);
 		}
+
 
 		@Override
 		public void configure(AuthorizationServerEndpointsConfigurer endpoints) {

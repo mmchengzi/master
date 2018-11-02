@@ -46,15 +46,25 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		// @formatter:off
-		http
-				.requestMatchers().anyRequest()
+		http.formLogin().loginPage("/authentication/require")
+				.loginProcessingUrl("/authentication/form")
+				.and().authorizeRequests()
+				.antMatchers("/authentication/require",
+						"/authentication/form",
+						"/**/*.js",
+						"/**/*.css",
+						"/**/*.jpg",
+						"/**/*.png",
+						"/**/*.woff2",
+						"/oauth/*",
+						"/login"
+				)
+				.permitAll()
+				.anyRequest().authenticated()
 				.and()
-				.authorizeRequests()
-				.antMatchers("/oauth/**").permitAll();
-		// @formatter:on
+				.csrf().disable();
+//        http.formLogin().and().authorizeRequests().anyRequest().authenticated();
 	}
-
 	//排除路径拦截
 	@Override
 	public void configure(WebSecurity web) throws Exception {
