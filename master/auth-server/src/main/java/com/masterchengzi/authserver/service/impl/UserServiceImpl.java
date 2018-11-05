@@ -3,9 +3,16 @@ package com.masterchengzi.authserver.service.impl;
 import com.masterchengzi.authserver.mapper.UserMapper;
 import com.masterchengzi.authserver.model.MyUser;
 import com.masterchengzi.authserver.service.UserService;
+import com.masterchengzi.authserver.util.JwtTokenUtil;
 import com.masterchengzi.mastercommon.common.JsonResult;
 import com.masterchengzi.mastercommon.common.ResultCode;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +23,13 @@ import java.util.Map;
 @Service
 public class UserServiceImpl implements UserService {
 	@Autowired
-	private UserMapper mapper;
+	private UserMapper            mapper;
+	@Autowired
+	private AuthenticationManager authenticationManager;
+	@Autowired
+	private UserDetailsService    userDetailsService;
+	@Autowired
+	private JwtTokenUtil          jwtTokenUtil;
 	@Override
 	public JsonResult getList(String id, String username) {
 		try {
@@ -43,8 +56,13 @@ public class UserServiceImpl implements UserService {
 		}
 	}
 
+	/**
+	 * 用户注册
+	 * @param record
+	 * @return
+	 */
 	@Override
-	public JsonResult insert(MyUser record) {
+	public JsonResult register(MyUser record) {
 		try {
 			if (exist(record.getUsername())){
 				return new JsonResult(ResultCode.SUCCESS_IS_HAVE, ResultCode.SUCCESS_IS_HAVE.msg());
@@ -68,6 +86,49 @@ public class UserServiceImpl implements UserService {
 			e.printStackTrace();
 			return new JsonResult(ResultCode.FAIL, e.getMessage());
 		}
+	}
+
+	/**
+	 * 用户登录
+	 *
+	 * @param username 用户名
+	 * @param password 密码
+	 * @return 操作结果
+	 */
+	@Override
+	public JsonResult login(String username, String password) {
+		try {UsernamePasswordAuthenticationToken upToken = new UsernamePasswordAuthenticationToken(username, password);
+			Authentication authentication = authenticationManager.authenticate(upToken);
+			SecurityContextHolder.getContext().setAuthentication(authentication);
+			UserDetails userDetails = userDetailsService.loadUserByUsername(username);
+			return new JsonResult(ResultCode.SUCCESS,"成功",jwtTokenUtil.generateToken(userDetails)) ;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new JsonResult(ResultCode.FAIL, e.getMessage());
+		}
+
+	}
+	/**
+		 * 刷新密钥
+	 *
+	 * @param oldToken 原密钥
+	 * @return 新密钥
+	 */
+	@Override
+	public JsonResult refreshToken(String oldToken) {
+		try {
+			String token = oldToken.substring("Bearer ".length());
+			if (!jwtTokenUtil.isTokenExpired(token)) {
+				return new JsonResult(ResultCode.SUCCESS,jwtTokenUtil.refreshToken(token)) ;
+			}else{
+				return new JsonResult(ResultCode.FAIL,"令牌过期！");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new JsonResult(ResultCode.FAIL, e.getMessage());
+		}
+
+
 	}
 
 	/**

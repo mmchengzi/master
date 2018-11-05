@@ -29,7 +29,7 @@ public class RoleContorller {
 	@ApiOperation(value = "获取列表")
 	@GetMapping("/getList")
 	public JsonResult getList(@RequestParam(name = "id", required = false) String id,
-			@RequestParam(name = "name", required = false) String name) {
+			@RequestParam(name = "name", required = false) String name ,HttpServletRequest request) {
 		return service.getList(id, name);
 	}
 	@ApiOperation(value = "删除")

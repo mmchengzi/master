@@ -10,9 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
-
 @RestController
-@RequestMapping("User")
+@RequestMapping("user")
 @Api(value = "UserContorller ", description = "用户")
 public class UserContorller {
 	@Autowired
@@ -37,15 +36,27 @@ public class UserContorller {
 		return service.delete(id, username);
 	}
 
-	@ApiOperation(value = "新增")
-	@PostMapping("/insert")
-	public JsonResult insert(@ApiParam(value = "User") @RequestBody MyUser record, HttpServletRequest request) {
-		return service.insert(record);
+	@ApiOperation(value = "注册")
+	@PostMapping("/register")
+	public JsonResult register(@ApiParam(value = "MyUser") @RequestBody MyUser record, HttpServletRequest request) {
+		return service.register(record);
 	}
 
 	@ApiOperation(value = "修改")
 	@PostMapping("/update")
-	public JsonResult update(@ApiParam(value = "User") @RequestBody MyUser record, HttpServletRequest request) {
+	public JsonResult update(@ApiParam(value = "MyUser") @RequestBody MyUser record, HttpServletRequest request) {
 		return service.update(record);
 	}
+/*	@ApiOperation(value = "登录")
+	@PostMapping("/login")
+	public JsonResult login(@RequestParam(name = "username") String username,
+							@RequestParam(name = "password") String password) {
+		return service.login(username,password);
+	}
+
+	@ApiOperation(value = "刷新密钥")
+	@GetMapping("/refreshToken")
+	public JsonResult refreshToken(@RequestHeader (name = "authorization") String authorization) {
+		return service.refreshToken(authorization);
+	}*/
 }

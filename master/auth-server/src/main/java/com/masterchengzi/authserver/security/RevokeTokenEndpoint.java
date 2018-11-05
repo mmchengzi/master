@@ -1,4 +1,4 @@
-package com.masterchengzi.authserver.endpoint;
+package com.masterchengzi.authserver.security;
 
 import com.masterchengzi.mastercommon.common.JsonResult;
 import com.masterchengzi.mastercommon.common.ResultCode;

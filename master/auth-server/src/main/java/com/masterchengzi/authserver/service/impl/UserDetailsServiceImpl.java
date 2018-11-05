@@ -25,7 +25,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-@Service
+/*@Service*/
 public class UserDetailsServiceImpl implements UserDetailsService {
 	@Autowired
 	private UserService      userService;
@@ -42,12 +42,10 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		JsonResult userResult = userService.getList(null, username);
 		List<MyUser> users = new ArrayList<>();
-		if ("200".equals(userResult.getCode())) {
-			users = (List<MyUser>) userResult.getData();
-			if (users.size() < 1) {
+		if ("200".equals(userResult.getCode())&&users.size() >0) {
 				throw new UsernameNotFoundException("用户:" + username + ",不存在!");
-			}
 		}
+		users = (List<MyUser>) userResult.getData();
 		Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
 		boolean enabled = true; // 可用性 :true:可用 false:不可用
 		boolean accountNonExpired = true; // 过期性 :true:没过期 false:过期

@@ -1,6 +1,7 @@
-package com.masterchengzi.authserver.config;
+package com.masterchengzi.authserver.security;
 
 
+import com.masterchengzi.authserver.config.MyRedisTokenStore;
 import com.masterchengzi.authserver.service.impl.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
@@ -18,13 +19,13 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Aut
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.ResourceServerSecurityConfigurer;
 
-@Configuration
+/*@Configuration*/
 public class OAuth2ServerConfig {
 
 	private static final String DEMO_RESOURCE_ID = "User";
 
-	@Configuration
-	@EnableResourceServer
+	/*@Configuration
+	@EnableResourceServer*/
 	protected static class ResourceServerConfiguration extends ResourceServerConfigurerAdapter {
 
 		@Override
@@ -42,8 +43,8 @@ public class OAuth2ServerConfig {
 	}
 
 
-	@Configuration
-	@EnableAuthorizationServer
+/*	@Configuration
+	@EnableAuthorizationServer*/
 	protected static class AuthorizationServerConfiguration extends AuthorizationServerConfigurerAdapter {
 
 		@Autowired
