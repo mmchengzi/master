@@ -2,9 +2,10 @@ package com.masterchengzi.authserver.model;
 
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.Date;
 @Data
-public class MyUser {
+public class MyUser implements Serializable {
     private Integer id;
 
     private String avatar;
