@@ -14,4 +14,5 @@ public class DirectSender {
 	public void send(MyUser user) {
 		this.rabbitTemplate.convertAndSend(RabbitConfig.DIRECT_EXCHANGE, "direct.pwl", user);
 	}
+
 }
