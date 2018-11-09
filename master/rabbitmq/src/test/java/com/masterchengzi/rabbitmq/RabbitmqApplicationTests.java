@@ -28,9 +28,11 @@ public class RabbitmqApplicationTests {
 	@Test
 	public void testFanout() throws Exception {
 		MyUser user=new MyUser();
-		user.setId(1);
 		user.setName("pwl");
-		fanoutSender.send(user);
+		for(int i =0;i<100;i++){
+			user.setId(i);
+			fanoutSender.send(user);
+		}
 	}
 	/**
 	 * TOPIC测试
