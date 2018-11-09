@@ -6,10 +6,12 @@ import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelFutureListener;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
+import io.netty.channel.group.ChannelGroup;
 import io.netty.handler.codec.http.*;
 import io.netty.handler.codec.http.websocketx.*;
 import io.netty.util.AttributeKey;
 import io.netty.util.CharsetUtil;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.HttpRequestHandler;
 
 import java.io.FileNotFoundException;
@@ -23,8 +25,7 @@ import java.util.logging.Logger;
 
 public class MyWebSocketServerHandler extends SimpleChannelInboundHandler<Object> {
 	private static final Logger logger = Logger.getLogger(WebSocketServerHandshaker.class.getName());
-	private WebSocketServerHandshaker handshaker;
-
+	private       WebSocketServerHandshaker handshaker;
 	/**
 	 * channel 通道 action 活跃的 当客户端主动链接服务端的链接后，这个通道就是活跃的了。也就是客户端与服务端建立了通信通道并且可以传输数据
 	 */

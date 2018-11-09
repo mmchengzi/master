@@ -13,7 +13,6 @@ import org.springframework.web.servlet.ModelAndView;
  */
 @RestController
 public class LoginController {
-
     @GetMapping("/index")
     public ModelAndView require() {
         return new ModelAndView("index");
