@@ -136,6 +136,7 @@ public class GetNewsImpl implements GetNews {
 					newsWithBLOBs.setImage(images.toString());
 					newsWithBLOBs.setTitle(job.getString("title"));
 					newsWithBLOBs.setTextContent(job.getString("title"));
+					newsWithBLOBs.setTag(type);
 					newsWithBLOBsList.add(newsWithBLOBs);
 				}
 				JsonResult result = getNewsFeign.insert(newsWithBLOBsList);
