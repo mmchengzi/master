@@ -14,9 +14,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @Repository
 @Log4j2
@@ -53,14 +51,62 @@ public class GetNewsImpl implements GetNews {
 				url.append("&site=" + site);
 			}
 			JSONObject json = HttpUtils.getRequestFromUrl(url.toString());
-			if(json.has("data")){
+			if (json.has("data")) {
 				return new JsonResult(ResultCode.SUCCESS, "成功", json.getJSONArray("data").toList());
-			}else{
+			} else {
 				return new JsonResult(ResultCode.FAIL, "没有查到信息");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			return new JsonResult(ResultCode.FAIL, e.getMessage());
+		}
+	}
+
+	/**
+	 * 查询并插入
+	 *
+	 * @param kw
+	 * @param pageToken
+	 * @param site
+	 */
+	@Override
+	public void insert360News(String kw, String pageToken, String site) {
+		try {
+			JsonResult jsonResult = this.get360News(kw, pageToken, site);
+			if ("200".equals(jsonResult.getCode())) {
+				List<GetNewsWithBLOBs> newsWithBLOBsList = new ArrayList<>();
+				List<JSONObject> datalist = (List<JSONObject>) jsonResult.getData();
+				for (int i = 0; i < datalist.size(); i++) {
+					GetNewsWithBLOBs newsWithBLOBs = new GetNewsWithBLOBs();
+					Map<String, String> job = (Map<String, String>) datalist.get(i);
+					List imgs = Collections.singletonList(job.get("imageUrls"));
+					StringBuffer images = new StringBuffer();
+					List<String> list= (List<String>) imgs.get(0);
+					if(list!=null){
+						for(String img:list){
+							images.append(img.toString());
+							images.append(",");
+						}
+					}
+					String dateStr=job.get("publishDateStr");
+					dateStr=dateStr.replace("T"," ");
+					SimpleDateFormat sDateFormat=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+					newsWithBLOBs.setNewsLink(job.get("url"));
+					newsWithBLOBs.setSource(job.get("posterScreenName"));
+					newsWithBLOBs.setTime(sDateFormat.parse(dateStr));
+					newsWithBLOBs.setImage(images.toString());
+					newsWithBLOBs.setTitle(job.get("title"));
+					newsWithBLOBs.setTextContent(job.get("content"));
+					newsWithBLOBs.setTag(site);
+					newsWithBLOBsList.add(newsWithBLOBs);
+				}
+				log.info("开始上传_" + site + ":" + newsWithBLOBsList.size());
+				JsonResult result = getNewsFeign.insert(newsWithBLOBsList);
+				log.info("上传成功_" + site + result.getData() + "_条新闻_" + result.getMessage());
+
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 
@@ -89,9 +135,9 @@ public class GetNewsImpl implements GetNews {
 				url.append("&city=" + city);
 			}
 			JSONObject json = HttpUtils.getRequestFromUrl(url.toString());
-			if(json.has("data")){
+			if (json.has("data")) {
 				return new JsonResult(ResultCode.SUCCESS, "成功", json.getJSONArray("data").toList());
-			}else{
+			} else {
 				return new JsonResult(ResultCode.FAIL, "没有查到信息");
 			}
 		} catch (Exception e) {
@@ -106,11 +152,11 @@ public class GetNewsImpl implements GetNews {
 			SimpleDateFormat sDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm"); //加上时间
 			String url = JuheUrl + type;
 			JSONObject json = HttpUtils.getRequestFromUrl(url);
-			if(json.get("result").toString().equals("null")){
-				log.error(type+"_超过请求次数");
-				return new JsonResult(ResultCode.FAIL, type+"_超过请求次数");
+			if (json.get("result").toString().equals("null")) {
+				log.error(type + "_超过请求次数");
+				return new JsonResult(ResultCode.FAIL, type + "_超过请求次数");
 			}
-			JSONObject jsonObject=json.getJSONObject("result");
+			JSONObject jsonObject = json.getJSONObject("result");
 			if (jsonObject.get("stat").equals("1")) {
 				JSONArray data = jsonObject.getJSONArray("data");
 				List<GetNewsWithBLOBs> newsWithBLOBsList = new ArrayList<>();
@@ -118,15 +164,15 @@ public class GetNewsImpl implements GetNews {
 					GetNewsWithBLOBs newsWithBLOBs = new GetNewsWithBLOBs();
 					JSONObject job = data.getJSONObject(i);
 					StringBuffer images = new StringBuffer();
-					if(job.has("thumbnail_pic_s")){
+					if (job.has("thumbnail_pic_s")) {
 						images.append(job.get("thumbnail_pic_s").toString());
 						images.append(",");
 					}
-					if(job.has("thumbnail_pic_s02")){
+					if (job.has("thumbnail_pic_s02")) {
 						images.append(job.get("thumbnail_pic_s02").toString());
 						images.append(",");
 					}
-					if(job.has("thumbnail_pic_s03")){
+					if (job.has("thumbnail_pic_s03")) {
 						images.append(job.get("thumbnail_pic_s03").toString());
 					}
 					Date date = sDateFormat.parse(job.getString("date"));
@@ -139,9 +185,9 @@ public class GetNewsImpl implements GetNews {
 					newsWithBLOBs.setTag(type);
 					newsWithBLOBsList.add(newsWithBLOBs);
 				}
-				log.info("开始上传_"+type+":" + newsWithBLOBsList.size());
+				log.info("开始上传_" + type + ":" + newsWithBLOBsList.size());
 				JsonResult result = getNewsFeign.insert(newsWithBLOBsList);
-				log.info("上传成功_"+type+ result.getData()+"_条新闻_" +result.getMessage());
+				log.info("上传成功_" + type + result.getData() + "_条新闻_" + result.getMessage());
 			}
 			return new JsonResult(ResultCode.SUCCESS, "成功", json);
 		} catch (Exception e) {

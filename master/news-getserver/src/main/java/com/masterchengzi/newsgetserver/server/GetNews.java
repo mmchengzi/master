@@ -13,6 +13,13 @@ public interface GetNews {
 	JsonResult get360News(String kw,String pageToken, String site);
 
 	/**
+	 * 查询并插入
+	 * @param kw
+	 * @param pageToken
+	 * @param site
+	 */
+	void insert360News(String kw, String pageToken, String site);
+	/**
 	 * @param kw        关键字
 	 * @param beginDate 只有按关键词搜索时该参数生效
 	 * @param endDate   只有按关键词搜索时该参数生效

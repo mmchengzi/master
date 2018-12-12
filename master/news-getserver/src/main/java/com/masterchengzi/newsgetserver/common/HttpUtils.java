@@ -57,8 +57,8 @@ public class HttpUtils {
 	public static void main(String[] args) throws IOException, JSONException {
 
 		// 请求示例 url 默认请求参数已经做URL编码
-		//String url = "http://api01.idataapi.cn:8000/news/qihoo?apikey=vZuaffbf38RMVPr2c5JHrmrcutFGpVA9Px2Najsa1xunUG7Cx0KV2sfD3hLExibg&kw=%E7%99%BD&site=163.com";
-		String url ="http://v.juhe.cn/toutiao/index?key=d60c052187e8adf3e2de5782409d8049&type=top";
+		String url = "http://api01.idataapi.cn:8000/news/qihoo?apikey=vZuaffbf38RMVPr2c5JHrmrcutFGpVA9Px2Najsa1xunUG7Cx0KV2sfD3hLExibg&kw=%E7%99%BD&site=ifeng.com";
+		//String url ="http://v.juhe.cn/toutiao/index?key=d60c052187e8adf3e2de5782409d8049&type=top";
 		//String url="http://mobile.ximalaya.com/v1/track/baseInfo?device=android&trackId=24069144";
 				JSONObject json = getRequestFromUrl(url);
 		System.out.println(json.toString());
