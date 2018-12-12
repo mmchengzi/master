@@ -57,7 +57,26 @@
   </select>
   <delete id="delete" parameterType="Map" >
     delete from get_news
-    where news_id = #{newsId,jdbcType=VARCHAR}
+    <where>
+      <if test="newsId != null">
+        AND news_id = #{newsId}
+      </if>
+      <if test="keyword!= null">
+        AND keyword = #{keyword}
+      </if>
+      <if test="tag!= null">
+        AND tag = #{tag}
+      </if>
+      <if test="isOld != null">
+        AND is_old = #{isOld}
+      </if>
+      <if test="beginDate != null and beginDate != ''">
+        AND time <![CDATA[>=]]> #{beginDate}
+      </if>
+      <if test="endDate != null and endDate != ''">
+        AND time <![CDATA[<=]]>#{endDate}
+      </if>
+    </where>
   </delete>
   <insert id="insert" parameterType="com.masterchengzi.newsserver.entity.GetNewsWithBLOBs" >
     insert into get_news (news_id, news_link, source,

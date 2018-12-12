@@ -65,8 +65,13 @@ public class GetNewsController {
 
 	@ApiOperation(value = "删除新闻")
 	@DeleteMapping("/delete")
-	public JsonResult delete(@RequestParam(name = "newsId") String newsId) {
-		return getNewsService.delete(newsId);
+	public JsonResult delete(@RequestParam(name = "newsId") String newsId,
+							 @RequestParam(value="keyword", required=false) String keyword,
+							 @RequestParam(value="tag", required=false) String tag,
+							 @RequestParam(value="isOld", required=false) Integer isOld,
+							 @RequestParam(value="beginDate", required=false)  Date beginDate,
+							 @RequestParam(value="endDate", required=false) Date endDate) {
+		return getNewsService.delete(newsId,keyword,tag,isOld,beginDate,endDate);
 	}
 	@ResponseBody
 	@ApiOperation(value = "新增新闻")

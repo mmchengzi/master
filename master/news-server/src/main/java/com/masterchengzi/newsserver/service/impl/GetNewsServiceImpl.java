@@ -44,9 +44,9 @@ public class GetNewsServiceImpl implements GetNewsService {
 	}
 
 	@Override
-	public JsonResult delete(String newsId) {
+	public JsonResult delete(String newsId,  String keyword, String tag, Integer isOld, Date beginDate, Date endDate) {
 		try {
-			Integer resultList = getNewsDao.delete(newsId);
+			Integer resultList = getNewsDao.delete(newsId,keyword,tag,isOld,beginDate,endDate);
 			return new JsonResult(ResultCode.SUCCESS, "成功", resultList);
 		} catch (Exception e) {
 			e.printStackTrace();

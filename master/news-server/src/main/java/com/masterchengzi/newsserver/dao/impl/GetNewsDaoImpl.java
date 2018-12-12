@@ -30,9 +30,14 @@ public class GetNewsDaoImpl implements GetNewsDao {
 	}
 
 	@Override
-	public int delete(String newsId) {
+	public int delete(String newsId,  String keyword, String tag, Integer isOld, Date beginDate, Date endDate) {
 		Map map = new HashMap();
 		map.put("newsId", newsId);
+		map.put("keyword", keyword);
+		map.put("tag", tag);
+		map.put("isOld", isOld);
+		map.put("beginDate", beginDate);
+		map.put("endDate", endDate);
 		return getNewsMapper.delete(map);
 	}
 

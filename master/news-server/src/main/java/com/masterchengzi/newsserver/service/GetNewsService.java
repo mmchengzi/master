@@ -10,7 +10,7 @@ public interface GetNewsService {
 	JsonResult getGetNews(String newsId, String title, String keyword, String tag, Integer isOld, Date beginDate, Date endDate);
 	JsonResult getPageNews(String newsId, String title, String keyword, String tag, Integer isOld, Date beginDate, Date endDate,Integer pageNum, Integer pageSize);
 
-	JsonResult delete(String newsId);
+	JsonResult delete(String newsId,  String keyword, String tag, Integer isOld, Date beginDate, Date endDate);
 
 	JsonResult insert(List<GetNewsWithBLOBs> record);
 	JsonResult update(List<GetNewsWithBLOBs> record);
