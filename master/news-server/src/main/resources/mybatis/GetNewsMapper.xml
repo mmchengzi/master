@@ -53,6 +53,7 @@
         AND time <![CDATA[<=]]>#{endDate}
       </if>
     </where>
+    ORDER BY time desc
   </select>
   <delete id="delete" parameterType="Map" >
     delete from get_news
