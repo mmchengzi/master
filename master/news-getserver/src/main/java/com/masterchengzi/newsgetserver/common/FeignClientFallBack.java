@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.Date;
 import java.util.List;
 
 @Component
@@ -17,7 +18,12 @@ public class FeignClientFallBack implements FallbackFactory<GetNewsFeign> {
     public GetNewsFeign create(Throwable throwable) {
         return new GetNewsFeign() {
             @Override
-            public JsonResult delete(@RequestParam(name = "newsId") String newsId) {
+            public JsonResult delete(@RequestParam(name = "newsId") String newsId,
+                                     @RequestParam(value="keyword", required=false) String keyword,
+                                     @RequestParam(value="tag", required=false) String tag,
+                                     @RequestParam(value="isOld", required=false) Integer isOld,
+                                     @RequestParam(value="beginDate", required=false) Date beginDate,
+                                     @RequestParam(value="endDate", required=false) Date endDate) {
                 return new JsonResult(ResultCode.EXCEPTION, "feign_exception_callback: function delete is fail ! ");
             }
 

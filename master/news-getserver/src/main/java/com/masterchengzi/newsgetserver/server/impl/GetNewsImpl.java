@@ -107,8 +107,8 @@ public class GetNewsImpl implements GetNews {
 			String url = JuheUrl + type;
 			JSONObject json = HttpUtils.getRequestFromUrl(url);
 			if(json.get("result").toString().equals("null")){
-				log.error("超过请求次数");
-				return new JsonResult(ResultCode.FAIL, "超过请求次数");
+				log.error(type+"_超过请求次数");
+				return new JsonResult(ResultCode.FAIL, type+"_超过请求次数");
 			}
 			JSONObject jsonObject=json.getJSONObject("result");
 			if (jsonObject.get("stat").equals("1")) {
@@ -139,8 +139,9 @@ public class GetNewsImpl implements GetNews {
 					newsWithBLOBs.setTag(type);
 					newsWithBLOBsList.add(newsWithBLOBs);
 				}
+				log.info("开始上传_"+type+":" + newsWithBLOBsList.size());
 				JsonResult result = getNewsFeign.insert(newsWithBLOBsList);
-				log.info("成功上传_"+type+"_新闻数：" + result.getData());
+				log.info("上传成功_"+type+ result.getData()+"_条新闻_" +result.getMessage());
 			}
 			return new JsonResult(ResultCode.SUCCESS, "成功", json);
 		} catch (Exception e) {

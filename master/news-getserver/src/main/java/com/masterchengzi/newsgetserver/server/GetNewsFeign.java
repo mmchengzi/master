@@ -10,14 +10,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.Date;
 import java.util.List;
 
 @Repository
-@FeignClient(name ="authserver/getNews" , fallbackFactory = FeignClientFallBack.class )
+@FeignClient(name ="newsserver2/getNews" , fallbackFactory = FeignClientFallBack.class )
 public interface GetNewsFeign {
 
 	@RequestMapping(method = RequestMethod.POST, value = "/delete")
-	public JsonResult delete(@RequestParam(name = "newsId") String newsId);
+	public JsonResult delete(@RequestParam(name = "newsId") String newsId,
+							 @RequestParam(value="keyword", required=false) String keyword,
+							 @RequestParam(value="tag", required=false) String tag,
+							 @RequestParam(value="isOld", required=false) Integer isOld,
+							 @RequestParam(value="beginDate", required=false) Date beginDate,
+							 @RequestParam(value="endDate", required=false) Date endDate);
 
 	@RequestMapping(method = RequestMethod.POST, value = "/insert")
 	public JsonResult insert(@RequestBody List<GetNewsWithBLOBs> record);
