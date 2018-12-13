@@ -23,18 +23,17 @@ public class ScheduledTask {
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-			getNews.insert360News("明星", null, site);
+			getNews.insert360News("娱乐", null, site);
 		}
-
 	}
 
 
-	@Scheduled(cron = "0 0/20 8-23 * * ?")  // 15*3 45
+	@Scheduled(cron = "0 0/20 9-22 * * ?")  // 14*3 42
 	public void getJuheNewsTop() {
 		getNews.getJuheNews("top");
 	}
 
-	@Scheduled(cron = "0 0/30 8-22 * * ?")  // 14*2 28
+	@Scheduled(cron = "0 0/30 9-22 * * ?")  // 13*2 26
 	public void getJuheNews1() {
 		getNews.getJuheNews("guonei");
 		getNews.getJuheNews("guoji");
@@ -42,13 +41,13 @@ public class ScheduledTask {
 		getNews.getJuheNews("yule");
 	}
 
-	@Scheduled(cron = "0 0/40 8-22 * * ?")  // 9*1.5 12
+	@Scheduled(cron = "0 0/40 9-22 * * ?")  // 14*1.5 21
 	public void getJuheNews2() {
 		getNews.getJuheNews("shehui");
 		getNews.getJuheNews("junshi");
 	}
 
-	@Scheduled(cron = "0 0/59 9-18 * * ?")  // 7*1 6  2
+	@Scheduled(cron = "0 0/59 9-17 * * ?")  // 9*1  9
 	public void getJuheNews3() {
 		getNews.getJuheNews("tiyu");
 		getNews.getJuheNews("caijing");
