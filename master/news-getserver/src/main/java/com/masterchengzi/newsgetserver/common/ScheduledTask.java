@@ -28,26 +28,26 @@ public class ScheduledTask {
 	}
 
 
-	@Scheduled(cron = "0 0/20 9-22 * * ?")  // 14*3 42
+	@Scheduled(cron = "0 0/42 9-20 * * ?")  // 12*(60/42)*1 17
 	public void getJuheNewsTop() {
 		getNews.getJuheNews("top");
 	}
 
-	@Scheduled(cron = "0 0/30 9-22 * * ?")  // 13*2 26
+	@Scheduled(cron = "0 0/46 9-20 * * ?")  // 12*(60/46)*2  31
 	public void getJuheNews1() {
-		getNews.getJuheNews("guonei");
-		getNews.getJuheNews("guoji");
 		getNews.getJuheNews("keji");
 		getNews.getJuheNews("yule");
 	}
 
-	@Scheduled(cron = "0 0/40 9-22 * * ?")  // 14*1.5 21
+	@Scheduled(cron = "0 0/58 9-17 * * ?")  // 9*(60/58)*4  37
 	public void getJuheNews2() {
+		getNews.getJuheNews("guoji");
+		getNews.getJuheNews("guonei");
 		getNews.getJuheNews("shehui");
 		getNews.getJuheNews("junshi");
 	}
 
-	@Scheduled(cron = "0 0/59 9-17 * * ?")  // 9*1  9
+	@Scheduled(cron = "0 0 10-15 * * ?")  // 6*1*3  18
 	public void getJuheNews3() {
 		getNews.getJuheNews("tiyu");
 		getNews.getJuheNews("caijing");
