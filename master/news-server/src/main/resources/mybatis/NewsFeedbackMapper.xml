@@ -20,10 +20,10 @@
       <if test="userId != null">
         AND user_id = #{userId}
       </if>
-      <if test="beginDate != null and beginDate != ''">
+      <if test="beginDate != null">
         AND time <![CDATA[>=]]> #{beginDate}
       </if>
-      <if test="endDate != null and endDate != ''">
+      <if test="endDate != null ">
         AND time <![CDATA[<=]]>#{endDate}
       </if>
 

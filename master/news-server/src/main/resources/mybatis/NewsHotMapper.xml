@@ -27,10 +27,10 @@
       <if test="newsId != null">
         AND news_id = #{newsId}
       </if>
-      <if test="beginDate != null and beginDate != ''">
+      <if test="beginDate != null">
         AND time <![CDATA[>=]]> #{beginDate}
       </if>
-      <if test="endDate != null and endDate != ''">
+      <if test="endDate != null">
         AND time <![CDATA[<=]]>#{endDate}
       </if>
       <if test="title != null">
