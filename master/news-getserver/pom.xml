@@ -6,7 +6,7 @@
     <groupId>com.masterchengzi</groupId>
     <artifactId>news-getserver</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>jar</packaging>
+    <packaging>war</packaging>
 
     <name>news-getserver</name>
     <description>获取新闻的服务</description>

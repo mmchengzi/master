@@ -15,7 +15,7 @@ public class ScheduledTask {
  private String[] strArray={"qq.com","163.com","sina.com.cn","ifeng.com","sohu.com","baidu.com",
 		 "cctv.com"};
 
-	@Scheduled(cron = "0 0/30 9-22 * * ?")//9-22 每半个小时
+	@Scheduled(cron = "0 0/33 9-22 * * ?")//9-22 每半个小时
 	public void insert360News1() {
 		for(String site:strArray){
 			try {
