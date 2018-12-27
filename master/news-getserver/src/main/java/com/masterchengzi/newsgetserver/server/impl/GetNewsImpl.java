@@ -2,7 +2,7 @@ package com.masterchengzi.newsgetserver.server.impl;
 
 import com.masterchengzi.mastercommon.common.JsonResult;
 import com.masterchengzi.mastercommon.common.ResultCode;
-import com.masterchengzi.newsgetserver.common.HttpUtils;
+import com.masterchengzi.mastercommon.util.HttpUtils;
 import com.masterchengzi.newsgetserver.server.GetNews;
 import com.masterchengzi.newsgetserver.server.GetNewsFeign;
 import com.masterchengzi.newsserver.entity.GetNewsWithBLOBs;

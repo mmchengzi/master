@@ -1,0 +1,12 @@
+2018-12-26 at 16:56:50 CST WARN  org.apache.commons.logging.impl.Jdk14Logger 99 log - 
+
+Found multiple occurrences of org.json.JSONObject on the class path:
+
+	jar:file:/D:/devlopment/maven/m2/repository/org/json/json/20171018/json-20171018.jar!/org/json/JSONObject.class
+	jar:file:/D:/devlopment/maven/m2/repository/com/vaadin/external/google/android-json/0.0.20131108.vaadin1/android-json-0.0.20131108.vaadin1.jar!/org/json/JSONObject.class
+
+You may wish to exclude one of them to ensure predictable runtime behavior
+
+2018-12-26 at 16:56:50 CST WARN  org.apache.commons.logging.impl.Jdk14Logger 99 log - No MyBatis mapper was found in '[com.masterchengzi.sharesrobot.mapper]' package. Please check your configuration.
+2018-12-26 at 16:56:51 CST WARN  org.apache.commons.logging.impl.Jdk14Logger 99 log - No MyBatis mapper was found in '[com.masterchengzi.sharesrobot]' package. Please check your configuration.
+2018-12-26 at 16:56:55 CST WARN  org.apache.commons.logging.impl.Jdk14Logger 99 log - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sqlSessionFactory' defined in class path resource [com/masterchengzi/sharesrobot/config/DatabaseConfig.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.apache.ibatis.session.SqlSessionFactory]: Factory method 'sqlSessionFactory' threw exception; nested exception is java.io.FileNotFoundException: class path resource [mybatis/] cannot be resolved to URL because it does not exist
