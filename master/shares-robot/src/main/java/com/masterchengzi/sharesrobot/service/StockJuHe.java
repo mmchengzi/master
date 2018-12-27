@@ -39,7 +39,7 @@ public interface StockJuHe {
 	 * @param gid
 	 * @return
 	 */
-	JsonResult getStockH(String gid);
+	JsonResult getStockHK(String gid);
 
 	/**
 	 * 美国股市

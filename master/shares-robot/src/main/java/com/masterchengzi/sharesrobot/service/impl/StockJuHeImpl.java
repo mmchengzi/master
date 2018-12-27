@@ -31,7 +31,6 @@ public class StockJuHeImpl implements StockJuHe {
 	private String KLineData;
 	/**
 	 * 每天
-	 *
 	 * @param gid
 	 * @return
 	 */
@@ -140,7 +139,7 @@ public class StockJuHeImpl implements StockJuHe {
 	 * @return
 	 */
 	@Override
-	public JsonResult getStockH(String id) {
+	public JsonResult getStockHK(String id) {
 		String result =null;
 		String url = JuheUrl + "/hk";//请求接口地址
 		Map params = new HashMap();//请求参数

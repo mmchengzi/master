@@ -21,7 +21,7 @@ public class DatabaseConfig {
         final SqlSessionFactoryBean sessionFactory = new SqlSessionFactoryBean();
         sessionFactory.setDataSource(dataSource);
 		PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
-		sessionFactory.setMapperLocations(resolver.getResources("classpath:/mybatis/*.xml"));
+	//	sessionFactory.setMapperLocations(resolver.getResources("classpath:/mybatis/*.xml"));
 		return sessionFactory.getObject();
     }
 

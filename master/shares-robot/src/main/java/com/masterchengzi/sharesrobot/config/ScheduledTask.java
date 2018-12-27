@@ -16,9 +16,9 @@ public class ScheduledTask {
 	@Autowired
 	StockJuHe stockJuHe;
 
-	@Scheduled(cron="0/5 * *  * * ? ")
+/*	@Scheduled(cron="0/5 * *  * * ? ")
 	public void getJuheNews1() {
 		stockJuHe.getStockHS("sz300020");
-	}
+	}*/
 
 }
