@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.masterchengzi.travelserver.mapper.UserOperateMapper" >
+  <resultMap id="BaseResultMap" type="com.masterchengzi.travelserver.entity.UserOperate" >
+    <id column="user_id" property="userId" jdbcType="INTEGER" />
+    <id column="item_id" property="itemId" jdbcType="INTEGER" />
+    <result column="evaluate" property="evaluate" jdbcType="VARCHAR" />
+    <result column="tag" property="tag" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    user_id, item_id, evaluate, tag, create_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.masterchengzi.travelserver.entity.UserOperateKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from user_operate
+    where user_id = #{userId,jdbcType=INTEGER}
+      and item_id = #{itemId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.masterchengzi.travelserver.entity.UserOperateKey" >
+    delete from user_operate
+    where user_id = #{userId,jdbcType=INTEGER}
+      and item_id = #{itemId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.masterchengzi.travelserver.entity.UserOperate" >
+    insert into user_operate (user_id, item_id, evaluate, 
+      tag, create_time)
+    values (#{userId,jdbcType=INTEGER}, #{itemId,jdbcType=INTEGER}, #{evaluate,jdbcType=VARCHAR}, 
+      #{tag,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.masterchengzi.travelserver.entity.UserOperate" >
+    insert into user_operate
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="itemId != null" >
+        item_id,
+      </if>
+      <if test="evaluate != null" >
+        evaluate,
+      </if>
+      <if test="tag != null" >
+        tag,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="itemId != null" >
+        #{itemId,jdbcType=INTEGER},
+      </if>
+      <if test="evaluate != null" >
+        #{evaluate,jdbcType=VARCHAR},
+      </if>
+      <if test="tag != null" >
+        #{tag,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.masterchengzi.travelserver.entity.UserOperate" >
+    update user_operate
+    <set >
+      <if test="evaluate != null" >
+        evaluate = #{evaluate,jdbcType=VARCHAR},
+      </if>
+      <if test="tag != null" >
+        tag = #{tag,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where user_id = #{userId,jdbcType=INTEGER}
+      and item_id = #{itemId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.masterchengzi.travelserver.entity.UserOperate" >
+    update user_operate
+    set evaluate = #{evaluate,jdbcType=VARCHAR},
+      tag = #{tag,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where user_id = #{userId,jdbcType=INTEGER}
+      and item_id = #{itemId,jdbcType=INTEGER}
+  </update>
+</mapper>
