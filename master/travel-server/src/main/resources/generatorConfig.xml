@@ -13,7 +13,7 @@
 
 		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
 			connectionURL="jdbc:mysql://123.207.98.252:3306/travel" userId="root"
-			password="zhuo18358136226">
+			password="xxx">
 		</jdbcConnection>
 
 		<javaTypeResolver>
