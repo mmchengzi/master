@@ -8,8 +8,8 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>news-common</name>
-	<description>新闻公共层</description>
+	<name>master-common</name>
+	<description>公共层</description>
 	<parent>
 		<groupId>com.masterchengzi</groupId>
 		<artifactId>master</artifactId>
