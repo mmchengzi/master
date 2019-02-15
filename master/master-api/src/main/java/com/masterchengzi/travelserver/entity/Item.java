@@ -8,7 +8,7 @@ import java.util.Date;
 @Log
 public class Item {
     private Integer itemId;
-
+    private String itemName;
     private String type;
 
     private String content;
