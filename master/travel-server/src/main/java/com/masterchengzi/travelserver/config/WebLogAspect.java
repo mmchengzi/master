@@ -25,7 +25,7 @@ import java.util.Arrays;
 public class WebLogAspect {
 	ThreadLocal<Long> startTime = new ThreadLocal<>();
 
-	@Pointcut("execution(public * com.masterchengzi.newsserver.controller.*.*(..))")
+	@Pointcut("execution(public * com.masterchengzi.travelserver.controller.*.*(..))")
 	public void webLog() {
 	}
 
@@ -38,11 +38,13 @@ public class WebLogAspect {
 		if (attributes != null&&attributes.getRequest()!=null) {
 			HttpServletRequest request = attributes.getRequest();
 			// 记录下请求内容
-			log.info("URL : " + request.getRequestURL().toString());
-			log.info("HTTP_METHOD : " + request.getMethod());
-			log.info("IP : " + request.getRemoteAddr());
-			log.info("CLASS_METHOD : " + joinPoint.getSignature().getDeclaringTypeName() + "." + joinPoint.getSignature().getName());
-			log.info("ARGS : " + Arrays.toString(joinPoint.getArgs()));
+			log.info("===============请求内容===============");
+			log.info("请求地址 : " + request.getRequestURL().toString());
+			log.info("请求方式 : " + request.getMethod());
+			log.info("客户端IP : " + request.getRemoteAddr());
+			log.info("请求类方法 : " + joinPoint.getSignature().getDeclaringTypeName() + "." + joinPoint.getSignature().getName());
+			log.info("请求类方法参数 : " + Arrays.toString(joinPoint.getArgs()));
+			log.info("===============请求内容===============");
 		}
 
 
@@ -51,8 +53,9 @@ public class WebLogAspect {
 	@AfterReturning(returning = "ret", pointcut = "webLog()")
 	public void doAfterReturning(Object ret) throws Throwable {
 		// 处理完请求，返回内容
-		log.info("RESPONSE : " + ret);
-		log.info("SPEND TIME : " + (System.currentTimeMillis() - startTime.get()));
+		log.info("===============响应内容===============");
+		log.info("响应内容 : " + ret);
+		log.info("花费时间 : " + (System.currentTimeMillis() - startTime.get()));
+		log.info("===============响应内容===============");
 	}
-
 }

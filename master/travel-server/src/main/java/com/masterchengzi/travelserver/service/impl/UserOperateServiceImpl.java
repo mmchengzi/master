@@ -4,10 +4,9 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.masterchengzi.mastercommon.common.JsonResult;
 import com.masterchengzi.mastercommon.common.ResultCode;
-import com.masterchengzi.mastercommon.common.SnowflakeIdWorker;
-import com.masterchengzi.newsserver.entity.GetNewsWithBLOBs;
-import com.masterchengzi.travelserver.dao.GetNewsDao;
-import com.masterchengzi.travelserver.service.GetNewsService;
+import com.masterchengzi.travelserver.dao.UserOperateDao;
+import com.masterchengzi.travelserver.entity.UserOperate;
+import com.masterchengzi.travelserver.service.UserOperateService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,14 +14,14 @@ import java.util.Date;
 import java.util.List;
 
 @Service
-public class GetNewsServiceImpl implements GetNewsService {
+public class UserOperateServiceImpl implements UserOperateService {
 	@Autowired
-	private GetNewsDao getNewsDao;
+	private UserOperateDao dao;
 
 	@Override
-	public JsonResult getGetNews(String newsId, String title, String keyword, String tag, Integer isOld, Date beginDate, Date endDate) {
+	public JsonResult getList(Integer userId, Integer itemId, Date beginTime, Date endTime) {
 		try {
-			List<GetNewsWithBLOBs> resultList = getNewsDao.getGetNews(newsId, title, keyword, tag, isOld, beginDate, endDate);
+			List<UserOperate> resultList = dao.getList(userId, itemId, beginTime, endTime);
 			return new JsonResult(ResultCode.SUCCESS, "成功", resultList);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -31,11 +30,11 @@ public class GetNewsServiceImpl implements GetNewsService {
 	}
 
 	@Override
-	public JsonResult getPageNews(String newsId, String title, String keyword, String tag, Integer isOld, Date beginDate, Date endDate, Integer pageNum, Integer pageSize) {
+	public JsonResult getPage(Integer userId, Integer itemId, Date beginTime, Date endTime, Integer pageNum, Integer pageSize) {
 		try {
 			PageHelper.startPage(pageNum, pageSize);
-			List<GetNewsWithBLOBs> resultList = getNewsDao.getGetNews(newsId, title, keyword, tag, isOld, beginDate, endDate);
-			PageInfo<GetNewsWithBLOBs> resultPage = new PageInfo<>(resultList);
+			List<UserOperate> resultList = dao.getList(userId, itemId, beginTime, endTime);
+			PageInfo<UserOperate> resultPage = new PageInfo<>(resultList);
 			return new JsonResult(ResultCode.SUCCESS, "成功", resultPage);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -44,9 +43,9 @@ public class GetNewsServiceImpl implements GetNewsService {
 	}
 
 	@Override
-	public JsonResult delete(String newsId,  String keyword, String tag, Integer isOld, Date beginDate, Date endDate) {
+	public JsonResult delete(Integer userId, Integer itemId) {
 		try {
-			Integer resultList = getNewsDao.delete(newsId,keyword,tag,isOld,beginDate,endDate);
+			Integer resultList = dao.delete(userId, itemId);
 			return new JsonResult(ResultCode.SUCCESS, "成功", resultList);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -55,16 +54,14 @@ public class GetNewsServiceImpl implements GetNewsService {
 	}
 
 	@Override
-	public JsonResult insert(List<GetNewsWithBLOBs> record) {
+	public JsonResult insert(List<UserOperate> record) {
 		try {
 			int ret = 0;
-			SnowflakeIdWorker idWorker = new SnowflakeIdWorker(0, 0);
 			if (record != null && record.size() > 0) {
-				for (GetNewsWithBLOBs dto : record) {
-					List<GetNewsWithBLOBs> rlt = getNewsDao.getGetNews(null, dto.getTitle(), null, null, null, null, null);
+				for (UserOperate dto : record) {
+					List<UserOperate> rlt = dao.getList(dto.getUserId(), dto.getItemId(), null, null);
 					if (rlt != null && rlt.size() > 0) continue;
-					dto.setNewsId(String.valueOf(idWorker.nextId()));
-					int r = getNewsDao.insert(dto);
+					int r = dao.insert(dto);
 					if (r >= 0) ret += r;
 				}
 			}
@@ -77,12 +74,12 @@ public class GetNewsServiceImpl implements GetNewsService {
 	}
 
 	@Override
-	public JsonResult update(List<GetNewsWithBLOBs> record) {
+	public JsonResult update(List<UserOperate> record) {
 		try {
 			int ret = 0;
 			if (record != null && record.size() > 0) {
-				for (GetNewsWithBLOBs dto : record) {
-					int r = getNewsDao.update(dto);
+				for (UserOperate dto : record) {
+					int r = dao.update(dto);
 					if (r >= 0) ret += r;
 				}
 			}

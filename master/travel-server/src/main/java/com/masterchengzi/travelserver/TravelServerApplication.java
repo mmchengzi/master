@@ -10,15 +10,15 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @SpringBootApplication
 @EnableEurekaClient
 @EnableScheduling
-public class NewsServerApplication extends SpringBootServletInitializer {
+public class TravelServerApplication extends SpringBootServletInitializer {
 
 	@Override
 	protected SpringApplicationBuilder configure(
 			SpringApplicationBuilder application) {
-		return application.sources(NewsServerApplication.class);
+		return application.sources(TravelServerApplication.class);
 	}
 
 	public static void main(String[] args) {
-		SpringApplication.run(NewsServerApplication.class, args);
+		SpringApplication.run(TravelServerApplication.class, args);
 	}
 }
