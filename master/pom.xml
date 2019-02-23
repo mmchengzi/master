@@ -17,6 +17,7 @@
         <module>news-zuul</module>
         <module>auth-server</module>
         <module>master-api</module>
+        <module>travel-server</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
