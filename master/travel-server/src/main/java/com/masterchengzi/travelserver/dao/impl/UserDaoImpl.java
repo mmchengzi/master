@@ -15,12 +15,14 @@ public class UserDaoImpl implements UserDao {
     @Autowired
     private UserMapper mapper;
     @Override
-    public List<User> getList(Integer userId, String username, Date beginTime, Date endTime) {
+    public List<User> getList(Integer userId, String username,String email,String phone, Date beginTime, Date endTime) {
         Map map = new HashMap();
         map.put("id", userId);
         map.put("username", username);
         map.put("beginTime", beginTime);
         map.put("endTime", endTime);
+        map.put("email", email);
+        map.put("phone", phone);
         return mapper.getList(map);
     }
 
