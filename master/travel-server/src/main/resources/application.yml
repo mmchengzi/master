@@ -34,6 +34,6 @@ pagehelper:
 
 sms:
   BASE_URL: https://api.miaodiyun.com
-  ACCOUNT_SID: af1f7455dd5c430585ada20ab693743d
-  AUTH_TOKEN: c20566eb1c31421183ab093b76d05209
+  ACCOUNT_SID: xxx
+  AUTH_TOKEN: xxx
   RESP_DATA_TYPE: json
