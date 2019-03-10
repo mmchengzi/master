@@ -1,0 +1,110 @@
+2018-12-11 at 21:54:31 CST INFO  org.springframework.context.support.AbstractApplicationContext 590 prepareRefresh - Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@6155d082: startup date [Tue Dec 11 21:54:31 CST 2018]; root of context hierarchy
+2018-12-11 at 21:54:31 CST INFO  org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor 153 <init> - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2018-12-11 at 21:54:31 CST INFO  org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker 326 postProcessAfterInitialization - Bean 'configurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration$$EnhancerBySpringCGLIB$$48653d4f] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-12-11 at 21:54:32 CST INFO  org.springframework.boot.SpringApplication 684 logStartupProfileInfo - The following profiles are active: dev
+2018-12-11 at 21:54:32 CST INFO  org.springframework.context.support.AbstractApplicationContext 590 prepareRefresh - Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@5489c777: startup date [Tue Dec 11 21:54:32 CST 2018]; parent: org.springframework.context.annotation.AnnotationConfigApplicationContext@6155d082
+2018-12-11 at 21:54:33 CST INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate 172 multipleStoresDetected - Multiple Spring Data modules found, entering strict repository configuration mode!
+2018-12-11 at 21:54:33 CST INFO  org.springframework.cloud.context.scope.GenericScope 294 setSerializationId - BeanFactory id=4318005f-eaf6-3d8b-8c8c-5900617e3194
+2018-12-11 at 21:54:33 CST INFO  org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor 153 <init> - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2018-12-11 at 21:54:34 CST INFO  org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker 326 postProcessAfterInitialization - Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration$$EnhancerBySpringCGLIB$$48653d4f] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-12-11 at 21:54:34 CST INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer 91 initialize - Tomcat initialized with port(s): 8084 (http)
+2018-12-11 at 21:54:34 CST INFO  org.apache.juli.logging.DirectJDKLog 180 log - Initializing ProtocolHandler ["http-nio-8084"]
+2018-12-11 at 21:54:34 CST INFO  org.apache.juli.logging.DirectJDKLog 180 log - Starting service [Tomcat]
+2018-12-11 at 21:54:34 CST INFO  org.apache.juli.logging.DirectJDKLog 180 log - Starting Servlet Engine: Apache Tomcat/8.5.34
+2018-12-11 at 21:54:34 CST INFO  org.apache.juli.logging.DirectJDKLog 180 log - Loaded APR based Apache Tomcat Native library [1.2.16] using APR version [1.6.3].
+2018-12-11 at 21:54:34 CST INFO  org.apache.juli.logging.DirectJDKLog 180 log - APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+2018-12-11 at 21:54:34 CST INFO  org.apache.juli.logging.DirectJDKLog 180 log - APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+2018-12-11 at 21:54:35 CST INFO  org.apache.juli.logging.DirectJDKLog 180 log - OpenSSL successfully initialized [OpenSSL 1.0.2m  2 Nov 2017]
+2018-12-11 at 21:54:35 CST INFO  org.apache.juli.logging.DirectJDKLog 180 log - Initializing Spring embedded WebApplicationContext
+2018-12-11 at 21:54:35 CST INFO  org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext 285 prepareWebApplicationContext - Root WebApplicationContext: initialization completed in 3259 ms
+2018-12-11 at 21:54:35 CST INFO  org.springframework.boot.web.servlet.ServletRegistrationBean 187 addRegistration - Servlet dispatcherServlet mapped to [/]
+2018-12-11 at 21:54:35 CST INFO  org.springframework.boot.web.servlet.AbstractFilterRegistrationBean 245 configure - Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-12-11 at 21:54:35 CST INFO  org.springframework.boot.web.servlet.AbstractFilterRegistrationBean 245 configure - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-12-11 at 21:54:35 CST INFO  org.springframework.boot.web.servlet.AbstractFilterRegistrationBean 245 configure - Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2018-12-11 at 21:54:35 CST INFO  org.springframework.boot.web.servlet.AbstractFilterRegistrationBean 245 configure - Mapping filter: 'requestContextFilter' to: [/*]
+2018-12-11 at 21:54:35 CST INFO  org.springframework.boot.web.servlet.AbstractFilterRegistrationBean 245 configure - Mapping filter: 'corsFilter' to: [/*]
+2018-12-11 at 21:54:36 CST INFO  org.springframework.context.support.AbstractApplicationContext 590 prepareRefresh - Refreshing FeignContext-authserver/getNews: startup date [Tue Dec 11 21:54:36 CST 2018]; parent: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@5489c777
+2018-12-11 at 21:54:36 CST INFO  org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor 153 <init> - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2018-12-11 at 21:54:36 CST INFO  org.springframework.web.servlet.handler.AbstractHandlerMethodMapping$MappingRegistry 549 register - Mapped "{[/getNews/get360News],methods=[GET]}" onto public com.masterchengzi.mastercommon.common.JsonResult com.masterchengzi.newsgetserver.controller.GetNewsController.get360News(java.lang.String,java.lang.String,java.lang.String)
+2018-12-11 at 21:54:36 CST INFO  org.springframework.web.servlet.handler.AbstractHandlerMethodMapping$MappingRegistry 549 register - Mapped "{[/getNews/getCCTVNews],methods=[GET]}" onto public com.masterchengzi.mastercommon.common.JsonResult com.masterchengzi.newsgetserver.controller.GetNewsController.getCCTVNews(java.lang.String,java.lang.String,java.lang.String,java.lang.String)
+2018-12-11 at 21:54:36 CST INFO  org.springframework.web.servlet.handler.AbstractHandlerMethodMapping$MappingRegistry 549 register - Mapped "{[/api-docs],methods=[GET]}" onto public org.springframework.http.ResponseEntity<com.mangofactory.swagger.models.dto.ResourceListing> com.mangofactory.swagger.controllers.DefaultSwaggerController.getResourceListing(java.lang.String)
+2018-12-11 at 21:54:36 CST INFO  org.springframework.web.servlet.handler.AbstractHandlerMethodMapping$MappingRegistry 549 register - Mapped "{[/api-docs/{swaggerGroup}/{apiDeclaration}],methods=[GET]}" onto public org.springframework.http.ResponseEntity<com.mangofactory.swagger.models.dto.ApiListing> com.mangofactory.swagger.controllers.DefaultSwaggerController.getApiListing(java.lang.String,java.lang.String)
+2018-12-11 at 21:54:36 CST INFO  org.springframework.web.servlet.handler.AbstractHandlerMethodMapping$MappingRegistry 549 register - Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2018-12-11 at 21:54:36 CST INFO  org.springframework.web.servlet.handler.AbstractHandlerMethodMapping$MappingRegistry 549 register - Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2018-12-11 at 21:54:36 CST INFO  com.mangofactory.swagger.plugin.SwaggerPluginAdapter 33 onApplicationEvent - Context refreshed
+2018-12-11 at 21:54:36 CST INFO  org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter 588 initControllerAdviceCache - Looking for @ControllerAdvice: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@5489c777: startup date [Tue Dec 11 21:54:32 CST 2018]; parent: org.springframework.context.annotation.AnnotationConfigApplicationContext@6155d082
+2018-12-11 at 21:54:36 CST INFO  com.mangofactory.swagger.plugin.SwaggerPluginAdapter 46 onApplicationEvent - Found custom SwaggerSpringMvcPlugins
+2018-12-11 at 21:54:36 CST INFO  com.mangofactory.swagger.plugin.SwaggerPluginAdapter 50 onApplicationEvent - initializing plugin bean customImplementation
+2018-12-11 at 21:54:36 CST INFO  com.mangofactory.swagger.scanners.ApiListingReferenceScanner 55 scan - Scanning for api listing references
+2018-12-11 at 21:54:36 CST INFO  com.mangofactory.swagger.core.ClassOrApiAnnotationResourceGrouping 50 getResourceGroups - Group for method get360News was getnewscontroller
+2018-12-11 at 21:54:36 CST INFO  com.mangofactory.swagger.scanners.ApiListingReferenceScanner 78 scanSpringRequestMappings - Request mapping: get360News belongs to groups: [[ResourceGroup{groupName='getnewscontroller', position=0}]] 
+2018-12-11 at 21:54:36 CST INFO  com.mangofactory.swagger.scanners.ApiListingReferenceScanner 82 scanSpringRequestMappings - Adding resource to group:ResourceGroup{groupName='getnewscontroller', position=0} with description:获取新闻 for handler method:get360News
+2018-12-11 at 21:54:36 CST INFO  com.mangofactory.swagger.core.ClassOrApiAnnotationResourceGrouping 50 getResourceGroups - Group for method getCCTVNews was getnewscontroller
+2018-12-11 at 21:54:36 CST INFO  com.mangofactory.swagger.scanners.ApiListingReferenceScanner 78 scanSpringRequestMappings - Request mapping: getCCTVNews belongs to groups: [[ResourceGroup{groupName='getnewscontroller', position=0}]] 
+2018-12-11 at 21:54:36 CST INFO  com.mangofactory.swagger.scanners.ApiListingReferenceScanner 82 scanSpringRequestMappings - Adding resource to group:ResourceGroup{groupName='getnewscontroller', position=0} with description:获取新闻 for handler method:getCCTVNews
+2018-12-11 at 21:54:36 CST INFO  com.mangofactory.swagger.core.RequestMappingEvaluator 74 hasIgnoredAnnotatedRequestMapping - Excluding method as it contains the excluded annotation: interface com.mangofactory.swagger.annotations.ApiIgnore
+2018-12-11 at 21:54:36 CST INFO  com.mangofactory.swagger.core.RequestMappingEvaluator 74 hasIgnoredAnnotatedRequestMapping - Excluding method as it contains the excluded annotation: interface com.mangofactory.swagger.annotations.ApiIgnore
+2018-12-11 at 21:54:36 CST INFO  com.mangofactory.swagger.core.ClassOrApiAnnotationResourceGrouping 50 getResourceGroups - Group for method error was basic-error-controller
+2018-12-11 at 21:54:36 CST INFO  com.mangofactory.swagger.scanners.ApiListingReferenceScanner 78 scanSpringRequestMappings - Request mapping: error belongs to groups: [[ResourceGroup{groupName='basic-error-controller', position=0}]] 
+2018-12-11 at 21:54:36 CST INFO  com.mangofactory.swagger.scanners.ApiListingReferenceScanner 82 scanSpringRequestMappings - Adding resource to group:ResourceGroup{groupName='basic-error-controller', position=0} with description:Basic Error Controller for handler method:error
+2018-12-11 at 21:54:36 CST INFO  com.mangofactory.swagger.core.ClassOrApiAnnotationResourceGrouping 50 getResourceGroups - Group for method errorHtml was basic-error-controller
+2018-12-11 at 21:54:36 CST INFO  com.mangofactory.swagger.scanners.ApiListingReferenceScanner 78 scanSpringRequestMappings - Request mapping: errorHtml belongs to groups: [[ResourceGroup{groupName='basic-error-controller', position=0}]] 
+2018-12-11 at 21:54:36 CST INFO  com.mangofactory.swagger.scanners.ApiListingReferenceScanner 82 scanSpringRequestMappings - Adding resource to group:ResourceGroup{groupName='basic-error-controller', position=0} with description:Basic Error Controller for handler method:errorHtml
+2018-12-11 at 21:54:36 CST INFO  com.mangofactory.swagger.scanners.ApiListingReferenceScanner 96 scanSpringRequestMappings - Created resource listing Path: /default/getnewscontroller Description: getnewscontroller Position: 0
+2018-12-11 at 21:54:36 CST INFO  com.mangofactory.swagger.scanners.ApiListingReferenceScanner 96 scanSpringRequestMappings - Created resource listing Path: /default/basic-error-controller Description: basic-error-controller Position: 0
+2018-12-11 at 21:54:37 CST INFO  com.mangofactory.swagger.core.SwaggerApiResourceListing 89 initialize - Added a resource listing with (2) api resources: 
+2018-12-11 at 21:54:37 CST INFO  com.mangofactory.swagger.core.SwaggerApiResourceListing 93 initialize -   Basic Error Controller at location: /api-docs/default/basic-error-controller
+2018-12-11 at 21:54:37 CST INFO  com.mangofactory.swagger.core.SwaggerApiResourceListing 93 initialize -   获取新闻 at location: /api-docs/default/getnewscontroller
+2018-12-11 at 21:54:37 CST WARN  com.netflix.config.sources.URLConfigurationSource 121 <init> - No URLs will be polled as dynamic configuration sources.
+2018-12-11 at 21:54:37 CST INFO  com.netflix.config.sources.URLConfigurationSource 122 <init> - To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2018-12-11 at 21:54:37 CST WARN  com.netflix.config.sources.URLConfigurationSource 121 <init> - No URLs will be polled as dynamic configuration sources.
+2018-12-11 at 21:54:37 CST INFO  com.netflix.config.sources.URLConfigurationSource 122 <init> - To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2018-12-11 at 21:54:37 CST INFO  org.springframework.web.servlet.handler.AbstractUrlHandlerMapping 373 registerHandler - Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-12-11 at 21:54:37 CST INFO  org.springframework.web.servlet.handler.AbstractUrlHandlerMapping 373 registerHandler - Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-12-11 at 21:54:37 CST INFO  org.springframework.web.servlet.handler.AbstractUrlHandlerMapping 373 registerHandler - Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-12-11 at 21:54:37 CST WARN  org.springframework.boot.starter.redis.RedisStarterDeprecationWarningAutoConfiguration 43 logWarning - spring-boot-starter-redis is deprecated as of Spring Boot 1.4, please migrate to spring-boot-starter-data-redis
+2018-12-11 at 21:54:38 CST INFO  org.springframework.jmx.export.MBeanExporter 433 afterSingletonsInstantiated - Registering beans for JMX exposure on startup
+2018-12-11 at 21:54:38 CST INFO  org.springframework.jmx.export.MBeanExporter 895 autodetect - Bean with name 'refreshScope' has been autodetected for JMX exposure
+2018-12-11 at 21:54:38 CST INFO  org.springframework.jmx.export.MBeanExporter 895 autodetect - Bean with name 'configurationPropertiesRebinder' has been autodetected for JMX exposure
+2018-12-11 at 21:54:38 CST INFO  org.springframework.jmx.export.MBeanExporter 895 autodetect - Bean with name 'environmentManager' has been autodetected for JMX exposure
+2018-12-11 at 21:54:38 CST INFO  org.springframework.jmx.export.MBeanExporter 675 registerBeanInstance - Located managed bean 'environmentManager': registering with JMX server as MBean [org.springframework.cloud.context.environment:name=environmentManager,type=EnvironmentManager]
+2018-12-11 at 21:54:38 CST INFO  org.springframework.jmx.export.MBeanExporter 675 registerBeanInstance - Located managed bean 'refreshScope': registering with JMX server as MBean [org.springframework.cloud.context.scope.refresh:name=refreshScope,type=RefreshScope]
+2018-12-11 at 21:54:38 CST INFO  org.springframework.jmx.export.MBeanExporter 675 registerBeanInstance - Located managed bean 'configurationPropertiesRebinder': registering with JMX server as MBean [org.springframework.cloud.context.properties:name=configurationPropertiesRebinder,context=5489c777,type=ConfigurationPropertiesRebinder]
+2018-12-11 at 21:54:38 CST INFO  org.springframework.context.support.DefaultLifecycleProcessor$LifecycleGroup 356 start - Starting beans in phase 0
+2018-12-11 at 21:54:38 CST INFO  org.springframework.cloud.netflix.eureka.InstanceInfoFactory 71 create - Setting initial instance status as: STARTING
+2018-12-11 at 21:54:38 CST INFO  com.netflix.discovery.DiscoveryClient 349 <init> - Initializing Eureka in region us-east-1
+2018-12-11 at 21:54:39 CST INFO  com.netflix.discovery.provider.DiscoveryJerseyProvider 70 <init> - Using JSON encoding codec LegacyJacksonJson
+2018-12-11 at 21:54:39 CST INFO  com.netflix.discovery.provider.DiscoveryJerseyProvider 71 <init> - Using JSON decoding codec LegacyJacksonJson
+2018-12-11 at 21:54:39 CST INFO  com.netflix.discovery.provider.DiscoveryJerseyProvider 80 <init> - Using XML encoding codec XStreamXml
+2018-12-11 at 21:54:39 CST INFO  com.netflix.discovery.provider.DiscoveryJerseyProvider 81 <init> - Using XML decoding codec XStreamXml
+2018-12-11 at 21:54:39 CST INFO  com.netflix.discovery.shared.resolver.aws.ConfigClusterResolver 43 getClusterEndpoints - Resolving eureka endpoints via configuration
+2018-12-11 at 21:54:39 CST INFO  com.netflix.discovery.DiscoveryClient 958 fetchRegistry - Disable delta property : false
+2018-12-11 at 21:54:39 CST INFO  com.netflix.discovery.DiscoveryClient 959 fetchRegistry - Single vip registry refresh property : null
+2018-12-11 at 21:54:39 CST INFO  com.netflix.discovery.DiscoveryClient 960 fetchRegistry - Force full registry fetch : false
+2018-12-11 at 21:54:39 CST INFO  com.netflix.discovery.DiscoveryClient 961 fetchRegistry - Application is null : false
+2018-12-11 at 21:54:39 CST INFO  com.netflix.discovery.DiscoveryClient 962 fetchRegistry - Registered Applications size is zero : true
+2018-12-11 at 21:54:39 CST INFO  com.netflix.discovery.DiscoveryClient 964 fetchRegistry - Application version is -1: true
+2018-12-11 at 21:54:39 CST INFO  com.netflix.discovery.DiscoveryClient 1047 getAndStoreFullRegistry - Getting all instance registry info from the eureka server
+2018-12-11 at 21:54:39 CST INFO  com.netflix.discovery.DiscoveryClient 1056 getAndStoreFullRegistry - The response status is 200
+2018-12-11 at 21:54:39 CST INFO  com.netflix.discovery.DiscoveryClient 1264 initScheduledTasks - Starting heartbeat executor: renew interval is: 10
+2018-12-11 at 21:54:39 CST INFO  com.netflix.discovery.InstanceInfoReplicator 60 <init> - InstanceInfoReplicator onDemand update allowed rate per min is 4
+2018-12-11 at 21:54:39 CST INFO  com.netflix.discovery.DiscoveryClient 449 <init> - Discovery Client initialized at timestamp 1544536479954 with initial instances count: 3
+2018-12-11 at 21:54:39 CST INFO  org.springframework.cloud.netflix.eureka.serviceregistry.EurekaServiceRegistry 42 register - Registering application news-getserver1 with eureka with status UP
+2018-12-11 at 21:54:39 CST INFO  com.netflix.discovery.DiscoveryClient$3 1299 notify - Saw local status change event StatusChangeEvent [timestamp=1544536479961, current=UP, previous=STARTING]
+2018-12-11 at 21:54:39 CST INFO  com.netflix.discovery.DiscoveryClient 826 register - DiscoveryClient_NEWS-GETSERVER1/DESKTOP-2GGAHBT:news-getserver1:8084: registering service...
+2018-12-11 at 21:54:39 CST INFO  org.springframework.scheduling.annotation.ScheduledAnnotationBeanPostProcessor 276 finishRegistration - No TaskScheduler/ScheduledExecutorService bean found for scheduled processing
+2018-12-11 at 21:54:39 CST INFO  com.mangofactory.swagger.plugin.SwaggerPluginAdapter 60 onApplicationEvent - Skipping SwaggerSpringMvcPlugin initialization already initialized!
+2018-12-11 at 21:54:39 CST INFO  org.apache.juli.logging.DirectJDKLog 180 log - Starting ProtocolHandler ["http-nio-8084"]
+2018-12-11 at 21:54:40 CST INFO  org.apache.juli.logging.DirectJDKLog 180 log - Using a shared selector for servlet write/read
+2018-12-11 at 21:54:40 CST INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer 206 start - Tomcat started on port(s): 8084 (http) with context path ''
+2018-12-11 at 21:54:40 CST INFO  org.springframework.cloud.netflix.eureka.serviceregistry.EurekaAutoServiceRegistration 124 onApplicationEvent - Updating port to 8084
+2018-12-11 at 21:54:40 CST INFO  org.springframework.boot.StartupInfoLogger 59 logStarted - Started NewsGetserverApplication in 9.757 seconds (JVM running for 15.036)
+2018-12-11 at 21:54:40 CST INFO  com.netflix.discovery.DiscoveryClient 835 register - DiscoveryClient_NEWS-GETSERVER1/DESKTOP-2GGAHBT:news-getserver1:8084 - registration status: 204
+2018-12-11 at 21:59:39 CST INFO  com.netflix.discovery.shared.resolver.aws.ConfigClusterResolver 43 getClusterEndpoints - Resolving eureka endpoints via configuration
+2018-12-11 at 22:00:00 CST ERROR com.masterchengzi.newsgetserver.server.impl.GetNewsImpl 110 getJuheNews - 超过请求次数
+2018-12-11 at 22:00:00 CST ERROR com.masterchengzi.newsgetserver.server.impl.GetNewsImpl 110 getJuheNews - 超过请求次数
+2018-12-11 at 22:00:00 CST ERROR com.masterchengzi.newsgetserver.server.impl.GetNewsImpl 110 getJuheNews - 超过请求次数
+2018-12-11 at 22:00:00 CST ERROR com.masterchengzi.newsgetserver.server.impl.GetNewsImpl 110 getJuheNews - 超过请求次数
+2018-12-11 at 22:00:00 CST ERROR com.masterchengzi.newsgetserver.server.impl.GetNewsImpl 110 getJuheNews - 超过请求次数
+2018-12-11 at 22:00:00 CST ERROR com.masterchengzi.newsgetserver.server.impl.GetNewsImpl 110 getJuheNews - 超过请求次数
+2018-12-11 at 22:00:00 CST ERROR com.masterchengzi.newsgetserver.server.impl.GetNewsImpl 110 getJuheNews - 超过请求次数

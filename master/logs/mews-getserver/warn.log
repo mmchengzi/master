@@ -1,0 +1,10 @@
+2018-12-11 at 21:54:37 CST WARN  com.netflix.config.sources.URLConfigurationSource 121 <init> - No URLs will be polled as dynamic configuration sources.
+2018-12-11 at 21:54:37 CST WARN  com.netflix.config.sources.URLConfigurationSource 121 <init> - No URLs will be polled as dynamic configuration sources.
+2018-12-11 at 21:54:37 CST WARN  org.springframework.boot.starter.redis.RedisStarterDeprecationWarningAutoConfiguration 43 logWarning - spring-boot-starter-redis is deprecated as of Spring Boot 1.4, please migrate to spring-boot-starter-data-redis
+2018-12-11 at 22:00:00 CST ERROR com.masterchengzi.newsgetserver.server.impl.GetNewsImpl 110 getJuheNews - 超过请求次数
+2018-12-11 at 22:00:00 CST ERROR com.masterchengzi.newsgetserver.server.impl.GetNewsImpl 110 getJuheNews - 超过请求次数
+2018-12-11 at 22:00:00 CST ERROR com.masterchengzi.newsgetserver.server.impl.GetNewsImpl 110 getJuheNews - 超过请求次数
+2018-12-11 at 22:00:00 CST ERROR com.masterchengzi.newsgetserver.server.impl.GetNewsImpl 110 getJuheNews - 超过请求次数
+2018-12-11 at 22:00:00 CST ERROR com.masterchengzi.newsgetserver.server.impl.GetNewsImpl 110 getJuheNews - 超过请求次数
+2018-12-11 at 22:00:00 CST ERROR com.masterchengzi.newsgetserver.server.impl.GetNewsImpl 110 getJuheNews - 超过请求次数
+2018-12-11 at 22:00:00 CST ERROR com.masterchengzi.newsgetserver.server.impl.GetNewsImpl 110 getJuheNews - 超过请求次数
