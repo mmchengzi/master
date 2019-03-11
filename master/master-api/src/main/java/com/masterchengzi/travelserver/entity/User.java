@@ -4,6 +4,7 @@ import lombok.Data;
 import lombok.extern.java.Log;
 
 import java.util.Date;
+
 @Data
 @Log
 public class User {
@@ -14,7 +15,7 @@ public class User {
     private String username;
 
     private String password;
-
+    private String openid;
     private String salt;
 
     private String name;
