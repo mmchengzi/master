@@ -3,6 +3,7 @@ package com.masterchengzi.travelserver.controller;
 import com.masterchengzi.mastercommon.common.JsonResult;
 import com.masterchengzi.travelserver.entity.User;
 import com.masterchengzi.travelserver.service.UserService;
+import com.masterchengzi.travelserver.service.WxService;
 import com.wordnik.swagger.annotations.Api;
 import com.wordnik.swagger.annotations.ApiOperation;
 import com.wordnik.swagger.annotations.ApiParam;
@@ -18,6 +19,8 @@ import java.util.List;
 public class UserController {
     @Autowired
     private UserService service;
+    @Autowired
+    private WxService wxService;
 
     @ApiOperation(value = "查询用户列表")
     @GetMapping("/getList")
@@ -27,7 +30,7 @@ public class UserController {
                               @RequestParam(value = "phone", required = false) String phone,
                               @RequestParam(value = "beginTime", required = false) Date beginTime,
                               @RequestParam(value = "endTime", required = false) Date endTime) {
-        return service.getList(userId, username,email,phone, beginTime, endTime);
+        return service.getList(userId, username, email, phone, beginTime, endTime);
     }
 
     @ApiOperation(value = "分页查询用户")
@@ -40,7 +43,7 @@ public class UserController {
                                   @RequestParam(value = "endTime", required = false) Date endTime,
                                   @RequestParam(name = "pageNum", required = false) int pageNum,
                                   @RequestParam(name = "pageSize", required = false) int pageSize) {
-        return service.getPage(userId, username,email,phone, beginTime, endTime, pageNum, pageSize);
+        return service.getPage(userId, username, email, phone, beginTime, endTime, pageNum, pageSize);
     }
 
     @ApiOperation(value = "删除用户")
@@ -65,7 +68,7 @@ public class UserController {
     @ApiOperation(value = "邮件订阅")
     @PostMapping("/subscrib")
     public JsonResult subscrib(@RequestParam(value = "content", required = false) String content,
-                                    @RequestParam(value = "code", required = false) String code) {
+                               @RequestParam(value = "code", required = false) String code) {
         return service.subscrib(content, code);
     }
 
@@ -74,4 +77,11 @@ public class UserController {
     public JsonResult sendCode(@RequestParam(value = "content", required = false) String content) {
         return service.sendCode(content);
     }
+
+    @ApiOperation(value = "微信登陆")
+    @GetMapping("/wxlogin")
+    public JsonResult wxlogin(@RequestParam(value = "code", required = false) String code) {
+        return wxService.login(code);
+    }
+
 }

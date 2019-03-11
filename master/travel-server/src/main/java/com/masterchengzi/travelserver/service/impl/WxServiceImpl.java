@@ -25,9 +25,6 @@ public class WxServiceImpl implements WxService {
             JSONObject jsonObject = HttpUtils.getRequestFromUrl(url);
             String openid = jsonObject.getString("openid");
             String session_key = jsonObject.getString("session_key");
-            String unionid = jsonObject.getString("unionid");
-            int errcode = jsonObject.getInt("errcode");
-            String errmsg = jsonObject.getString("errmsg");
             return new JsonResult(ResultCode.SUCCESS, "成功", jsonObject);
         } catch (IOException e) {
             e.printStackTrace();
