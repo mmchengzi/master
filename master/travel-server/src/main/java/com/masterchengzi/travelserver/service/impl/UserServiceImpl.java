@@ -39,9 +39,9 @@ public class UserServiceImpl implements UserService {
     private String templateId;
 
     @Override
-    public JsonResult getList(Integer userId, String username, String email,String phone, Date beginTime, Date endTime) {
+    public JsonResult getList(Integer userId, String username,String openid, String email,String phone, Date beginTime, Date endTime) {
         try {
-            List<User> resultList = dao.getList(userId, username, email,phone, beginTime, endTime);
+            List<User> resultList = dao.getList(userId, username, openid, email,phone, beginTime, endTime);
             return new JsonResult(ResultCode.SUCCESS, "成功", resultList);
         } catch (Exception e) {
             e.printStackTrace();
@@ -50,10 +50,10 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public JsonResult getPage(Integer userId, String username, String email,String phone, Date beginTime, Date endTime, Integer pageNum, Integer pageSize) {
+    public JsonResult getPage(Integer userId, String username, String openid,String email,String phone, Date beginTime, Date endTime, Integer pageNum, Integer pageSize) {
         try {
             PageHelper.startPage(pageNum, pageSize);
-            List<User> resultList = dao.getList(userId, username, email, phone,beginTime, endTime);
+            List<User> resultList = dao.getList(userId, username, openid,email, phone,beginTime, endTime);
             PageInfo<User> resultPage = new PageInfo<>(resultList);
             return new JsonResult(ResultCode.SUCCESS, "成功", resultPage);
         } catch (Exception e) {
@@ -80,7 +80,7 @@ public class UserServiceImpl implements UserService {
             SnowflakeIdWorker idWorker = new SnowflakeIdWorker(0, 0);
             if (record != null && record.size() > 0) {
                 for (User dto : record) {
-                    List<User> rlt = dao.getList(null, dto.getUsername(), dto.getEmail(),dto.getPhone(), null, null);
+                    List<User> rlt = dao.getList(null, dto.getUsername(),null, dto.getEmail(),dto.getPhone(), null, null);
                     if (rlt != null && rlt.size() > 0) continue;
                     dto.setId((int) idWorker.nextId());
                     int r = dao.insert(dto);
@@ -126,11 +126,11 @@ public class UserServiceImpl implements UserService {
                 if (CheckCommon.checkEmail(content)) {
                     tag="邮箱号";
                     u.setEmail(content);
-                    user = dao.getList(null, content,null, null, null, null);
+                    user = dao.getList(null, content,null, null,null, null, null);
                 } else if (CheckCommon.checkMobileNumber(content)) {
                     tag="手机号";
                     u.setPhone(content);
-                    user = dao.getList(null,null, content, null, null, null);
+                    user = dao.getList(null,null,null, content, null, null, null);
                 }
                 if (user.size() <=0) {
                     int ret = dao.insert(u);

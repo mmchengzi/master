@@ -35,6 +35,9 @@
             <if test="email!= null">
                 AND email = #{email}
             </if>
+            <if test="openid!= null">
+                AND openid = #{openid}
+            </if>
             <if test="phone!= null">
                 AND phone = #{phone}
             </if>

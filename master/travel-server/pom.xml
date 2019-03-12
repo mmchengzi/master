@@ -161,6 +161,10 @@
             <artifactId>spring-context-support</artifactId>
             <version>3.2.9.RELEASE</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+        </dependency>
     </dependencies>
 
 
