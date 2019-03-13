@@ -4,14 +4,17 @@
   <resultMap id="BaseResultMap" type="com.masterchengzi.travelserver.entity.Item" >
     <id column="item_id" property="itemId" jdbcType="INTEGER" />
     <result column="item_name" property="itemName" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="parent_id" property="parentId" jdbcType="INTEGER" />
     <result column="type" property="type" jdbcType="VARCHAR" />
+    <result column="price" property="price" jdbcType="DECIMAL" />
     <result column="content" property="content" jdbcType="VARCHAR" />
     <result column="creat_time" property="creatTime" jdbcType="TIMESTAMP" />
     <result column="begin_time" property="beginTime" jdbcType="TIMESTAMP" />
     <result column="end_time" property="endTime" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Base_Column_List" >
-    item_id, item_name,type, content, creat_time, begin_time, end_time
+    item_id, item_name,user_id,parent_id,type,price, content, creat_time, begin_time, end_time
   </sql>
   <select id="getList" resultMap="BaseResultMap" parameterType="Map" >
     select
@@ -23,6 +26,9 @@
       </if>
       <if test="itemName!= null">
         AND item_name = #{itemName}
+      </if>
+      <if test="parentId!= null">
+        AND parent_id = #{parentId}
       </if>
       <if test="type!= null">
         AND type = #{type}
@@ -44,10 +50,10 @@
     where item_id = #{itemId,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.masterchengzi.travelserver.entity.Item" >
-    insert into item (item_id, item_name,type, content,
+    insert into item (item_id, item_name,user_id,parent_id,type,price, content,
       creat_time, begin_time, end_time
       )
-    values (#{itemId,jdbcType=INTEGER},#{itemName,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR},
+    values (#{itemId,jdbcType=INTEGER},#{itemName,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER},#{parentId,jdbcType=INTEGER},#{type,jdbcType=VARCHAR},#{price,jdbcType=DECIMAL}, #{content,jdbcType=VARCHAR},
       #{creatTime,jdbcType=TIMESTAMP}, #{beginTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP}
       )
   </insert>
@@ -57,8 +63,17 @@
       <if test="itemName != null" >
         item_name = #{itemName,jdbcType=VARCHAR},
       </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="parentId != null" >
+        parent_id = #{parentId,jdbcType=VARCHAR},
+      </if>
       <if test="type != null" >
         type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        price = #{price,jdbcType=DECIMAL},
       </if>
       <if test="content != null" >
         content = #{content,jdbcType=VARCHAR},

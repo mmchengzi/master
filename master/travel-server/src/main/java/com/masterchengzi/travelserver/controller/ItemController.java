@@ -24,22 +24,24 @@ public class ItemController {
 	@GetMapping("/getList")
 	public JsonResult getList(@RequestParam(value = "itemId", required = false) Integer itemId,
 							  @RequestParam(value = "itemName", required = false) String itemName,
+							  @RequestParam(value = "parentId", required = false) Integer parentId,
 							  @RequestParam(value = "type", required = false) String type,
 							  @RequestParam(value = "beginTime", required = false) Date beginTime,
 							  @RequestParam(value = "endTime", required = false) Date endTime) {
-		return service.getList(itemId, itemName, type, beginTime, endTime);
+		return service.getList(itemId, itemName,  parentId,type, beginTime, endTime);
 	}
 
 	@ApiOperation(value = "分页查询活动项目")
 	@GetMapping("/getPage")
 	public JsonResult getPageNews(@RequestParam(value = "itemId", required = false) Integer itemId,
 								  @RequestParam(value = "itemName", required = false) String itemName,
+								  @RequestParam(value = "parentId", required = false) Integer parentId,
 								  @RequestParam(value = "type", required = false) String type,
 								  @RequestParam(value = "beginTime", required = false) Date beginTime,
 								  @RequestParam(value = "endTime", required = false) Date endTime,
 								  @RequestParam(name = "pageNum", required = false) int pageNum,
 								  @RequestParam(name = "pageSize", required = false) int pageSize) {
-		return service.getPage(itemId, itemName, type, beginTime, endTime, pageNum, pageSize);
+		return service.getPage(itemId, itemName,parentId, type, beginTime, endTime, pageNum, pageSize);
 	}
 
 	@ApiOperation(value = "删除活动项目")

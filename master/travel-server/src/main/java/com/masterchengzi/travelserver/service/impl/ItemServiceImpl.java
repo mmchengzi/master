@@ -20,9 +20,9 @@ public class ItemServiceImpl implements ItemService {
 	@Autowired
 	private ItemDao dao;
 	@Override
-	public JsonResult getList(Integer itemId, String itemName,String type, Date beginTime, Date endTime) {
+	public JsonResult getList(Integer itemId, String itemName,Integer parentId,String type, Date beginTime, Date endTime) {
 		try {
-			List<Item> resultList = dao.getList(itemId,itemName, type, beginTime, endTime);
+			List<Item> resultList = dao.getList(itemId,itemName,parentId, type, beginTime, endTime);
 			return new JsonResult(ResultCode.SUCCESS, "成功", resultList);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -31,10 +31,10 @@ public class ItemServiceImpl implements ItemService {
 	}
 
 	@Override
-	public JsonResult getPage(Integer itemId, String itemName,String type, Date beginTime, Date endTime, Integer pageNum, Integer pageSize) {
+	public JsonResult getPage(Integer itemId, String itemName,Integer parentId,String type, Date beginTime, Date endTime, Integer pageNum, Integer pageSize) {
 		try {
 			PageHelper.startPage(pageNum, pageSize);
-			List<Item> resultList = dao.getList(itemId,itemName ,type, beginTime, endTime);
+			List<Item> resultList = dao.getList(itemId,itemName ,parentId,type, beginTime, endTime);
 			PageInfo<Item> resultPage = new PageInfo<>(resultList);
 			return new JsonResult(ResultCode.SUCCESS, "成功", resultPage);
 		} catch (Exception e) {
@@ -61,7 +61,7 @@ public class ItemServiceImpl implements ItemService {
 			SnowflakeIdWorker idWorker = new SnowflakeIdWorker(0, 0);
 			if (record != null && record.size() > 0) {
 				for (Item dto : record) {
-					List<Item> rlt = dao.getList(null,dto.getItemName(),dto.getType(),dto.getBeginTime(),dto.getEndTime());
+					List<Item> rlt = dao.getList(null,dto.getItemName(),null,dto.getType(),dto.getBeginTime(),dto.getEndTime());
 					if (rlt != null && rlt.size() > 0) continue;
 					dto.setItemId((int) idWorker.nextId());
 					int r = dao.insert(dto);

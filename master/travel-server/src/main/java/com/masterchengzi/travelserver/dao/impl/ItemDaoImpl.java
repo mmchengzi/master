@@ -17,10 +17,11 @@ public class ItemDaoImpl implements ItemDao {
     private ItemMapper itemMapper;
 
     @Override
-    public List<Item> getList(Integer itemId,String itemName, String type, Date beginTime, Date endTime) {
+    public List<Item> getList(Integer itemId,String itemName,Integer parentId, String type, Date beginTime, Date endTime) {
         Map map = new HashMap();
         map.put("itemId", itemId);
         map.put("itemName", itemName);
+        map.put("parentId", parentId);
         map.put("type", type);
         map.put("beginTime", beginTime);
         map.put("endTime", endTime);
