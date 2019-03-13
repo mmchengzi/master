@@ -4,12 +4,14 @@
   <resultMap id="BaseResultMap" type="com.masterchengzi.travelserver.entity.UserOperate" >
     <id column="user_id" property="userId" jdbcType="INTEGER" />
     <id column="item_id" property="itemId" jdbcType="INTEGER" />
+    <result column="partner_id" property="partnerId" jdbcType="INTEGER" />
     <result column="evaluate" property="evaluate" jdbcType="VARCHAR" />
+    <result column="version" property="version" jdbcType="VARCHAR" />
     <result column="tag" property="tag" jdbcType="VARCHAR" />
     <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Base_Column_List" >
-    user_id, item_id, evaluate, tag, create_time
+    user_id, item_id,partner_id,version, evaluate, tag, create_time
   </sql>
   <select id="getList" resultMap="BaseResultMap" parameterType="Map" >
     select
@@ -18,6 +20,12 @@
     <where>
       <if test="userId != null and itemId != null">
         AND  id = #{userId,jdbcType=INTEGER} and item_id = #{itemId,jdbcType=INTEGER}
+      </if>
+      <if test="partnerId != null">
+        AND  partner_id = #{partnerId,jdbcType=INTEGER}
+      </if>
+      <if test="version != null">
+        AND  version = #{version,jdbcType=VARCHAR}
       </if>
       <if test="beginTime != null">
         AND create_time <![CDATA[>=]]> #{beginTime}
@@ -31,11 +39,12 @@
     delete from user_operate
     where user_id = #{userId,jdbcType=INTEGER}
       and item_id = #{itemId,jdbcType=INTEGER}
+      and version = #{version,jdbcType=VARCHAR}
   </delete>
   <insert id="insert" parameterType="com.masterchengzi.travelserver.entity.UserOperate" >
-    insert into user_operate (user_id, item_id, evaluate,
+    insert into user_operate (user_id, item_id, evaluate,partner_id,version
       tag, create_time)
-    values (#{userId,jdbcType=INTEGER}, #{itemId,jdbcType=INTEGER}, #{evaluate,jdbcType=VARCHAR},
+    values (#{userId,jdbcType=INTEGER}, #{itemId,jdbcType=INTEGER}, #{evaluate,jdbcType=VARCHAR},#{partnerId,jdbcType=INTEGER},#{version,jdbcType=VARCHAR},
       #{tag,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP})
   </insert>
   <update id="update" parameterType="com.masterchengzi.travelserver.entity.UserOperate" >
@@ -47,11 +56,18 @@
       <if test="tag != null" >
         tag = #{tag,jdbcType=VARCHAR},
       </if>
+      <if test="partnerId != null" >
+        partner_id = #{partnerId,jdbcType=INTEGER},
+      </if>
+      <if test="version != null" >
+        version = #{version,jdbcType=VARCHAR},
+     </if>
       <if test="createTime != null" >
         create_time = #{createTime,jdbcType=TIMESTAMP},
       </if>
     </set>
     where user_id = #{userId,jdbcType=INTEGER}
       and item_id = #{itemId,jdbcType=INTEGER}
+    and version = #{version,jdbcType=VARCHAR}
   </update>
 </mapper>

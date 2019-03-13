@@ -1,7 +1,6 @@
 package com.masterchengzi.travelserver.controller;
 
 import com.masterchengzi.mastercommon.common.JsonResult;
-import com.masterchengzi.travelserver.entity.User;
 import com.masterchengzi.travelserver.entity.UserOperate;
 import com.masterchengzi.travelserver.service.UserOperateService;
 import com.wordnik.swagger.annotations.Api;
@@ -25,26 +24,32 @@ public class UserOperateController {
 	@GetMapping("/getList")
 	public JsonResult getList(@RequestParam(value = "userId", required = false) Integer userId,
 							  @RequestParam(value = "itemId", required = false) Integer itemId,
+							  @RequestParam(name = "partnerId", required = false) Integer partnerId,
+							  @RequestParam(name = "version", required = false) String version,
 							  @RequestParam(value = "beginTime", required = false) Date beginTime,
 							  @RequestParam(value = "endTime", required = false) Date endTime) {
-		return service.getList(userId, itemId, beginTime, endTime);
+		return service.getList(userId, itemId, partnerId, version, beginTime, endTime);
 	}
 
 	@ApiOperation(value = "分页查询用户活动")
 	@GetMapping("/getPage")
 	public JsonResult getPageNews(@RequestParam(value = "userId", required = false) Integer userId,
 								  @RequestParam(value = "itemId", required = false) Integer itemId,
+								  @RequestParam(name = "partnerId", required = false) Integer partnerId,
+								  @RequestParam(name = "version", required = false) String version,
 								  @RequestParam(value = "beginTime", required = false) Date beginTime,
 								  @RequestParam(value = "endTime", required = false) Date endTime,
 								  @RequestParam(name = "pageNum", required = false) int pageNum,
 								  @RequestParam(name = "pageSize", required = false) int pageSize) {
-		return service.getPage(userId, itemId, beginTime, endTime, pageNum, pageSize);
+		return service.getPage(userId, itemId, partnerId, version, beginTime, endTime, pageNum, pageSize);
 	}
 
 	@ApiOperation(value = "删除用户活动")
 	@DeleteMapping("/delete")
-	public JsonResult delete(@RequestParam(name = "userId") Integer userId, @RequestParam(name = "itemId") Integer itemId) {
-		return service.delete(userId,itemId);
+	public JsonResult delete(@RequestParam(name = "userId") Integer userId,
+							 @RequestParam(name = "itemId") Integer itemId,
+							 @RequestParam(name = "version") String version) {
+		return service.delete(userId, itemId, version);
 	}
 
 	@ResponseBody
