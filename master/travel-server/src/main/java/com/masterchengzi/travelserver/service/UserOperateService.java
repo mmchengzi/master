@@ -12,5 +12,5 @@ public interface UserOperateService {
     JsonResult delete(Integer userId, Integer itemId,String version);
     JsonResult insert(List<UserOperate> record);
     JsonResult update(List<UserOperate>record);
-    JsonResult signUp(Integer userId, Integer itemId,String version);
+    JsonResult signUp(Integer userId,String sex, Integer itemId,String version);
 }

@@ -1,5 +1,6 @@
 package com.masterchengzi.travelserver.service.impl;
 
+import com.alibaba.fastjson.JSON;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.masterchengzi.mastercommon.common.JsonResult;
@@ -11,9 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 @Service
@@ -95,14 +94,20 @@ public class UserOperateServiceImpl implements UserOperateService {
 	}
 
 	@Override
-	public JsonResult signUp(Integer userId, Integer itemId, String version) {
+	public JsonResult signUp(Integer userId,String sex, Integer itemId, String version) {
 		try {
-			String key = stringRedisTemplate.opsForValue().get("HD活动报名"+String.valueOf(version)+"-"+userId+"*");
+			String key = "HD活动报名"+String.valueOf(version)+"-"+userId+"*";
 			Set<String> keys=stringRedisTemplate.keys(key);
 			if(keys!=null&&keys.size()>0){
 				stringRedisTemplate.delete(keys);
 			}
-			stringRedisTemplate.opsForValue().set("HD活动报名"+String.valueOf(version)+"-"+userId+"-"+String.valueOf(itemId), String.valueOf(userId));//添加redis
+			Map map=new HashMap();
+			map.put("userId",userId);
+			map.put("itemId",itemId);
+			map.put("version",version);
+			map.put("sex",sex);
+			String  value= JSON.toJSONString(map);
+			stringRedisTemplate.opsForValue().set("HD活动报名"+String.valueOf(version)+"-"+userId+"-"+String.valueOf(itemId), value);//添加redis
 			return new JsonResult(ResultCode.SUCCESS, "报名成功");
 		} catch (Exception e) {
 			e.printStackTrace();
