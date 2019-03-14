@@ -114,4 +114,30 @@ public class UserOperateServiceImpl implements UserOperateService {
 			return new JsonResult(ResultCode.EXCEPTION, e.getMessage());
 		}
 	}
+
+	@Override
+	public JsonResult getRedis(String key) {
+		try {
+		String result=	stringRedisTemplate.opsForValue().get(key);//添加redis
+			return new JsonResult(ResultCode.SUCCESS, "成功",result);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new JsonResult(ResultCode.EXCEPTION, e.getMessage());
+		}
+	}
+
+	@Override
+	public JsonResult deleteRedis(String key) {
+		try {
+			Set<String> keys=stringRedisTemplate.keys(key);
+			Long result=0L;
+			if(keys!=null&&keys.size()>0){
+				result=stringRedisTemplate.delete(keys);
+			}
+			return new JsonResult(ResultCode.SUCCESS, "成功",result);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new JsonResult(ResultCode.EXCEPTION, e.getMessage());
+		}
+	}
 }

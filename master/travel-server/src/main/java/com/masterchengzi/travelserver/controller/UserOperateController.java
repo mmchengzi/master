@@ -64,4 +64,14 @@ public class UserOperateController {
 	public JsonResult update(@ApiParam(value = "List<UserOperate>") @RequestBody List<UserOperate> record) {
 		return service.update(record);
 	}
+	@ApiOperation(value = "redis 查询")
+	@GetMapping("/getRedis")
+	public JsonResult getRedis(@RequestParam(value = "key", required = false) String key) {
+		return service.getRedis(key);
+	}
+	@ApiOperation(value = "deleteRedis 可以模糊匹配删除")
+	@DeleteMapping("/deleteRedis")
+	public JsonResult deleteRedis(@RequestParam(value = "key", required = false) String key){
+		return service.deleteRedis(key);
+	}
 }

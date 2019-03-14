@@ -13,4 +13,6 @@ public interface UserOperateService {
     JsonResult insert(List<UserOperate> record);
     JsonResult update(List<UserOperate>record);
     JsonResult signUp(Integer userId,String sex, Integer itemId,String version);
+    JsonResult getRedis(String key);
+    JsonResult deleteRedis(String key);
 }
