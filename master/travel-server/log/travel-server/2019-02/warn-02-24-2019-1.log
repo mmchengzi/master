@@ -1,0 +1,36 @@
+2019-02-24 at 11:31:37 CST WARN  org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer 86 logDuplicateJsonObjectsWarning - 
+
+Found multiple occurrences of org.json.JSONObject on the class path:
+
+	jar:file:/F:/development/m2/repository/org/json/json/20171018/json-20171018.jar!/org/json/JSONObject.class
+	jar:file:/F:/development/m2/repository/com/vaadin/external/google/android-json/0.0.20131108.vaadin1/android-json-0.0.20131108.vaadin1.jar!/org/json/JSONObject.class
+
+You may wish to exclude one of them to ensure predictable runtime behavior
+
+2019-02-24 at 11:31:47 CST WARN  com.netflix.config.sources.URLConfigurationSource 121 <init> - No URLs will be polled as dynamic configuration sources.
+2019-02-24 at 11:31:47 CST WARN  com.netflix.config.sources.URLConfigurationSource 121 <init> - No URLs will be polled as dynamic configuration sources.
+2019-02-24 at 11:31:49 CST WARN  org.springframework.boot.starter.redis.RedisStarterDeprecationWarningAutoConfiguration 43 logWarning - spring-boot-starter-redis is deprecated as of Spring Boot 1.4, please migrate to spring-boot-starter-data-redis
+2019-02-24 at 11:40:31 CST WARN  org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer 86 logDuplicateJsonObjectsWarning - 
+
+Found multiple occurrences of org.json.JSONObject on the class path:
+
+	jar:file:/F:/development/m2/repository/org/json/json/20171018/json-20171018.jar!/org/json/JSONObject.class
+	jar:file:/F:/development/m2/repository/com/vaadin/external/google/android-json/0.0.20131108.vaadin1/android-json-0.0.20131108.vaadin1.jar!/org/json/JSONObject.class
+
+You may wish to exclude one of them to ensure predictable runtime behavior
+
+2019-02-24 at 11:40:40 CST WARN  com.netflix.config.sources.URLConfigurationSource 121 <init> - No URLs will be polled as dynamic configuration sources.
+2019-02-24 at 11:40:40 CST WARN  com.netflix.config.sources.URLConfigurationSource 121 <init> - No URLs will be polled as dynamic configuration sources.
+2019-02-24 at 11:40:43 CST WARN  org.springframework.boot.starter.redis.RedisStarterDeprecationWarningAutoConfiguration 43 logWarning - spring-boot-starter-redis is deprecated as of Spring Boot 1.4, please migrate to spring-boot-starter-data-redis
+2019-02-24 at 11:45:28 CST WARN  org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer 86 logDuplicateJsonObjectsWarning - 
+
+Found multiple occurrences of org.json.JSONObject on the class path:
+
+	jar:file:/F:/development/m2/repository/org/json/json/20171018/json-20171018.jar!/org/json/JSONObject.class
+	jar:file:/F:/development/m2/repository/com/vaadin/external/google/android-json/0.0.20131108.vaadin1/android-json-0.0.20131108.vaadin1.jar!/org/json/JSONObject.class
+
+You may wish to exclude one of them to ensure predictable runtime behavior
+
+2019-02-24 at 11:45:37 CST WARN  com.netflix.config.sources.URLConfigurationSource 121 <init> - No URLs will be polled as dynamic configuration sources.
+2019-02-24 at 11:45:37 CST WARN  com.netflix.config.sources.URLConfigurationSource 121 <init> - No URLs will be polled as dynamic configuration sources.
+2019-02-24 at 11:45:39 CST WARN  org.springframework.boot.starter.redis.RedisStarterDeprecationWarningAutoConfiguration 43 logWarning - spring-boot-starter-redis is deprecated as of Spring Boot 1.4, please migrate to spring-boot-starter-data-redis
