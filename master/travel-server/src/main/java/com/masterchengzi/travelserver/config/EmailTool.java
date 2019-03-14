@@ -40,7 +40,7 @@ public class EmailTool {
             Context context = new Context();
             context.setVariables(valueMap);
           // String content = this.templateEngine.process("mail", context);
-            String content = "【交友旅游】尊敬的用户，您好，您正在注册交友旅游网站，验证码为："+valueMap.get("content").toString()+"，若非本人操作请忽略此邮件。";
+            String content = valueMap.get("content").toString();
             helper.setText(content, true);
             // 添加附件
             if (valueMap.get("filePathList") != null) {

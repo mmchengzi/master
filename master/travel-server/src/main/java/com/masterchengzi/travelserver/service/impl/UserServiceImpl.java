@@ -173,8 +173,8 @@ public class UserServiceImpl implements UserService {
             Map<String, Object> valueMap = new HashMap<>();
             valueMap.put("to", new String[]{email});
             valueMap.put("title", "注册交友旅游");
-            valueMap.put("content", code);
-            valueMap.put("filePathList", null);
+            valueMap.put("content", "【交友旅游】尊敬的用户，您好，您正在注册交友旅游网站，验证码为："+code+"，若非本人操作请忽略此邮件。");
+            valueMap.put("filePathList", null );
             emailTool.sendSimpleMail(valueMap);
             return new JsonResult(ResultCode.SUCCESS, "验证码发送成功！");
         } catch (Exception e) {
