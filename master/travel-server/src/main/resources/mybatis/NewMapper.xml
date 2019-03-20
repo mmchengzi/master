@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.masterchengzi.travelserver.mapper.NewMapper" >
+  <resultMap id="BaseResultMap" type="com.masterchengzi.travelserver.entity.New" >
+    <id column="new_id" property="newId" jdbcType="INTEGER" />
+    <result column="parent_id" property="parentId" jdbcType="INTEGER" />
+    <result column="open_id" property="openId" jdbcType="VARCHAR" />
+    <result column="content" property="content" jdbcType="VARCHAR" />
+    <result column="images" property="images" jdbcType="VARCHAR" />
+    <result column="tag" property="tag" jdbcType="VARCHAR" />
+    <result column="createTime" property="createtime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    new_id, parent_id, open_id, content, images, tag, createTime
+  </sql>
+  <select id="getList" resultMap="BaseResultMap" parameterType="Map" >
+    select 
+    <include refid="Base_Column_List" />
+    from new
+    <where>
+      <if test="newId != null">
+        AND new_id = #{newId}
+      </if>
+      <if test="parentId!= null">
+        AND parent_id = #{parentId}
+      </if>
+      <if test="openId!= null">
+        AND open_id = #{openId}
+      </if>
+      <if test="beginTime != null">
+        AND createTime <![CDATA[>=]]> #{beginTime}
+      </if>
+      <if test="endTime != null">
+        AND createTime <![CDATA[<=]]>#{endTime}
+      </if>
+    </where>
+  </select>
+  <delete id="delete" parameterType="Map" >
+    delete from new
+    <where>
+      <if test="newId != null">
+        AND new_id = #{newId}
+      </if>
+      <if test="parentId!= null">
+        AND parent_id = #{parentId}
+      </if>
+      <if test="openId!= null">
+        AND open_id = #{openId}
+      </if>
+    </where>
+  </delete>
+  <insert id="insert" parameterType="com.masterchengzi.travelserver.entity.New" >
+    insert into new (new_id, parent_id, open_id, 
+      content, images, tag, 
+      createTime)
+    values (#{newId,jdbcType=INTEGER}, #{parentId,jdbcType=INTEGER}, #{openId,jdbcType=VARCHAR}, 
+      #{content,jdbcType=VARCHAR}, #{images,jdbcType=VARCHAR}, #{tag,jdbcType=VARCHAR}, 
+      #{createtime,jdbcType=TIMESTAMP})
+  </insert>
+  <update id="update" parameterType="com.masterchengzi.travelserver.entity.New" >
+    update new
+    <set >
+      <if test="parentId != null" >
+        parent_id = #{parentId,jdbcType=INTEGER},
+      </if>
+      <if test="openId != null" >
+        open_id = #{openId,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="images != null" >
+        images = #{images,jdbcType=VARCHAR},
+      </if>
+      <if test="tag != null" >
+        tag = #{tag,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where new_id = #{newId,jdbcType=INTEGER}
+  </update>
+</mapper>
