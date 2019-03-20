@@ -15,9 +15,9 @@ public class UserOperateDaoImpl implements UserOperateDao {
     @Autowired
     private UserOperateMapper mapper;
     @Override
-    public List<UserOperate> getList(Integer userId, Integer itemId,Integer partnerId,String version, Date beginTime, Date endTime) {
+    public List<UserOperate> getList(String openId, Integer itemId,String partnerId,String version, Date beginTime, Date endTime) {
         Map map = new HashMap();
-        map.put("userId", userId);
+        map.put("openId", openId);
         map.put("itemId", itemId);
         map.put("partnerId", partnerId);
         map.put("version", version);
@@ -27,9 +27,9 @@ public class UserOperateDaoImpl implements UserOperateDao {
     }
 
     @Override
-    public int delete(Integer userId, Integer itemId,String version) {
+    public int delete(String openId, Integer itemId,String version) {
         Map map = new HashMap();
-        map.put("userId", userId);
+        map.put("openId", openId);
         map.put("itemId", itemId);
         map.put("version", version);
         return mapper.delete(map);

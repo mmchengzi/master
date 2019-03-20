@@ -1,6 +1,7 @@
 package com.masterchengzi.travelserver.service.impl;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.masterchengzi.mastercommon.common.JsonResult;
@@ -22,9 +23,9 @@ public class UserOperateServiceImpl implements UserOperateService {
 	@Autowired
 	private StringRedisTemplate stringRedisTemplate;
 	@Override
-	public JsonResult getList(Integer userId, Integer itemId,Integer partnerId,String version, Date beginTime, Date endTime) {
+	public JsonResult getList(String openId, Integer itemId,String partnerId,String version, Date beginTime, Date endTime) {
 		try {
-			List<UserOperate> resultList = dao.getList(userId, itemId,partnerId,version, beginTime, endTime);
+			List<UserOperate> resultList = dao.getList(openId, itemId,partnerId,version, beginTime, endTime);
 			return new JsonResult(ResultCode.SUCCESS, "成功", resultList);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -33,10 +34,10 @@ public class UserOperateServiceImpl implements UserOperateService {
 	}
 
 	@Override
-	public JsonResult getPage(Integer userId, Integer itemId,Integer partnerId,String version, Date beginTime, Date endTime, Integer pageNum, Integer pageSize) {
+	public JsonResult getPage(String openId, Integer itemId,String partnerId,String version, Date beginTime, Date endTime, Integer pageNum, Integer pageSize) {
 		try {
 			PageHelper.startPage(pageNum, pageSize);
-			List<UserOperate> resultList = dao.getList(userId, itemId,partnerId,version, beginTime, endTime);
+			List<UserOperate> resultList = dao.getList(openId, itemId,partnerId,version, beginTime, endTime);
 			PageInfo<UserOperate> resultPage = new PageInfo<>(resultList);
 			return new JsonResult(ResultCode.SUCCESS, "成功", resultPage);
 		} catch (Exception e) {
@@ -46,9 +47,9 @@ public class UserOperateServiceImpl implements UserOperateService {
 	}
 
 	@Override
-	public JsonResult delete(Integer userId, Integer itemId,String version) {
+	public JsonResult delete(String openId, Integer itemId,String version) {
 		try {
-			Integer resultList = dao.delete(userId, itemId,version);
+			Integer resultList = dao.delete(openId, itemId,version);
 			return new JsonResult(ResultCode.SUCCESS, "成功", resultList);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -62,7 +63,7 @@ public class UserOperateServiceImpl implements UserOperateService {
 			int ret = 0;
 			if (record != null && record.size() > 0) {
 				for (UserOperate dto : record) {
-					List<UserOperate> rlt = dao.getList(dto.getUserId(), dto.getItemId(),null,dto.getVersion(), null, null);
+					List<UserOperate> rlt = dao.getList(dto.getOpenId(), dto.getItemId(),null,dto.getVersion(), null, null);
 					if (rlt != null && rlt.size() > 0) continue;
 					int r = dao.insert(dto);
 					if (r >= 0) ret += r;
@@ -94,20 +95,19 @@ public class UserOperateServiceImpl implements UserOperateService {
 	}
 
 	@Override
-	public JsonResult signUp(Integer userId,String sex, Integer itemId, String version) {
+	public JsonResult signUp(String openid,String sex, String itemId, String version) {
 		try {
-			String key = "HD活动报名"+String.valueOf(version)+"-"+userId+"*";
+			String key = "HD活动报名"+String.valueOf(version)+"-"+openid+"*";
 			Set<String> keys=stringRedisTemplate.keys(key);
 			if(keys!=null&&keys.size()>0){
 				stringRedisTemplate.delete(keys);
 			}
-			Map map=new HashMap();
-			map.put("userId",userId);
-			map.put("itemId",itemId);
-			map.put("version",version);
-			map.put("sex",sex);
-			String  value= JSON.toJSONString(map);
-			stringRedisTemplate.opsForValue().set("HD活动报名"+String.valueOf(version)+"-"+userId+"-"+String.valueOf(itemId), value);//添加redis
+			JSONObject jsonObject= new JSONObject();
+			jsonObject.put("openid",openid);
+			jsonObject.put("itemId",itemId);
+			jsonObject.put("version",version);
+			jsonObject.put("sex",sex);
+			stringRedisTemplate.opsForValue().set("HD活动报名"+String.valueOf(version)+"-"+openid+"-"+String.valueOf(itemId), jsonObject.toJSONString());//添加redis
 			return new JsonResult(ResultCode.SUCCESS, "报名成功");
 		} catch (Exception e) {
 			e.printStackTrace();

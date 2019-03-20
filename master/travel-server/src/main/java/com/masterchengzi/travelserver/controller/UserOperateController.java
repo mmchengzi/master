@@ -22,34 +22,34 @@ public class UserOperateController {
 
 	@ApiOperation(value = "查询列表用户活动")
 	@GetMapping("/getList")
-	public JsonResult getList(@RequestParam(value = "userId", required = false) Integer userId,
+	public JsonResult getList(@RequestParam(value = "openId", required = false) String openId,
 							  @RequestParam(value = "itemId", required = false) Integer itemId,
-							  @RequestParam(name = "partnerId", required = false) Integer partnerId,
+							  @RequestParam(name = "partnerId", required = false) String partnerId,
 							  @RequestParam(name = "version", required = false) String version,
 							  @RequestParam(value = "beginTime", required = false) Date beginTime,
 							  @RequestParam(value = "endTime", required = false) Date endTime) {
-		return service.getList(userId, itemId, partnerId, version, beginTime, endTime);
+		return service.getList(openId, itemId, partnerId, version, beginTime, endTime);
 	}
 
 	@ApiOperation(value = "分页查询用户活动")
 	@GetMapping("/getPage")
-	public JsonResult getPageNews(@RequestParam(value = "userId", required = false) Integer userId,
+	public JsonResult getPageNews(@RequestParam(value = "openId", required = false) String openId,
 								  @RequestParam(value = "itemId", required = false) Integer itemId,
-								  @RequestParam(name = "partnerId", required = false) Integer partnerId,
+								  @RequestParam(name = "partnerId", required = false) String partnerId,
 								  @RequestParam(name = "version", required = false) String version,
 								  @RequestParam(value = "beginTime", required = false) Date beginTime,
 								  @RequestParam(value = "endTime", required = false) Date endTime,
 								  @RequestParam(name = "pageNum", required = false) int pageNum,
 								  @RequestParam(name = "pageSize", required = false) int pageSize) {
-		return service.getPage(userId, itemId, partnerId, version, beginTime, endTime, pageNum, pageSize);
+		return service.getPage(openId, itemId, partnerId, version, beginTime, endTime, pageNum, pageSize);
 	}
 
 	@ApiOperation(value = "删除用户活动")
 	@DeleteMapping("/delete")
-	public JsonResult delete(@RequestParam(name = "userId") Integer userId,
+	public JsonResult delete(@RequestParam(name = "openId") String openId,
 							 @RequestParam(name = "itemId") Integer itemId,
 							 @RequestParam(name = "version") String version) {
-		return service.delete(userId, itemId, version);
+		return service.delete(openId, itemId, version);
 	}
 
 	@ResponseBody
@@ -58,7 +58,14 @@ public class UserOperateController {
 	public JsonResult insert(@ApiParam(value = "List<UserOperate>") @RequestBody List<UserOperate> record) {
 		return service.insert(record);
 	}
-
+	@ApiOperation(value = "活动报名")
+	@GetMapping("/signUp")
+	public JsonResult signUp(@RequestParam(value = "openid", required = false) String openid,
+								  @RequestParam(value = "sex", required = false) String sex,
+								  @RequestParam(name = "itemId", required = false) String itemId,
+								  @RequestParam(name = "version", required = false) String version) {
+		return service.signUp(openid, sex, itemId, version);
+	}
 	@ApiOperation(value = "修改用户活动")
 	@PostMapping("/update")
 	public JsonResult update(@ApiParam(value = "List<UserOperate>") @RequestBody List<UserOperate> record) {

@@ -6,8 +6,8 @@ import java.util.Date;
 import java.util.List;
 
 public interface UserOperateDao {
-    List<UserOperate> getList(Integer userId, Integer itemId,Integer partnerId,String version, Date beginTime ,Date endTime);
-    int delete(Integer userId, Integer itemId,String version);
+    List<UserOperate> getList(String openId, Integer itemId,String partnerId,String version, Date beginTime ,Date endTime);
+    int delete(String openId, Integer itemId,String version);
     int insert(UserOperate record);
     int update(UserOperate record);
 }
