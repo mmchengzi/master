@@ -10,7 +10,7 @@ public class UserOperate extends UserOperateKey {
     private String evaluate;
 
     private String tag;
-    private Integer partnerId;
+    private String partnerId;
     private String version;
     private Date createTime;
 }
