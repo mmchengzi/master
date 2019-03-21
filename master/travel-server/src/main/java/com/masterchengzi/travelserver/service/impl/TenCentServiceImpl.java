@@ -103,5 +103,7 @@ public class TenCentServiceImpl implements TenCentService {
 		File f=new File("C:/Users/Administrator/Desktop/down.jpg");
 		GetObjectRequest getObjectRequest=new GetObjectRequest("test-1252407640","x.jpg");
 		tenCentService.download(getObjectRequest,f);
+
+		//http://test-1252407640.cos.ap-guangzhou.myqcloud.com/mypic.jpg 访问
 	}
 }
