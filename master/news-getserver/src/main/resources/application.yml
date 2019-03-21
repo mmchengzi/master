@@ -1,0 +1,41 @@
+spring:
+  application:
+    name: news-getserver1
+  profiles:
+     active: dev
+server:
+  port: 8084
+
+eureka:
+  instance:
+      leaseRenewalIntervalInSeconds: 10
+      health-check-url-path: /actuator/health
+      prefer-ip-address: true
+  client:
+    registryFetchIntervalSeconds: 5
+    serviceUrl:
+      defaultZone: http://123.207.98.252:8761/eureka/
+
+ribbon:
+  ReadTimeout: 3000
+  ConnectTimeout: 3000
+
+#开启hystrix配置
+feign:
+  hystrix:
+    enabled: true
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS
+idataapi:
+  Url360: http://api01.idataapi.cn:8000/news/qihoo?apikey=vZuaffbf38RMVPr2c5JHrmrcutFGpVA9Px2Najsa1xunUG7Cx0KV2sfD3hLExibg
+  cctvUrl: http://api01.idataapi.cn:8000/news/cctvplus?apikey=vZuaffbf38RMVPr2c5JHrmrcutFGpVA9Px2Najsa1xunUG7Cx0KV2sfD3hLExibg
+juhe:
+  PathUrl: http://v.juhe.cn/toutiao/index?key=d60c052187e8adf3e2de5782409d8049&type=

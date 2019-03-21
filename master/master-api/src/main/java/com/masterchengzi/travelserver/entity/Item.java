@@ -1,5 +1,6 @@
 package com.masterchengzi.travelserver.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import lombok.extern.java.Log;
 
@@ -16,9 +17,10 @@ public class Item {
     private BigDecimal price;
     private String     content;
     private String     version;
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
     private Date creatTime;
-
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
     private Date beginTime;
-
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
     private Date endTime;
 }

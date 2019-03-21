@@ -1,5 +1,6 @@
 package com.masterchengzi.travelserver.service.impl;
 
+import com.alibaba.fastjson.JSON;
 import com.masterchengzi.mastercommon.common.JsonResult;
 import com.masterchengzi.mastercommon.common.ResultCode;
 import com.masterchengzi.mastercommon.common.SnowflakeIdWorker;
@@ -52,8 +53,11 @@ public class WxServiceImpl implements WxService {
                     dao.insert(u);
                 }
               String token= DigestUtils.sha1Hex(openid+u.getId()+sessionkey);
-              stringRedisTemplate.opsForValue().set(token, u.toString(), 1, TimeUnit.HOURS);//添加redis
-                return new JsonResult(ResultCode.SUCCESS, "成功", token);
+              stringRedisTemplate.opsForValue().set(token, JSON.toJSONString(u), 1, TimeUnit.HOURS);//添加redis
+                JSONObject js = new JSONObject();
+                js.put("openid", openid);
+                js.put("token", token);
+                return new JsonResult(ResultCode.SUCCESS, "成功",   js.toString());
             }
         } catch (IOException e) {
             e.printStackTrace();

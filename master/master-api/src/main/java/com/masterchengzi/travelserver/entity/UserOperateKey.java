@@ -6,7 +6,7 @@ import lombok.extern.java.Log;
 @Data
 @Log
 public class UserOperateKey {
-    private Integer userId;
+    private String openId;
 
     private Integer itemId;
 }

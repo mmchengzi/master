@@ -38,7 +38,7 @@ public class SinUpTask {
 			while (it.hasNext()) {
 				String value = stringRedisTemplate.opsForValue().get(it.next());
 				JSONObject json = new JSONObject(value);
-				Integer userId = json.getInt("userId");
+				String openid = json.getString("openid");
 				Integer itemId = json.getInt("itemId");
 				String version = json.getString("version");
 				String sex = json.getString("sex");
@@ -47,7 +47,7 @@ public class SinUpTask {
 				item.setVersion(version);
 				items.add(item);//所有活动
 				UserOperate userOperate = new UserOperate();
-				userOperate.setUserId(userId);
+				userOperate.setOpenId(openid);
 				userOperate.setItemId(itemId);
 				userOperate.setVersion(version);
 				if ("男".equals(sex)) {
@@ -85,8 +85,8 @@ public class SinUpTask {
 				for (UserOperate user : resultUser) {
 					for (UserOperate user1 : resultUser) {
 						if (user.getPartnerId() == null && user1.getPartnerId() == null && !user.getEvaluate().equals(user1.getEvaluate())) {
-							user.setPartnerId(user1.getUserId());
-							user1.setPartnerId(user.getUserId());
+							user.setPartnerId(user1.getOpenId());
+							user1.setPartnerId(user.getOpenId());
 							insertDto.add(user);
 							insertDto.add(user1);
 						}
