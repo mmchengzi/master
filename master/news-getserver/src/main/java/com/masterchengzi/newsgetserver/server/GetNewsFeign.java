@@ -1,7 +1,7 @@
 package com.masterchengzi.newsgetserver.server;
 
 import com.masterchengzi.mastercommon.common.JsonResult;
-import com.masterchengzi.newsgetserver.common.FeignClientFallBack;
+import com.masterchengzi.newsgetserver.server.impl.HystrixClientFallback;
 import com.masterchengzi.newsserver.entity.GetNewsWithBLOBs;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Repository;
@@ -14,15 +14,15 @@ import java.util.Date;
 import java.util.List;
 
 @Repository
-@FeignClient(name = "${feign.name}", url = "${feign.url}")
+@FeignClient(name = "${feign.name}", url = "${feign.url}", fallback = HystrixClientFallback.class)
 public interface GetNewsFeign {
 	@RequestMapping(method = RequestMethod.POST, value = "getNews/delete")
 	public JsonResult delete(@RequestParam(name = "newsId") String newsId,
-							 @RequestParam(value="keyword", required=false) String keyword,
-							 @RequestParam(value="tag", required=false) String tag,
-							 @RequestParam(value="isOld", required=false) Integer isOld,
-							 @RequestParam(value="beginDate", required=false) Date beginDate,
-							 @RequestParam(value="endDate", required=false) Date endDate);
+							 @RequestParam(value = "keyword", required = false) String keyword,
+							 @RequestParam(value = "tag", required = false) String tag,
+							 @RequestParam(value = "isOld", required = false) Integer isOld,
+							 @RequestParam(value = "beginDate", required = false) Date beginDate,
+							 @RequestParam(value = "endDate", required = false) Date endDate);
 
 	@RequestMapping(method = RequestMethod.POST, value = "getNews/insert")
 	public JsonResult insert(@RequestBody List<GetNewsWithBLOBs> record);
