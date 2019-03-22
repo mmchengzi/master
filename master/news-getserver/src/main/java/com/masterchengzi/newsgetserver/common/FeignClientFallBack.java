@@ -31,6 +31,18 @@ public class FeignClientFallBack implements FallbackFactory<GetNewsFeign> {
             public JsonResult insert(@RequestBody List<GetNewsWithBLOBs> record) {
                 return new JsonResult(ResultCode.EXCEPTION, "feign_exception_callback: function insert is fail ! ");
             }
+
+            @Override
+            public JsonResult getGetNews(@RequestParam(value = "newsId", required = false) String newsId,
+                                         @RequestParam(value = "title", required = false) String title,
+                                         @RequestParam(value = "keyword", required = false) String keyword,
+                                         @RequestParam(value = "tag", required = false) String tag,
+                                         @RequestParam(value = "isOld", required = false) Integer isOld,
+                                         @RequestParam(value = "beginDate", required = false) Date beginDate,
+                                         @RequestParam(value = "endDate", required = false) Date endDate) {
+                return new JsonResult(ResultCode.EXCEPTION, "feign_exception_callback: function insert is fail ! ");
+            }
+
         };
     }
 }

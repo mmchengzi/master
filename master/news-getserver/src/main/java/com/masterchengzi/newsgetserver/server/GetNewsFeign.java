@@ -14,10 +14,9 @@ import java.util.Date;
 import java.util.List;
 
 @Repository
-@FeignClient(name ="newsserver2/getNews" , fallbackFactory = FeignClientFallBack.class )
+@FeignClient(name = "${feign.name}", url = "${feign.url}")
 public interface GetNewsFeign {
-
-	@RequestMapping(method = RequestMethod.POST, value = "/delete")
+	@RequestMapping(method = RequestMethod.POST, value = "getNews/delete")
 	public JsonResult delete(@RequestParam(name = "newsId") String newsId,
 							 @RequestParam(value="keyword", required=false) String keyword,
 							 @RequestParam(value="tag", required=false) String tag,
@@ -25,6 +24,15 @@ public interface GetNewsFeign {
 							 @RequestParam(value="beginDate", required=false) Date beginDate,
 							 @RequestParam(value="endDate", required=false) Date endDate);
 
-	@RequestMapping(method = RequestMethod.POST, value = "/insert")
+	@RequestMapping(method = RequestMethod.POST, value = "getNews/insert")
 	public JsonResult insert(@RequestBody List<GetNewsWithBLOBs> record);
+
+	@RequestMapping(method = RequestMethod.GET, value = "getNews/getGetNews")
+	JsonResult getGetNews(@RequestParam(value = "newsId", required = false) String newsId,
+						  @RequestParam(value = "title", required = false) String title,
+						  @RequestParam(value = "keyword", required = false) String keyword,
+						  @RequestParam(value = "tag", required = false) String tag,
+						  @RequestParam(value = "isOld", required = false) Integer isOld,
+						  @RequestParam(value = "beginDate", required = false) Date beginDate,
+						  @RequestParam(value = "endDate", required = false) Date endDate);
 }
