@@ -51,7 +51,14 @@
     </select>
     <delete id="delete" parameterType="Map">
     delete from user
-    where id = #{id,jdbcType=INTEGER}
+        <where>
+            <if test="id != null">
+                AND id = #{id,jdbcType=INTEGER}
+            </if>
+            <if test="openid!= null">
+                AND openid = #{openid}
+            </if>
+        </where>
   </delete>
     <insert id="insert" parameterType="com.masterchengzi.travelserver.entity.User">
     insert into user (id, avatar, username,
@@ -105,6 +112,13 @@
                 update_time = #{updateTime,jdbcType=TIMESTAMP},
             </if>
         </set>
-        where id = #{id,jdbcType=INTEGER}
+        <where>
+            <if test="id != null">
+                AND id = #{id,jdbcType=INTEGER}
+            </if>
+            <if test="openid!= null">
+                AND openid = #{openid}
+            </if>
+        </where>
     </update>
 </mapper>
