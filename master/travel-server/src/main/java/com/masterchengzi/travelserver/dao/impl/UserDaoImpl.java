@@ -28,9 +28,10 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public int delete(Integer userId) {
+    public int delete(Integer userId,String openid) {
         Map map = new HashMap();
         map.put("id", userId);
+        map.put("openid", openid);
         return mapper.delete(map);
     }
 

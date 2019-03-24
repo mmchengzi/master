@@ -50,8 +50,9 @@ public class UserController {
 
     @ApiOperation(value = "删除用户")
     @DeleteMapping("/delete")
-    public JsonResult delete(@RequestParam(name = "userId") Integer userId) {
-        return service.delete(userId);
+    public JsonResult delete(@RequestParam(name = "userId") Integer userId,
+                             @RequestParam(name = "openid") String openid) {
+        return service.delete(userId,openid);
     }
 
     @ResponseBody

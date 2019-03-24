@@ -11,7 +11,7 @@ public interface UserService {
 
     JsonResult getPage(Integer userId, String username,String openid,String email,String phone, Date beginTime, Date endTime, Integer pageNum, Integer pageSize);
 
-    JsonResult delete(Integer userId);
+    JsonResult delete(Integer userId,String openid);
 
     JsonResult insert(List<User> record);
 
