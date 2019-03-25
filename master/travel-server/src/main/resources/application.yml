@@ -1,0 +1,80 @@
+spring:
+  mail:
+    host: smtp.qq.com
+    username: 1173727598@qq.com
+    password: syohwfhitccohdaj
+    protocol: smtp
+    properties.mail.smtp.auth: true
+    properties.mail.smtp.port: 465
+    properties.mail.display.sendmail: Javen
+    properties.mail.display.sendname: Spring Boot Guide Email
+    properties.mail.smtp.starttls.enable: true
+    properties.mail.smtp.starttls.required: true
+    properties.mail.smtp.ssl.enable: true
+    default-encoding: utf-8
+    from: 1173727598@qq.com
+  profiles:
+    active: dev
+  application:
+    name: travelserver
+  redis:
+    database: 0
+    password: zhuo18358136226
+    host: 129.204.85.50
+    port: 6379
+    jedis:
+      pool:
+        #最大连接数
+        max-active: 8
+        #最大阻塞等待时间(负数表示没限制)
+        max-wait: -1
+        #最大空闲
+        max-idle: 8
+        #最小空闲
+        min-idle: 0
+        #连接超时时间
+      timeout: 10000
+
+server:
+  port: 8085
+
+eureka:
+  instance:
+    leaseRenewalIntervalInSeconds: 10
+    health-check-url-path: /actuator/health
+    prefer-ip-address: true
+  client:
+    registryFetchIntervalSeconds: 5
+    serviceUrl:
+      defaultZone: http://129.204.85.50:8761/eureka/
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS
+
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+  params: count=countSql
+wx:
+  smp-Appid: wxe432a2435eba2197
+  smp-AppSecret: c90be676733d2618ed1c85eb9969c85a
+  SecretId: AKID2wsjOrlwDHFG5CFJblQ5bvPsHTgloNsD
+  SecretKey:  MbdS8g2DORIxPktpeMsCKLAnFVYaaUOB
+  APPID: 1252407640
+
+sms:
+  BASE_URL: https://api.miaodiyun.com
+  ACCOUNT_SID: af1f7455dd5c430585ada20ab693743d
+  AUTH_TOKEN: c20566eb1c31421183ab093b76d05209
+  RESP_DATA_TYPE: json
+  appID: 1400188255
+  appKey: 2543857aecf8fe37f551e3554d41da6a
+  templateId: 282789
+  multiTemplateId: 298082

@@ -187,3 +187,5 @@
 2019-03-02 at 18:08:17 CST WARN  com.netflix.config.sources.URLConfigurationSource 121 <init> - No URLs will be polled as dynamic configuration sources.
 2019-03-02 at 18:09:31 CST WARN  com.netflix.config.sources.URLConfigurationSource 121 <init> - No URLs will be polled as dynamic configuration sources.
 2019-03-02 at 18:09:31 CST WARN  com.netflix.config.sources.URLConfigurationSource 121 <init> - No URLs will be polled as dynamic configuration sources.
+2019-03-25 at 08:51:15 CST WARN  com.netflix.config.sources.URLConfigurationSource 121 <init> - No URLs will be polled as dynamic configuration sources.
+2019-03-25 at 08:51:15 CST WARN  com.netflix.config.sources.URLConfigurationSource 121 <init> - No URLs will be polled as dynamic configuration sources.
