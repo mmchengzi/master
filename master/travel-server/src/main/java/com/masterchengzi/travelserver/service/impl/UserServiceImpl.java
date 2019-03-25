@@ -63,9 +63,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public JsonResult delete(Integer userId) {
+    public JsonResult delete(Integer userId,String openid) {
         try {
-            Integer resultList = dao.delete(userId);
+            Integer resultList = dao.delete(userId,openid);
             return new JsonResult(ResultCode.SUCCESS, "成功", resultList);
         } catch (Exception e) {
             e.printStackTrace();
