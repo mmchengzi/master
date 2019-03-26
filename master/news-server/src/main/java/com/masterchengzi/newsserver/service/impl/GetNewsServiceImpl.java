@@ -2,6 +2,7 @@ package com.masterchengzi.newsserver.service.impl;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.masterchengzi.mastercommon.common.myDate;
 import com.masterchengzi.newsserver.dao.GetNewsDao;
 import com.masterchengzi.newsserver.entity.GetNewsWithBLOBs;
 import com.masterchengzi.newsserver.service.GetNewsService;
@@ -20,9 +21,9 @@ public class GetNewsServiceImpl implements GetNewsService {
 	private GetNewsDao getNewsDao;
 
 	@Override
-	public JsonResult getGetNews(String newsId, String title, String keyword, String tag, Integer isOld, Date beginDate, Date endDate) {
+	public JsonResult getGetNews(String newsId, String title, String keyword, String tag, Integer isOld, String beginDate, String endDate) {
 		try {
-			List<GetNewsWithBLOBs> resultList = getNewsDao.getGetNews(newsId, title, keyword, tag, isOld, beginDate, endDate);
+			List<GetNewsWithBLOBs> resultList = getNewsDao.getGetNews(newsId, title, keyword, tag, isOld, myDate.strToDateLong(beginDate), myDate.strToDateLong(endDate));
 			return new JsonResult(ResultCode.SUCCESS, "成功", resultList);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -31,10 +32,10 @@ public class GetNewsServiceImpl implements GetNewsService {
 	}
 
 	@Override
-	public JsonResult getPageNews(String newsId, String title, String keyword, String tag, Integer isOld, Date beginDate, Date endDate, Integer pageNum, Integer pageSize) {
+	public JsonResult getPageNews(String newsId, String title, String keyword, String tag, Integer isOld, String beginDate, String endDate, Integer pageNum, Integer pageSize) {
 		try {
 			PageHelper.startPage(pageNum, pageSize);
-			List<GetNewsWithBLOBs> resultList = getNewsDao.getGetNews(newsId, title, keyword, tag, isOld, beginDate, endDate);
+			List<GetNewsWithBLOBs> resultList = getNewsDao.getGetNews(newsId, title, keyword, tag, isOld, myDate.strToDateLong(beginDate), myDate.strToDateLong(endDate));
 			PageInfo<GetNewsWithBLOBs> resultPage = new PageInfo<>(resultList);
 			return new JsonResult(ResultCode.SUCCESS, "成功", resultPage);
 		} catch (Exception e) {
@@ -44,9 +45,9 @@ public class GetNewsServiceImpl implements GetNewsService {
 	}
 
 	@Override
-	public JsonResult delete(String newsId,  String keyword, String tag, Integer isOld, Date beginDate, Date endDate) {
+	public JsonResult delete(String newsId,  String keyword, String tag, Integer isOld, String beginDate, String endDate) {
 		try {
-			Integer resultList = getNewsDao.delete(newsId,keyword,tag,isOld,beginDate,endDate);
+			Integer resultList = getNewsDao.delete(newsId,keyword,tag,isOld, myDate.strToDateLong(beginDate), myDate.strToDateLong(endDate));
 			return new JsonResult(ResultCode.SUCCESS, "成功", resultList);
 		} catch (Exception e) {
 			e.printStackTrace();

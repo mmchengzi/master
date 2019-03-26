@@ -11,7 +11,7 @@ import java.util.List;
 @Component
 public class HystrixClientFallback implements GetNewsFeign {
 	@Override
-	public JsonResult delete(String newsId, String keyword, String tag, Integer isOld, Date beginDate, Date endDate) {
+	public JsonResult delete(String newsId, String keyword, String tag, Integer isOld, String beginDate, String endDate) {
 		return new JsonResult(ResultCode.EXCEPTION, "feign_exception_callback: function delete is fail ! ");
 	}
 
@@ -21,7 +21,7 @@ public class HystrixClientFallback implements GetNewsFeign {
 	}
 
 	@Override
-	public JsonResult getGetNews(String newsId, String title, String keyword, String tag, Integer isOld, Date beginDate, Date endDate) {
+	public JsonResult getGetNews(String newsId, String title, String keyword, String tag, Integer isOld, String beginDate, String endDate) {
 		return new JsonResult(ResultCode.EXCEPTION, "feign_exception_callback: function getGetNews is fail ! ");
 	}
 }

@@ -17,11 +17,12 @@ public class NewDaoImpl implements NewDao {
     @Autowired
     private NewMapper newMapper;
     @Override
-    public List<New> getList(Integer newId, Integer parentId, String openId, Date beginTime, Date endTime) {
+    public List<New> getList(Integer newId, Integer parentId, String openId,String tag, Date beginTime, Date endTime) {
         Map map = new HashMap();
         map.put("newId", newId);
         map.put("parentId", parentId);
         map.put("openId", openId);
+        map.put("tag", tag);
         map.put("beginTime", beginTime);
         map.put("endTime", endTime);
         return newMapper.getList(map);

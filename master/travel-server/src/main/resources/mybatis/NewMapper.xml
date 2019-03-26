@@ -14,7 +14,7 @@
     new_id, parent_id, open_id, content, images, tag, createTime
   </sql>
   <select id="getList" resultMap="BaseResultMap" parameterType="Map" >
-    select 
+    select
     <include refid="Base_Column_List" />
     from new
     <where>
@@ -26,6 +26,9 @@
       </if>
       <if test="openId!= null">
         AND open_id = #{openId}
+      </if>
+      <if test="tag!= null">
+        AND tag = #{tag}
       </if>
       <if test="beginTime != null">
         AND createTime <![CDATA[>=]]> #{beginTime}
@@ -50,11 +53,11 @@
     </where>
   </delete>
   <insert id="insert" parameterType="com.masterchengzi.travelserver.entity.New" >
-    insert into new (new_id, parent_id, open_id, 
-      content, images, tag, 
+    insert into new (new_id, parent_id, open_id,
+      content, images, tag,
       createTime)
-    values (#{newId,jdbcType=INTEGER}, #{parentId,jdbcType=INTEGER}, #{openId,jdbcType=VARCHAR}, 
-      #{content,jdbcType=VARCHAR}, #{images,jdbcType=VARCHAR}, #{tag,jdbcType=VARCHAR}, 
+    values (#{newId,jdbcType=INTEGER}, #{parentId,jdbcType=INTEGER}, #{openId,jdbcType=VARCHAR},
+      #{content,jdbcType=VARCHAR}, #{images,jdbcType=VARCHAR}, #{tag,jdbcType=VARCHAR},
       #{createtime,jdbcType=TIMESTAMP})
   </insert>
   <update id="update" parameterType="com.masterchengzi.travelserver.entity.New" >

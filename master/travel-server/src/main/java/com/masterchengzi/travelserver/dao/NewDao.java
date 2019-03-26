@@ -7,7 +7,7 @@ import java.util.Date;
 import java.util.List;
 
 public interface NewDao {
-    List<New> getList(Integer newId,Integer parentId,String openId, Date beginTime, Date endTime);
+    List<New> getList(Integer newId,Integer parentId,String openId,String tag, Date beginTime, Date endTime);
     int delete(Integer newId,Integer parentId,String openId);
     int insert(New record);
     int update(New record);

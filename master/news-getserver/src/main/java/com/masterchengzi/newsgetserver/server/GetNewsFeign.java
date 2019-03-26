@@ -21,8 +21,8 @@ public interface GetNewsFeign {
 							 @RequestParam(value = "keyword", required = false) String keyword,
 							 @RequestParam(value = "tag", required = false) String tag,
 							 @RequestParam(value = "isOld", required = false) Integer isOld,
-							 @RequestParam(value = "beginDate", required = false) Date beginDate,
-							 @RequestParam(value = "endDate", required = false) Date endDate);
+							 @RequestParam(value = "beginDate", required = false) String beginDate,
+							 @RequestParam(value = "endDate", required = false) String endDate);
 
 	@RequestMapping(method = RequestMethod.POST, value = "getNews/insert")
 	public JsonResult insert(@RequestBody List<GetNewsWithBLOBs> record);
@@ -33,6 +33,6 @@ public interface GetNewsFeign {
 						  @RequestParam(value = "keyword", required = false) String keyword,
 						  @RequestParam(value = "tag", required = false) String tag,
 						  @RequestParam(value = "isOld", required = false) Integer isOld,
-						  @RequestParam(value = "beginDate", required = false) Date beginDate,
-						  @RequestParam(value = "endDate", required = false) Date endDate);
+						  @RequestParam(value = "beginDate", required = false) String beginDate,
+						  @RequestParam(value = "endDate", required = false) String endDate);
 }

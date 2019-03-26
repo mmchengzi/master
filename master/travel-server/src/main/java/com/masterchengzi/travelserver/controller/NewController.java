@@ -27,20 +27,22 @@ public class NewController {
 	public JsonResult getList(@RequestParam(value = "newId", required = false) Integer newId,
 							  @RequestParam(value = "parentId", required = false) Integer parentId,
 							  @RequestParam(value = "openId", required = false) String openId,
+							  @RequestParam(value = "tag", required = false) String tag,
 							  @RequestParam(value = "beginTime", required = false) Date beginTime,
 							  @RequestParam(value = "endTime", required = false) Date endTime) {
-		return service.getList(newId, parentId,openId, beginTime, endTime);
+		return service.getList(newId, parentId,openId,tag, beginTime, endTime);
 	}
 	@ApiOperation(value = "分页查询评论")
 	@GetMapping("/getPage")
 	public JsonResult getPageNews(@RequestParam(value = "newId", required = false) Integer newId,
 								  @RequestParam(value = "parentId", required = false) Integer parentId,
 								  @RequestParam(value = "openId", required = false) String openId,
+								  @RequestParam(value = "tag", required = false) String tag,
 								  @RequestParam(value = "beginTime", required = false) Date beginTime,
 								  @RequestParam(value = "endTime", required = false) Date endTime,
 								  @RequestParam(name = "pageNum", required = false) int pageNum,
 								  @RequestParam(name = "pageSize", required = false) int pageSize) {
-		return service.getPage(newId, parentId,openId, beginTime, endTime, pageNum, pageSize);
+		return service.getPage(newId, parentId,openId, tag,beginTime, endTime, pageNum, pageSize);
 	}
 
 	@ApiOperation(value = "删除评论")

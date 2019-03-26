@@ -44,8 +44,8 @@ public class GetNewsController {
 								 @RequestParam(value="keyword", required=false) String keyword,
 								 @RequestParam(value="tag", required=false) String tag,
 								 @RequestParam(value="isOld", required=false) Integer isOld,
-								 @RequestParam(value="beginDate", required=false)  Date beginDate,
-								 @RequestParam(value="endDate", required=false) Date endDate) {
+								 @RequestParam(value="beginDate", required=false)  String beginDate,
+								 @RequestParam(value="endDate", required=false) String endDate) {
 		return getNewsService.getGetNews(newsId, title, keyword, tag, isOld, beginDate, endDate);
 	}
 
@@ -56,8 +56,8 @@ public class GetNewsController {
 								  @RequestParam(value="keyword", required=false) String keyword,
 								  @RequestParam(value="tag", required=false) String tag,
 								  @RequestParam(value="isOld", required=false) Integer isOld,
-								  @RequestParam(value="beginDate", required=false)  Date beginDate,
-								  @RequestParam(value="endDate", required=false) Date endDate,
+								  @RequestParam(value="beginDate", required=false)  String beginDate,
+								  @RequestParam(value="endDate", required=false) String endDate,
 								  @RequestParam(name = "pageNum", required=false) int pageNum,
 								  @RequestParam(name = "pageSize", required=false) int pageSize) {
 		return getNewsService.getPageNews(newsId, title, keyword, tag, isOld, beginDate, endDate, pageNum, pageSize);
@@ -69,8 +69,8 @@ public class GetNewsController {
 							 @RequestParam(value="keyword", required=false) String keyword,
 							 @RequestParam(value="tag", required=false) String tag,
 							 @RequestParam(value="isOld", required=false) Integer isOld,
-							 @RequestParam(value="beginDate", required=false)  Date beginDate,
-							 @RequestParam(value="endDate", required=false) Date endDate) {
+							 @RequestParam(value="beginDate", required=false)  String beginDate,
+							 @RequestParam(value="endDate", required=false) String endDate) {
 		return getNewsService.delete(newsId,keyword,tag,isOld,beginDate,endDate);
 	}
 	@ResponseBody

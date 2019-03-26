@@ -8,8 +8,8 @@ import java.util.Date;
 import java.util.List;
 
 public interface NewService {
-    JsonResult getList(Integer newId,Integer parentId,String openId, Date beginTime, Date endTime);
-    JsonResult getPage(Integer newId,Integer parentId,String openId, Date beginTime, Date endTime, Integer pageNum, Integer pageSize);
+    JsonResult getList(Integer newId,Integer parentId,String openId, String tag,Date beginTime, Date endTime);
+    JsonResult getPage(Integer newId,Integer parentId,String openId, String tag,Date beginTime, Date endTime, Integer pageNum, Integer pageSize);
     JsonResult delete(Integer newId,Integer parentId,String openId);
     JsonResult insert(List<New> record);
     JsonResult update(List<New> record);

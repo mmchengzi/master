@@ -12,4 +12,5 @@ import java.io.File;
 public interface TenCentService {
     JsonResult fileUpload(final PutObjectRequest putObjectRequest);
     JsonResult download(final GetObjectRequest GetObjectRequest, final File file);
+    JsonResult delete(String bucketname ,String key);
 }

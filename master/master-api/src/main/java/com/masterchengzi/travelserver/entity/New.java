@@ -5,6 +5,8 @@ import lombok.Data;
 import lombok.extern.java.Log;
 
 import java.util.Date;
+import java.util.List;
+
 @Data
 @Log
 public class New {
@@ -13,12 +15,14 @@ public class New {
     private Integer parentId;
 
     private String openId;
-
+    private User user;
     private String content;
 
     private String images;
+    private List<String> imagesList;
+    private String    tag;
+    private List<New> comment;
 
-    private String tag;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date createtime;
 }
