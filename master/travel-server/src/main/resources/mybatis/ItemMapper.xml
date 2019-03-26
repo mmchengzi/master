@@ -10,12 +10,13 @@
     <result column="price" property="price" jdbcType="DECIMAL" />
     <result column="content" property="content" jdbcType="VARCHAR" />
     <result column="version" property="version" jdbcType="VARCHAR" />
+    <result column="images" property="images" jdbcType="VARCHAR" />
     <result column="creat_time" property="creatTime" jdbcType="TIMESTAMP" />
     <result column="begin_time" property="beginTime" jdbcType="TIMESTAMP" />
     <result column="end_time" property="endTime" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Base_Column_List" >
-    item_id, item_name,user_id,parent_id,type,price, content, version,creat_time, begin_time, end_time
+    item_id, item_name,user_id,parent_id,type,price, content, version,iamges,creat_time, begin_time, end_time
   </sql>
   <select id="getList" resultMap="BaseResultMap" parameterType="Map" >
     select
@@ -51,11 +52,11 @@
     where item_id = #{itemId,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.masterchengzi.travelserver.entity.Item" >
-    insert into item (item_id, item_name,user_id,parent_id,type,price, content,version,
+    insert into item (item_id, item_name,user_id,parent_id,type,price, content,version,iamges,
       creat_time, begin_time, end_time
       )
     values (#{itemId,jdbcType=INTEGER},#{itemName,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER},#{parentId,jdbcType=INTEGER},#{type,jdbcType=VARCHAR},#{price,jdbcType=DECIMAL}, #{content,jdbcType=VARCHAR},#{version,jdbcType=VARCHAR},
-      #{creatTime,jdbcType=TIMESTAMP}, #{beginTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP}
+     #{images,jdbcType=VARCHAR}, #{creatTime,jdbcType=TIMESTAMP}, #{beginTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP}
       )
   </insert>
   <update id="update" parameterType="com.masterchengzi.travelserver.entity.Item" >
@@ -81,6 +82,9 @@
       </if>
       <if test="version != null" >
         version = #{version,jdbcType=VARCHAR},
+      </if>
+      <if test="images != null" >
+        images = #{images,jdbcType=VARCHAR},
       </if>
       <if test="beginTime != null" >
         begin_time = #{beginTime,jdbcType=TIMESTAMP},

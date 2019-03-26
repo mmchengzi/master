@@ -17,6 +17,7 @@ public class Item {
     private BigDecimal price;
     private String     content;
     private String     version;
+    private String     images;
     @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
     private Date creatTime;
     @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")

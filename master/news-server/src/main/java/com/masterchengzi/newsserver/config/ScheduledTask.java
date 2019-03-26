@@ -19,7 +19,7 @@ public class ScheduledTask {
 
 	@Scheduled(cron = "0 0 0 * * ?")  // 每天凌晨
 	public void getJuheNewsTop() {
-		JsonResult result = getNewsService.delete(null, null, null, null, new Date(118, 0, 1), myDate.getdate(new Date(), -2));
+		JsonResult result = getNewsService.delete(null, null, null, null, "2018-01-01 00:00:00", myDate.getStringDate(myDate.getdate(new Date(), -2)));
 		log.info(result.getMessage() + "删除两天前的数据:" + result.getData());
 	}
 
